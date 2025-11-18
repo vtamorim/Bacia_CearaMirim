@@ -1,0 +1,9 @@
+:root{
+    --bg-but: #21A6EE;
+    --color-text: #000000;
+    --txt-but: #F5F5F5;
+    --color-boxs: rgba(0,129,199,0.25);
+    --bg-body: #F1FAFC;
+    --certa-resposta: rgba(86,192,43,0.22)
+    --errada-resposta: rgba(255,0,0,0.22)
+}
