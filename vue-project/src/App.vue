@@ -1,9 +1,18 @@
 <script setup>
-  import quiz from './views/quiz.vue';
+  import quiz from './pages/Quiz/index.vue';
+  import Header from './components/layout/Header.vue';
 </script>
 
 <template>
-  <quiz/>
+  <Header />
 </template>
 
-<style scoped></style>
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+  }
+</style>
+<style scoped>
+
+</style>

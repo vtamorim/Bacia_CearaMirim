@@ -4,6 +4,10 @@
     --txt-but: #F5F5F5;
     --color-boxs: rgba(0,129,199,0.25);
     --bg-body: #F1FAFC;
-    --certa-resposta: rgba(86,192,43,0.22)
-    --errada-resposta: rgba(255,0,0,0.22)
+    --certa-resposta: rgba(86,192,43,0.22);
+    --errada-resposta: rgba(255,0,0,0.22);
+    
+    /*Header*/
+    --cor-bg: #0081C7;
+
 }
