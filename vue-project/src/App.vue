@@ -1,10 +1,12 @@
 <script setup>
-  import quiz from './pages/Quiz/index.vue';
-  import Header from './components/layout/Header.vue';
+  //import quiz from './pages/Quiz/index.vue';
+  //import Header from './components/layout/Header.vue';
+  import Carousel from './components/layout/Carousel.vue';
 </script>
 
 <template>
-  <Header />
+  <Carousel />
+
 </template>
 
 <style>
