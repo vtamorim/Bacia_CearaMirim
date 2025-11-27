@@ -1,12 +1,14 @@
 <script setup>
-  //import quiz from './pages/Quiz/index.vue';
-  //import Header from './components/layout/Header.vue';
+  import Header from './components/layout/Header.vue';
+
   import Carousel from './components/layout/Carousel.vue';
+  import Parcerias from './pages/Bacia/parcerias.vue';
 </script>
 
 <template>
+  <Header/>
   <Carousel />
-
+  <Parcerias />
 </template>
 
 <style>
