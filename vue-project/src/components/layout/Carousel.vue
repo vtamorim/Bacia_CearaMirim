@@ -1,15 +1,12 @@
 <template>
   <div class="carousel-container">
     <div class="carousel-wrapper">
-      <img :src="mano[index].url" :alt="mano[index].name" class="carousel-image" />
-      
-      <!-- Botões de navegação -->
-      <button class="carousel-btn prev" @click="prevSlide" aria-label="Slide anterior">
-        ❮
-      </button>
-      <button class="carousel-btn next" @click="nextSlide" aria-label="Próximo slide">
-        ❯
-      </button>
+      <img :src="mano[index].url" :alt="mano[index].name" class="carousel-image"  />
+      <!-- Overlay title sobre a imagem -->
+      <div class="carousel-overlay">
+        <h2 class="carousel-title">Bacia Hidrográfica Rio Ceará-mirim</h2>
+      </div>
+      <!-- Navegação por setas removida (auto-play + dots permanecem) -->
     </div>
 
     <!-- Indicadores (dots) -->
@@ -75,7 +72,7 @@ const resetInterval = () => {
 const startAutoPlay = () => {
   interval = setInterval(() => {
     index.value = (index.value + 1) % mano.length
-  }, 5000)
+  }, 2500)
 }
 
 onMounted(() => {
@@ -88,7 +85,14 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-@keyframes fadeIn {
+  
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+
+*{
+  font-family: 'Poppins',sans-serif;
+}
+  @keyframes fadeIn {
   from {
     opacity: 0;
   }
@@ -97,27 +101,7 @@ onUnmounted(() => {
   }
 }
 
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
+/* slideIn keyframes removed (no arrow buttons) */
 
 @keyframes pulse {
   0%, 100% {
@@ -131,6 +115,7 @@ onUnmounted(() => {
 .carousel-container {
   width: 100%;
   margin: 0 auto;
+  position: relative;
 
 }
 
@@ -138,7 +123,6 @@ onUnmounted(() => {
   position: relative;
   width: 100%;
   overflow: hidden;
-  border-radius: 16px;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   height: 400px;
@@ -147,47 +131,56 @@ onUnmounted(() => {
 .carousel-image {
   width: 100%;
   height: 100%;
+
   display: block;
   animation: fadeIn 0.6s ease-in-out;
   object-fit: cover;
   object-position: center;
+
 }
 
-/* Botões de navegação */
-.carousel-btn {
+/* Overlay com título sobre a imagem */
+.carousel-overlay {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 129, 199, 0.8);
-  color: white;
-  border: none;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  font-size: 24px;
-  cursor: pointer;
+  inset: 0; /* ocupa toda a área do wrapper */
   display: flex;
   align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  z-index: 10;
+  justify-content: flex-start; /* alinhar à esquerda como na referência */
+  padding-left: 6%;
+  pointer-events: none; /* não bloqueia interações */
 }
 
-.carousel-btn:hover {
-  background: rgba(0, 129, 199, 1);
-  transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 6px 20px rgba(0, 129, 199, 0.4);
+.carousel-title {
+  color: #ffffff;
+  font-size: 2.6rem;
+  margin: 0;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.55);
+  max-width: 70%;
+  position: relative;
+  top: 6rem;
+  line-height: 1.1;
+  pointer-events: none;
+  transform: translateY(8px);
+  opacity: 0;
+  animation: titleIn 0.8s ease-out 0.2s forwards;
 }
 
-.carousel-btn.prev {
-  left: 20px;
-  animation: slideInLeft 0.5s ease-out;
+/* Camada preta semitransparente sobre a imagem (entre img e texto) */
+.carousel-overlay::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45); /* ajuste o último valor (0.45) para controlar a opacidade */
+  z-index: 1;
 }
 
-.carousel-btn.next {
-  right: 20px;
-  animation: slideInRight 0.5s ease-out;
+.carousel-title{ z-index: 2; }
+
+@keyframes titleIn {
+  to { transform: translateY(0); opacity: 1; }
 }
+
+/* Arrow buttons removed */
 
 /* Indicadores (dots) */
 .carousel-dots {
@@ -220,34 +213,11 @@ onUnmounted(() => {
   border-radius: 6px;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-  .carousel-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
-  }
-
-  .carousel-btn.prev {
-    left: 10px;
-  }
-
-  .carousel-btn.next {
-    right: 10px;
-  }
-}
 
 @media (max-width: 480px) {
   .carousel-container {
     padding: 20px 10px;
   }
-
-  .carousel-btn {
-    width: 36px;
-    height: 36px;
-    font-size: 16px;
-  }
-
   .carousel-dots {
     gap: 8px;
   }

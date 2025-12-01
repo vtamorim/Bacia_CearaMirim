@@ -3,20 +3,36 @@
         <img :src="Logotipo" alt="Logo" />
         <nav>
             <ul>
-                <li><a href="#" id="paginaatual">A Bacia</a></li>
-                <li><a href="#">Comitê</a></li>
-                <li><a href="#">ODS</a></li>
-                <li><a href="#">Mídias</a></li>
-                <li><a href="#">Cartilha</a></li>
-                <li><a href="#">Jogos</a></li>
-                <li><a href="#">Contato</a></li>
+                <li><a href="#home" :class="{ active: isActive('home') }">A Bacia</a></li>
+                <li><a href="#comite" :class="{ active: isActive('comite') }">Comitê</a></li>
+                <li><a href="#ods" :class="{ active: isActive('ods') }">ODS</a></li>
+                <li><a href="#midias" :class="{ active: isActive('midias') }">Mídias</a></li>
+                <li><a href="#cartilha" :class="{ active: isActive('cartilha') }">Cartilha</a></li>
+                <li><a href="#jogos" :class="{ active: isActive('jogos') }">Jogos</a></li>
+                <li><a href="#contato" :class="{ active: isActive('contato') }">Contato</a></li>
             </ul>
         </nav>
     </header>
 </template>
-<script setup>
 
-    import Logotipo from '@/assets/images/logotipo.svg'
+<script setup>
+import { ref, onMounted, computed } from 'vue';
+import Logotipo from '@/assets/images/logotipo.svg'
+
+const hashPage = ref('home');
+
+const isActive = (page) => {
+  return hashPage.value === page || (page === 'home' && (hashPage.value === 'home' || hashPage.value === 'bacia'));
+};
+
+const updateHash = () => {
+  hashPage.value = window.location.hash.slice(1) || 'home';
+};
+
+onMounted(() => {
+  updateHash();
+  window.addEventListener('hashchange', updateHash);
+});
 </script>
 <style scoped>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
@@ -32,8 +48,6 @@
         display: flex;
         height: 67px;
         justify-content: space-between;
-        border-bottom-left-radius: 8px ;
-        border-bottom-right-radius: 8px;
 
         & nav>ul{
             width: 50vw;
@@ -64,11 +78,13 @@
                 text-decoration: none;
                 color: white;
             }
+
+            & a.active{
+                background-color: #014D83;
+            }
         }
     }
-    #paginaatual{
-        background-color: #014D83;
-    }
+
     
     
 

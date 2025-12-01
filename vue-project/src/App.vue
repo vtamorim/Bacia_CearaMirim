@@ -1,14 +1,63 @@
 <script setup>
+  import { ref, onMounted } from 'vue';
   import Header from './components/layout/Header.vue';
-
   import Carousel from './components/layout/Carousel.vue';
   import Parcerias from './pages/Bacia/parcerias.vue';
+  import Quiz from './pages/Quiz/index.vue';
+  import ODS from './pages/ODS/index.vue'
+  const currentPage = ref('home');
+
+  const updatePage = () => {
+    currentPage.value = window.location.hash.slice(1) || 'home';
+  };
+
+  onMounted(() => {
+    updatePage();
+    window.addEventListener('hashchange', updatePage);
+  });
 </script>
 
 <template>
-  <Header/>
-  <Carousel />
-  <Parcerias />
+  <Header />
+  
+  <!-- Home / A Bacia -->
+  <section v-show="currentPage === 'home' || currentPage === 'bacia'" id="bacia">
+    <Carousel />
+    <Parcerias />
+  </section>
+
+  <!-- Jogos (Quiz) -->
+  <section v-show="currentPage === 'jogos'" id="jogos">
+    <div style="padding: 40px 20px;">
+      <h2 style="text-align: center; margin-bottom: 30px;">Jogos</h2>
+      <Quiz />
+    </div>
+  </section>
+
+  <!-- Placeholder para outras páginas -->
+  <section v-show="currentPage === 'comite'" id="comite" style="padding: 60px 20px; text-align: center;">
+        <h2>comite</h2>
+    <p>Página em desenvolvimento</p>
+  </section>
+
+  <section v-show="currentPage === 'ods'" id="ods" style="padding: 60px 20px; text-align: center;">
+    <ODS/>
+  </section>
+
+  <section v-show="currentPage === 'midias'" id="midias" style="padding: 60px 20px; text-align: center;">
+    <h2>Mídias</h2>
+    <p>Página em desenvolvimento</p>
+  </section>
+
+  <section v-show="currentPage === 'cartilha'" id="cartilha" style="padding: 60px 20px; text-align: center;">
+    <h2>Cartilha</h2>
+    <p>Página em desenvolvimento</p>
+  </section>
+
+  <section v-show="currentPage === 'contato'" id="contato" style="padding: 60px 20px; text-align: center;">
+    <h2>Contato</h2>
+    <p>Página em desenvolvimento</p>
+  </section>
 </template>
 
 <style>
