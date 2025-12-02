@@ -37,53 +37,104 @@ onMounted(() => {
 <style scoped>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-    * { 
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    header{
-        width: 100vw;
-        background-color: var(--cor-bg);
-        padding: 0rem 10rem 0rem 10rem;
-        display: flex;
-        height: 67px;
-        justify-content: space-between;
+        * { 
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
-        & nav>ul{
-            width: 50vw;
+        header{
+            width: 100%;
+            background-color: var(--cor-bg);
+            padding: 0 clamp(0.5rem, 3vw, 2.5rem);
+            display: flex;
+            align-items: center;
+            min-height: 4.2rem;
+            justify-content: space-around;
+            }
+
+        header img{
+            max-height: 3rem;
+            display: block;
+            width: auto;
+            height: auto;
+        }
+
+        header nav > ul{
+            width: 100%;
             height: 100%;
             align-items: center;
             display: flex;
             list-style-type: none;
-            justify-content: space-around;
-            
-            & li{
+            justify-content: space-between;
+        }
 
-                height: 100%;
-                width: 100%;
-                justify-content: center;
-                display: flex;
-                align-items: center;
-            }
-            & a:hover{
+        header nav > ul li{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1 1 auto;
+            height: 4.2rem;
+            min-width: 7.5rem;
+            box-sizing: border-box;
+        }
+
+        header nav > ul li a{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            padding: 0.45rem 0.6rem;
+            width: 100%;
+            font-size: clamp(0.9rem, 1.6vw, 1rem);
+            white-space: nowrap;
+        }
+
+        header nav > ul li a:hover,
+        header nav > ul li a.active{
                 background-color: #014D83;
-            }
-            
-            & a{
-                height: 100%;
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-decoration: none;
-                color: white;
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 900px) {
+            header{
+                padding: 0 clamp(0.5rem, 4vw, 1.5rem);
             }
 
-            & a.active{
-                background-color: #014D83;
+            header nav > ul{
+                gap: 0.5rem;
             }
         }
-    }
+
+        @media (max-width: 600px) {
+            header{
+                padding: 0.5rem 1rem;
+                flex-direction: column;
+                height: auto;
+                gap: 0.5rem;
+                padding-top: 0.6rem;
+                padding-bottom: 0.6rem;
+            }
+
+            header nav > ul{
+                width: 100%;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            header nav > ul li{
+                min-width: unset;
+                flex: 0 1 auto;
+            }
+
+            header nav > ul li a{
+                padding: 0.4rem 0.6rem;
+                font-size: 0.95rem;
+                white-space: normal;
+            }
+        }
 
     
     

@@ -77,23 +77,36 @@ const lista_texto = [
 /* TEXTO */
 h3 {
     color: white;
-    position: relative;
-    top: 80%;
+    position: absolute;
     max-width: 90%;
     text-align: center;
     margin: 0 auto;
     text-transform: uppercase;
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    z-index: 3;
+    transition: transform 0.45s cubic-bezier(.2,.9,.2,1), color 0.25s ease;
+    transform: translateY(0);
+    position: relative;
+    top: 75%;
 }
 
 p {
     color: white;
-    font-size: 0.8rem;
-    visibility: visible;
-    width: 75%;
+    font-size: clamp(0.85rem, 1.6vw, 0.95rem);
+    position: absolute;
+
+    max-width: 90%;
+    text-align: center;
     margin: 0 auto;
+    z-index: 2;
+    opacity: 0;
+    position: relative;
+    top: 50%;
+    transform: translateY(0.6rem);
+    transition: opacity 0.35s ease, transform 0.45s ease;
 }
 
-/* GRID */
+
 ul {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -103,7 +116,6 @@ ul {
     row-gap: 131px;
 }
 
-/* ---- CARD BASE ---- */
 .box {
     position: relative;
     max-width: 326px;
@@ -114,11 +126,11 @@ ul {
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(17, 13, 13, 0.1);
 
-    /* importante para camadas */
+ 
     z-index: 1;
 }
 
-/* ---- EFEITO DE IMAGEM DO CARD ORIGINAL ---- */
+
 .box::before {
     content: "";
     position: absolute;
@@ -129,7 +141,7 @@ ul {
     z-index: 0;
 }
 
-/* ---- GRADIENTE DO CARD ORIGINAL ---- */
+
 .box::after {
     content: '';
     position: absolute;
@@ -155,12 +167,19 @@ ul {
     transition: 
         transform 0.7s cubic-bezier(0.19, 1, 0.22, 1),
         opacity 0.7s cubic-bezier(0.19, 1, 0.22, 1);
-    opacity: 0;
-    transform: translateY(2rem);
+}
+
+.box h3 {
+    opacity: 1; /* h3 always visible */
+}
+
+.box p {
+    opacity: 0; /* p hidden initially */
+    transform: translateY(0rem);
 }
 
 
-/* ---- HOVER IGUAL AO CARD ORIGINAL ---- */
+
 .box:hover::before {
     transform: translateY(-4%);
 }
@@ -173,11 +192,12 @@ ul {
 
 .box:hover h3 {
     opacity: 1;
-    transform:  translateY(-13rem)
+    transform: translateY(-15rem);
 }
+
 .box:hover p{
     opacity: 1;
-    transform: translateY(5rem);
+    transform: translateY(-8rem); 
 }
 
 </style>

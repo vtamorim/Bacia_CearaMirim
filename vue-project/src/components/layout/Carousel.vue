@@ -125,7 +125,7 @@ onUnmounted(() => {
   overflow: hidden;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-  height: 400px;
+  height: clamp(220px, 35vh, 520px);
 }
 
 .carousel-image {
@@ -146,23 +146,23 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: flex-start; /* alinhar à esquerda como na referência */
-  padding-left: 6%;
+  padding-left: clamp(4%, 6vw, 8%);
   pointer-events: none; /* não bloqueia interações */
 }
 
 .carousel-title {
   color: #ffffff;
-  font-size: 2.6rem;
+  font-size: clamp(1.1rem, 3.6vw, 2.6rem);
   margin: 0;
   text-shadow: 0 6px 18px rgba(0,0,0,0.55);
   max-width: 70%;
   position: relative;
-  top: 6rem;
   line-height: 1.1;
   pointer-events: none;
   transform: translateY(8px);
   opacity: 0;
   animation: titleIn 0.8s ease-out 0.2s forwards;
+  padding-right: 6%;
 }
 
 /* Camada preta semitransparente sobre a imagem (entre img e texto) */
@@ -229,6 +229,35 @@ onUnmounted(() => {
 
   .dot.active {
     width: 24px;
+  }
+}
+
+@media (max-width: 900px) {
+  .carousel-wrapper{
+    height: clamp(220px, 30vh, 360px);
+  }
+
+  .carousel-title{
+    font-size: clamp(1rem, 3.2vw, 2rem);
+    max-width: 80%;
+    padding-right: 10%;
+  }
+}
+
+@media (max-width: 600px) {
+  .carousel-wrapper{
+    height: clamp(180px, 28vh, 300px);
+  }
+
+  .carousel-overlay{
+    padding-left: 4%;
+    justify-content: center;
+  }
+
+  .carousel-title{
+    font-size: clamp(0.95rem, 3.5vw, 1.25rem);
+    text-align: center;
+    max-width: 95%;
   }
 }
 </style>

@@ -48,18 +48,19 @@ import NEPPSA from '@/assets/images/Parcerias/NEPPSA.svg'
 section {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  max-width: 1100px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  max-width: 1200px;
   margin: 0 auto;
-  gap: 30px;
-  padding: 40px 20px;
+  gap: clamp(12px, 4vw, 30px);
+  padding: clamp(20px, 5vw, 40px) 20px;
   place-items: center;
 }
 
 div {
   width: 100%;
-  max-width: 320px;
-  height: 160px;
+  max-width: 340px;
+  aspect-ratio: 3 / 1.4;
+  min-height: 8rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,13 +109,14 @@ div:hover img {
 /* Responsividade */
 @media (max-width: 900px) {
   section {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 }
 
 @media (max-width: 600px) {
   section {
     grid-template-columns: 1fr;
+    padding: 20px 12px;
   }
   
   div:hover {
