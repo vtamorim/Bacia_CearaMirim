@@ -170,11 +170,11 @@ ul {
 }
 
 .box h3 {
-    opacity: 1; /* h3 always visible */
+    opacity: 1;
 }
 
 .box p {
-    opacity: 0; /* p hidden initially */
+    opacity: 0; 
     transform: translateY(0rem);
 }
 

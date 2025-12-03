@@ -7,6 +7,8 @@
   import ODS from './pages/ODS/index.vue';
   import Comite from './pages/Sobre o Comite/index.vue';
   import Footer from './components/layout/Footer.vue';
+  import Contato from './pages/Contato/index.vue';
+  import apresentacao from './pages/Bacia/apresentacao.vue';
   const currentPage = ref('home');
 
 
@@ -27,7 +29,11 @@
     <main class="main-content">
       <!-- Home / A Bacia -->
       <section v-show="currentPage === 'home' || currentPage === 'bacia'" id="bacia">
+        <div style="padding:  40px 20px;">
+        <apresentacao />
+        
         <Parcerias />
+      </div>
       </section>
 
       <!-- Jogos (Quiz) -->
@@ -58,8 +64,7 @@
       </section>
 
       <section v-show="currentPage === 'contato'" id="contato" style="padding: 60px 20px; text-align: center;">
-        <h2>Contato</h2>
-        <p>Página em desenvolvimento</p>
+        <Contato/>
       </section>
     </main>
 

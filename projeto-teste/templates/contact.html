@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Contato</title>
+  <style>
+    body{font-family:Arial;display:flex;justify-content:center;align-items:center;height:100vh;background:#f4f4f4}
+    form{background:#fff;padding:20px;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.1);width:350px}
+    input,textarea{width:100%;margin:8px 0;padding:10px;border-radius:6px;border:1px solid #ccc}
+    button{padding:10px;border:0;background:#1e88e5;color:white;border-radius:6px;cursor:pointer}
+  </style>
+</head>
+<body>
+  <form id="form">
+    <h2>Contato</h2>
+    <input name="name" placeholder="Seu nome" required />
+    <input name="email" type="email" placeholder="Seu e-mail" required />
+    <input name="subject" placeholder="Assunto" required />
+    <textarea name="message" rows="6" placeholder="Mensagem" required></textarea>
+    <button>Enviar</button>
+    <div id="status"></div>
+  </form>
+
+<script>
+const form = document.getElementById("form");
+const status = document.getElementById("status");
+
+form.addEventListener("submit", async (e)=>{
+    e.preventDefault();
+    status.textContent = "Enviando...";
+
+    const data = {
+        name: form.name.value,
+        email: form.email.value,
+        subject: form.subject.value,
+        message: form.message.value
+    };
+
+    const res = await fetch("/send", {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify(data)
+    });
+
+    const txt = await res.text();
+    status.textContent = txt;
+});
+</script>
+</body>
+</html>
