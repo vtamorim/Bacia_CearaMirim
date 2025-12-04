@@ -23,8 +23,8 @@
             <div class="footer-right">
                 <div class="copyright">© 2025 Company, Inc</div>
                 <div class="socials">
-                    <a class="social" href="#" aria-label="instagram"></a>
-                    <a class="social" href="#" aria-label="facebook"></a>
+                    <a class="social" href="#" aria-label="instagram"><img v-bind:src="Instagram" alt=""></a>
+                    <a class="social" href="#" aria-label="youtube"><img v-bind:src="YouTube" alt=""></a>
                 </div>
             </div>
         </div>
@@ -32,6 +32,8 @@
 </template>
 
 <script setup>
+import Instagram from '@/assets/images/Footer/Instagram.svg'
+import YouTube from '@/assets/images/Footer/Youtube.svg'
 import { ref, onMounted, computed } from 'vue';
 import Logotipo from '@/assets/images/logotipo.svg'
 import FooterWave from '@/assets/images/Footer/Vector 58(1).svg'
@@ -61,7 +63,7 @@ footer {
     box-sizing: border-box;
     background: none;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     min-height: clamp(10rem, 20vh, 18rem); /* reserve vertical space so content centers */
 }

@@ -9,7 +9,9 @@
   import Footer from './components/layout/Footer.vue';
   import Contato from './pages/Contato/index.vue';
   import apresentacao from './pages/Bacia/apresentacao.vue';
+  import Cartilha from './pages/Cartilha/index.vue';
   const currentPage = ref('home');
+
 
 
   const updatePage = () => {
@@ -59,8 +61,7 @@
       </section>
 
       <section v-show="currentPage === 'cartilha'" id="cartilha" style="padding: 60px 20px; text-align: center;">
-        <h2>Cartilha</h2>
-        <p>Página em desenvolvimento</p>
+        <Cartilha/>
       </section>
 
       <section v-show="currentPage === 'contato'" id="contato" style="padding: 60px 20px; text-align: center;">
