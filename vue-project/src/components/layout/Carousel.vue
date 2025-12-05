@@ -146,7 +146,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: flex-start; /* alinhar à esquerda como na referência */
-  padding-left: clamp(4%, 6vw, 8%);
+  padding-left: 18rem;
   pointer-events: none; /* não bloqueia interações */
 }
 
@@ -162,7 +162,7 @@ onUnmounted(() => {
   transform: translateY(8px);
   opacity: 0;
   animation: titleIn 0.8s ease-out 0.2s forwards;
-  padding-right: 6%;
+  padding-right: 0%;
 }
 
 /* Camada preta semitransparente sobre a imagem (entre img e texto) */

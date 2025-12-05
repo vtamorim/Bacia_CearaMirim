@@ -1,34 +1,36 @@
 <template>
   <footer class="site-footer" role="contentinfo">
-    <!-- Background SVG (keeps its aspect and scales) -->
-    <img class="footer-bg" v-bind:src="FooterWave" alt="" aria-hidden="true" />
+    <!-- background usando URL importada -->
+    <div
+      class="footer-bg"
+      :style="{
+        backgroundImage: FooterWaveUrl ? `url(${FooterWaveUrl})` : 'none'
+      }"
+      aria-hidden="true"
+    ></div>
 
     <div class="footer-inner">
-      <!-- Left: logo -->
       <div class="footer-col footer-left">
-        <!-- Replace this with your real logo -->
-        <img class="footer-logo" src="@/assets/images/logotipo.svg" alt="Logo" />
+        <img class="footer-logo" :src="Logotipo" alt="Logo" />
       </div>
 
-      <!-- Center: navigation -->
       <nav class="footer-col footer-nav" aria-label="Footer navigation">
-          <ul class="nav-list">
-              <li><a href="#home" :class="{ active: isActive('home') }">A Bacia</a></li>
-              <li><a href="#comite" :class="{ active: isActive('comite') }">Comitê</a></li>
-              <li><a href="#ods" :class="{ active: isActive('ods') }">ODS</a></li>
-              <li><a href="#midias" :class="{ active: isActive('midias') }">Mídias</a></li>
-              <li><a href="#cartilha" :class="{ active: isActive('cartilha') }">Cartilha</a></li>
-              <li><a href="#jogos" :class="{ active: isActive('jogos') }">Jogos</a></li>
-              <li><a href="#contato" :class="{ active: isActive('contato') }">Contato</a></li>
-            </ul>
+        <ul class="nav-list">
+          <li><a href="#home" :class="{ active: isActive('home') }">A Bacia</a></li>
+          <li><a href="#comite" :class="{ active: isActive('comite') }">Comitê</a></li>
+          <li><a href="#ods" :class="{ active: isActive('ods') }">ODS</a></li>
+          <li><a href="#midias" :class="{ active: isActive('midias') }">Mídias</a></li>
+          <li><a href="#cartilha" :class="{ active: isActive('cartilha') }">Cartilha</a></li>
+          <li><a href="#jogos" :class="{ active: isActive('jogos') }">Jogos</a></li>
+          <li><a href="#contato" :class="{ active: isActive('contato') }">Contato</a></li>
+        </ul>
       </nav>
 
-      <!-- Right: copyright + social -->
       <div class="footer-col footer-right">
         <div class="copyright">© 2025 Company, Inc</div>
         <div class="social">
-          <button class="icon" aria-label="Instagram" title="Instagram" v-html="instagramSvg"></button>
-          <button class="icon" aria-label="YouTube" title="YouTube" v-html="youtubeSvg"></button>
+          <img :src="Instagram" alt="instagram" style="width:28px;height:28px" />
+          <img :src="Youtube" alt="youtube" style="width:28px;height:28px" />
         </div>
       </div>
     </div>
@@ -36,221 +38,134 @@
 </template>
 
 <script setup>
-
+import { ref, onMounted } from 'vue'
 import Instagram from '@/assets/images/Footer/Instagram.svg'
 import Youtube from '@/assets/images/Footer/YouTube.svg'
-import { ref, onMounted } from 'vue'
 import Logotipo from '@/assets/images/logotipo.svg'
-import FooterWave from '@/assets/images/Footer/group.svg'
+
+// VITE: força import retornar URL do asset
+// Se o seu arquivo tem espaço no nome, mantenha exatamente o nome ou prefira renomear para Group-63.svg
+import FooterWaveUrlRaw from '@/assets/images/Footer/Group-63.svg?url'
+const FooterWaveUrl = FooterWaveUrlRaw || ''
 
 const hashPage = ref('home')
-
 const isActive = (page) => {
   return (
     hashPage.value === page ||
     (page === 'home' && (hashPage.value === 'home' || hashPage.value === 'bacia'))
   )
 }
-
 const updateHash = () => {
   hashPage.value = window.location.hash.slice(1) || 'home'
 }
-
 onMounted(() => {
   updateHash()
   window.addEventListener('hashchange', updateHash)
+  // debug rápido: descomente se precisar ver a URL no console
+  // console.log('FooterWaveUrl =', FooterWaveUrl)
 })
 </script>
 
 <style scoped>
 :root {
-  /* tweakable tokens */
   --footer-max-width: 1100px;
-  --footer-bg-color: #081329; /* fallback background */
   --text-color: rgba(255, 255, 255, 0.95);
   --muted: rgba(255,255,255,0.45);
   --line: rgba(255,255,255,0.12);
 }
 
-/* Container */
+/* container */
 .site-footer {
   position: relative;
   width: 100%;
   overflow: hidden;
-  background-color: var(--footer-bg-color); /* fallback */
-  /* Make the footer height scale with viewport but keep a min and max */
+  color:white;
+  background-color: #0A142F; /* fallback por baixo do background SVG */
   min-height: clamp(160px, 28vh, 260px);
   display: flex;
-  align-items: flex-end; /* content sits visually inside the dark wave at bottom */
+  height: auto;
+  justify-content: center;
+  align-items: flex-end;
 }
 
-/* SVG background - absolute to allow content overlap */
+/* DIV que recebe o SVG como background-image */
 .footer-bg {
   position: absolute;
-  left: 50%;
+  inset: 0 0 auto 0; /* top:0, left:0, right:0, bottom:auto */
+  height: 48%; /* controla visual do "céu + onda" – ajuste se precisar */
   top: 0;
+  left: 50%;
   transform: translateX(-50%);
-  width: 140%; /* larger than viewport to avoid clipping waves at extreme zooms */
-  height: auto;
+  background-repeat: no-repeat;
+  /* evita cortes ao dar zoom lateral extremo */
+  background-size: 140% auto; /* largura maior que 100% evita recortes nas laterais */
+  background-position: top center; /* fixa a parte superior/onda onde queremos */
   pointer-events: none;
   z-index: 0;
-  user-select: none;
+  will-change: background-position;
 }
 
-/* Inner container that holds the content */
+/* conteúdo sobre a imagem */
 .footer-inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   max-width: var(--footer-max-width);
   margin: 0 auto;
   padding: clamp(14px, 3.5vw, 40px) clamp(18px, 4vw, 36px);
+  
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1rem;
-  color: var(--text-color);
-}
-
-/* Columns */
-.footer-col {
-  display: flex;
-  align-items: center;
-}
-
-/* Left */
-.footer-left {
-  flex: 0 0 auto;
-}
-
-/* Logo */
-.footer-logo {
-  height: clamp(36px, 2.6vw, 52px);
-  width: auto;
-  display: block;
-  filter: drop-shadow(0 1px 0 rgba(0,0,0,0.15));
-}
-
-/* Center navigation: centered horizontally in available space */
-.footer-nav {
-  flex: 1 1 auto;
-  display: flex;
+  flex-direction: column;   /* <-- vira coluna */
   justify-content: center;
+  align-items: center;      /* <-- centraliza tudo */
+  gap: 1.2rem;
+  text-align: center;
 }
 
-/* Decorative horizontal line behind nav (thin) */
+/* layout */
+.footer-col {   width: 100%;
+  display: flex;
+  justify-content: center;  /* <-- garante centralização interna */
+  align-items: center;}
+.footer-left { flex:0 0 auto; }
+.footer-logo { height: clamp(36px, 2.6vw, 52px); width:auto; display:block; }
+
+/* nav central */
+.footer-nav { flex:1 1 auto; display:flex; justify-content:center; position:relative; }
+.nav-list { display:flex; gap: clamp(12px, 2.2vw, 28px); list-style:none; margin:0; padding:0; z-index:2; align-items:center; }
+.nav-list a { color:var(--text-color); text-decoration:none; font-size:clamp(12px,1.05vw,14px); padding:6px 2px; white-space:nowrap; }
+
+/* decorative line */
 .footer-nav::before {
   content: "";
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: calc(50% - 18px); /* shifts line roughly aligned behind nav row */
+  bottom: calc(50% - 18px);
   width: 65%;
   height: 1px;
   background: var(--line);
-  opacity: 1;
-  pointer-events: none;
   z-index: 0;
 }
 
-/* Nav list */
-.nav-list {
-  display: flex;
-  gap: clamp(12px, 2.2vw, 28px);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  z-index: 1; /* above the line */
+/* right */
+.footer-right {   flex-direction: column;
   align-items: center;
-}
+  text-align: center;
+  gap: 8px; }
+copyright, .copyright { color: var(--muted); font-size: clamp(11px, 0.9vw, 13px); }
+.social { display:flex; gap:10px; align-items:center; }
 
-.nav-list a {
-  color: var(--text-color);
-  text-decoration: none;
-  font-size: clamp(12px, 1.05vw, 14px);
-  letter-spacing: 0.02em;
-  opacity: 0.95;
-  padding: 6px 2px;
-}
-
-.nav-list a:hover {
-  text-decoration: underline;
-  color: #fff;
-}
-
-/* Right column */
-.footer-right {
-  flex: 0 0 auto;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
-  text-align: right;
-}
-
-/* Copyright */
-copyright, .copyright {
-  color: var(--muted);
-  font-size: clamp(11px, 0.9vw, 13px);
-}
-
-/* Social icons */
-.social {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.icon {
-  border: 1px solid rgba(255,255,255,0.15);
-  background: rgba(0,0,0,0.08);
-  width: clamp(30px, 2.6vw, 36px);
-  height: clamp(30px, 2.6vw, 36px);
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px;
-  color: var(--text-color);
-  cursor: pointer;
-}
-
-/* ensure inline SVG scales */
-.icon svg { width: 60%; height: 60%; display:block; }
-
-/* Responsiveness - stack columns on narrow viewports */
+/* responsive tweaks */
 @media (max-width: 820px) {
-  .footer-inner {
-    flex-direction: column;
-    align-items: center;
-    padding-top: clamp(18px, 6vh, 48px);
-    padding-bottom: clamp(14px, 4vh, 32px);
-    text-align: center;
-  }
-
-  .footer-nav::before {
-    width: 85%;
-    bottom: calc(50% - 24px);
-  }
-
-  .footer-right {
-    align-items: center;
-    text-align: center;
-  }
-
-  .nav-list {
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-  }
-
-  /* Reduce background width on small screens to avoid very wide scaling */
-  .footer-bg { width: 180%; }
+  .footer-inner { flex-direction:column; align-items:center; padding-top: clamp(18px, 6vh, 48px); padding-bottom: clamp(14px,4vh,32px); text-align:center; }
+  .footer-nav { order:2; width:100%; }
+  .footer-right { align-items:center; text-align:center; }
+  .nav-list { flex-wrap:wrap; gap:10px; justify-content:center; }
+  .footer-bg { background-size: 180% auto; }
 }
-
-/* Very small screens */
-@media (max-width: 420px) {
-  .footer-inner { padding: 16px; }
-  .footer-bg { width: 220%; }
-  .nav-list { gap: 8px; font-size: 12px; }
+@media (max-width:420px) {
+  .footer-inner { padding:16px; }
+  .footer-bg { background-size: 220% auto; }
 }
 </style>

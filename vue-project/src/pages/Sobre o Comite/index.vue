@@ -32,11 +32,17 @@
     </section>
 
     <h2>Gestões Anteriores</h2>
-    <section>
-        <div v-for="(num,index) in 3">
-
+    <section style="display: flex; justify-content: space-around; gap: 40px;">
+        <div v-for="(num,index) in 3" style="">
+            <figure>
+                <img :src="imagens_pessoas[index]" alt="">
+            </figure>
+            <div>
+                <div id="pessoas_desc">
+                    <h3>{{ nome_pessoas[index] }}</h3>
+            </div>
+            </div>
         </div>
-        <p>bla bla bla bla bla</p>
     </section>
 
     
@@ -47,15 +53,21 @@
     import objetivo2 from '@/assets/images/Comite/Group 61.svg'
     import objetivo3 from '@/assets/images/Comite/Group 62.svg'
 
+    import wagna from '@/assets/images/Comite/Foto Wagna 1.png'
+    import maria from '@/assets/images/Comite/WhatsApp Image 2025-11-18 at 13.35.26 1.png'
+    import fabio from '@/assets/images/Comite/WhatsApp Image 2025-11-18 at 13.12.22 1.png'
+
     import ceres from '@/assets/images/Comite/Group 55.png'
+
     const content = [ {"titulo":"Gestão","p":"Promover a gestão integrada dos recursos hídricos no território da bacia, assegurando a participação de múltiplos atores sociais no processo decisório;"},
     {"titulo":"Mediação","p":"Elaborar e aprovar o plano de bacia, mediar conflitos entre usuários, e definir os critérios para a cobrança pelo uso da água;"},
     {"titulo":"Acompanhamento","p":"Acompanhar a implementação das políticas públicas no âmbito da bacia hidrográfica;"}      
     ]
-
+    const imagens_pessoas = [wagna,maria,fabio]
     const imagens = [objetivo1,objetivo2,objetivo3]
     const apresentacao_comite = "O comitê da bacia hidrográfica do rio Ceará-Mirim (CBH-CM) foi criado pelo Decreto de N° 21.779, de 07 de julho de 2010, sancionado pelo Governo do Estado do Rio Grande do Norte, integrando-o formalmente ao Sistema Integrado de Gestão dos Recursos Hídricos (SIGERH) do Estado, consolidando-o como instância colegiada de apoio à implementação da Política Estadual de Recursos Hídricos. O CBH-CM é composto por representações da sociedade civil, poder público e usuários de água, conforme estabelecido pela Política Nacional de Recursos Hídricos. O número de vagas é disposto de forma a trazer à tona as principais necessidades da bacia hidrográfica, o que resulta em um total de 40 vagas, sendo 20 representantes titulares e 20 suplentes."
 
+    const nome_pessoas = ["Maria Wagna","Maria Lucimar","Fábio Góis"]
 
 
 </script>
@@ -116,7 +128,23 @@
         z-index: 0;
         height: 104px;
     }
-    
+    #pessoas_desc{
+                display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        margin: 0 auto;
+        width: 203px;
+        background-color: transparent;
+        position: relative;
+        background-color: white;
+        box-shadow: 0px 3px 3px 0px rgba(0,129, 199, 0.15);
+        bottom: 50px;
+        z-index: 0;
+        height: 66px;
+    }
     #apresentar_comite >p{
         text-align: justify;
         width: 30%;

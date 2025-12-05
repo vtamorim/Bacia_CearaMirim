@@ -74,63 +74,86 @@ const lista_texto = [
     font-family: 'Poppins', sans-serif;
 }
 
-/* TEXTO */
-h3 {
-    color: white;
-    position: absolute;
-    max-width: 90%;
-    text-align: center;
-    margin: 0 auto;
-    text-transform: uppercase;
-    font-size: clamp(1rem, 1.8vw, 1.15rem);
-    z-index: 3;
-    transition: transform 0.45s cubic-bezier(.2,.9,.2,1), color 0.25s ease;
-    transform: translateY(0);
-    position: relative;
-    top: 75%;
-}
-
-p {
-    color: white;
-    font-size: clamp(0.85rem, 1.6vw, 0.95rem);
-    position: absolute;
-
-    max-width: 90%;
-    text-align: center;
-    margin: 0 auto;
-    z-index: 2;
-    opacity: 0;
-    position: relative;
-    top: 50%;
-    transform: translateY(0.6rem);
-    transition: opacity 0.35s ease, transform 0.45s ease;
-}
-
-
-ul {
+/* ---- GRID RESPONSIVO ---- */
+ul.ods-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     place-items: center;
     list-style-type: none;
-    gap: 98px;
-    row-gap: 131px;
+    gap: 70px;
+    row-gap: 110px;
 }
 
+/* Tablet */
+@media (max-width: 1024px) {
+    ul.ods-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 55px;
+        row-gap: 90px;
+    }
+}
+
+/* Celular */
+@media (max-width: 600px) {
+    ul.ods-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        row-gap: 65px;
+    }
+}
+
+/* ---- CARD ---- */
 .box {
     position: relative;
-    max-width: 326px;
-    height: 351px;
+    width: 100%;
+    max-width: 330px;
+    height: 350px;
+
     background-size: cover;
     background-position: center;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(17, 13, 13, 0.1);
-
- 
     z-index: 1;
 }
 
+/* Ajuste automático em tela pequena */
+@media (max-width: 600px) {
+    .box {
+        max-width: 290px;
+        height: 320px;
+    }
+}
 
+/* ---- TEXTO ---- */
+.box h3 {
+    color: white;
+    position: relative;
+    top: 78%;
+    max-width: 90%;
+    text-align: center;
+    margin: 0 auto;
+    text-transform: uppercase;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    z-index: 3;
+    transition: 0.45s cubic-bezier(.2,.9,.2,1);
+}
+
+.box p {
+    color: white;
+    z-index: 2;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    position: relative;
+    top: 50%;
+    max-width: 90%;
+    text-align: center;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(0.6rem);
+    transition: opacity 0.35s ease, transform 0.45s ease;
+}
+
+/* ---- EFEITOS ---- */
 .box::before {
     content: "";
     position: absolute;
@@ -141,63 +164,47 @@ ul {
     z-index: 0;
 }
 
-
 .box::after {
-    content: '';
+    content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+    inset: 0;
     height: 200%;
-    pointer-events: none;
-
-
-
     transform: translateY(-50%);
     transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
-
     z-index: 1;
+    pointer-events: none;
 }
 
-/* ---- TEXTO DO CARD ---- */
-.box h3,
-.box p {
-    position: relative;
-    z-index: 2;
-    transition: 
-        transform 0.7s cubic-bezier(0.19, 1, 0.22, 1),
-        opacity 0.7s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.box h3 {
-    opacity: 1;
-}
-
-.box p {
-    opacity: 0; 
-    transform: translateY(0rem);
-}
-
-
-
+/* ANIMAÇÕES NO HOVER */
 .box:hover::before {
     transform: translateY(-4%);
 }
 
 .box:hover::after {
     transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.5);    
+    background: rgba(0, 0, 0, 0.5);
 }
-
 
 .box:hover h3 {
-    opacity: 1;
-    transform: translateY(-15rem);
+    transform: translateY(-14rem);
 }
 
-.box:hover p{
+.box:hover p {
     opacity: 1;
-    transform: translateY(-8rem); 
+    transform: translateY(-7rem);
+}
+
+/* Ajuste do hover no celular (não some da tela) */
+@media (max-width: 600px) {
+
+    .box:hover h3 {
+        transform: translateY(-11rem);
+    }
+
+    .box:hover p {
+        transform: translateY(-5rem);
+    }
+
 }
 
 </style>

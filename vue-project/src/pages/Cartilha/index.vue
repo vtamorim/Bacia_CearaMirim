@@ -1,13 +1,13 @@
 <template>
-    <section>
+    <section id="origem_instrumento">
         <div>
             <div>
                 <h2>Origem dessa Cartilha Interativa</h2>
                 <hr>
-                <p></p>
+                <p>A elaboração da cartilha interativa sobre a bacia hidrográfica do rio Ceará-Mirim surgiu da necessidade de difundir informações bem como fortalecer o conhecimento da população local sobre a importância da gestão integrada dos recursos hídricos, promovendo maior conscientização e engajamento comunitário na preservação do rio e de seus afluentes.</p>
             </div>
             <figure>
-                <img src="" alt="">
+                <img v-bind:src="fru1" alt="">
             </figure>
         </div>
         <div>  
@@ -17,7 +17,7 @@
                 <p>A elaboração da cartilha interativa sobre a bacia hidrográfica do rio Ceará-Mirim surgiu da necessidade de difundir informações bem como fortalecer o conhecimento da população local sobre a importância da gestão integrada dos recursos hídricos, promovendo maior conscientização e engajamento comunitário na preservação do rio e de seus afluentes.</p>
             </div>
                 <figure>
-                    <img src="" alt="">
+                    <img v-bind:src="fru2" alt="">
                 </figure>
         </div>
     </section>
@@ -108,11 +108,69 @@
     import Enviroment from '@/assets/images/Cartilha/Environmental Planning.svg';
     import People from '@/assets/images/Cartilha/People Working Together.svg';
 
-
+    import fru1 from '@/assets/images/Cartilha/fru 1.png';
+    import fru2 from '@/assets/images/Cartilha/fru 2.png';
 
 </script>
+<style>
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+</style>
+
+
 <style scoped>
 /* SEÇÃO PÚBLICO-ALVO — IGUAL AO MODELO DA IMAGEM */
+
+#section_publicoalvo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    margin-top: 60px;
+}
+
+
+#origem_instrumento{
+            height: 865px;
+        background-image: url('@/assets/images/Comite/Vector 69.png');
+        background-repeat: repeat-x;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 100px;
+        width: 100%;
+    & div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;   
+        width: 40em;
+        gap: 32px;
+        height: 30em;
+    }
+    & h2{
+        font-size: 22px;
+        color: #034E77;
+        width:100%;
+        
+
+    }
+    & hr{
+        border: 2px solid #006DA8;
+        width: 50%;
+        color: #006DA8;
+    }
+
+    & p{
+        font-size: 18px;
+        color: #034E77;
+        text-align: center;
+    }
+}   
 
 
 #section_objetivo{
@@ -122,6 +180,7 @@
         text-align: left;
         width: 35%;
     }
+
     & h3{
         text-align: left;
     }

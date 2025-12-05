@@ -10,6 +10,7 @@
   import Contato from './pages/Contato/index.vue';
   import apresentacao from './pages/Bacia/apresentacao.vue';
   import Cartilha from './pages/Cartilha/index.vue';
+  import Jogos from './pages/Jogos/index.vue';
   const currentPage = ref('home');
 
 
@@ -26,8 +27,10 @@
 
 <template>
   <div id="app-root">
+  <div class="page-container">
     <Header />
-    <Carousel />
+    <Carousel  v-show="currentPage != 'jogos'"/>
+  </div>
     <main class="main-content">
       <!-- Home / A Bacia -->
       <section v-show="currentPage === 'home' || currentPage === 'bacia'" id="bacia">
@@ -39,13 +42,13 @@
       </section>
 
       <!-- Jogos (Quiz) -->
-      <section v-show="currentPage === 'jogos'" id="jogos">
-        <div style="padding: 40px 20px;">
-          <h2 style="text-align: center; margin-bottom: 30px;">Jogos</h2>
-          <Quiz />
-        </div>
-      </section>
+<section v-show="currentPage === 'jogos'" id="jogos">
+  <div style="padding: 40px 20px;">
+    <h2 style="text-align: center; margin-bottom: 30px;">Jogos</h2>
 
+    <Jogos /> 
+  </div>
+</section>
       <!-- Placeholder para outras páginas -->
       <section v-show="currentPage === 'comite'" id="comite" style="padding: 60px 20px; text-align: center;">
         <Comite/>
@@ -95,6 +98,8 @@
     footer{
       flex-shrink: 0;
     }
+
+    
 </style>
 <style scoped>
 
