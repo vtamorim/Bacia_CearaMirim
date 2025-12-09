@@ -71,7 +71,18 @@ function prev() {
   width: 100%;
   height: 100%;
 }
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 55vw;     /* Altura proporcional à largura */
+  max-height: 600px; /* Máximo no desktop */
+  min-height: 220px; /* Mínimo no mobile */
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fff;
+}
 
+/* Itens continuam preenchendo tudo */
 .carousel-item {
   min-width: 100%;
   height: 100%;
@@ -80,11 +91,10 @@ function prev() {
 .slide-placeholder {
   width: 100%;
   height: 100%;
-  background: #cf0000; /* CINZA VISÍVEL */
   border-radius: 12px;
 }
 
-
+/* Botões ajustados para telas menores */
 .nav {
   position: absolute;
   top: 50%;
@@ -92,11 +102,19 @@ function prev() {
   background: rgba(0, 0, 0, 0.4);
   color: white;
   border: none;
-  padding: 10px 16px;
+  padding: 8px 14px;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 22px;
   z-index: 10;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .nav {
+    padding: 6px 10px;
+    font-size: 18px;
+  }
 }
 
 .nav.prev {

@@ -51,4 +51,25 @@ Contudo, sofre com poluição, desmatamento, erosão, uso inadequado do solo e e
     
     }
 
+
+
+@media (max-width: 900px) {
+  section {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  section {
+    flex-direction: column;
+    padding: 20px 12px;
+    & div{
+        width: 100%;
+    
+    }
+    
+}
+
+  
+}
 </style>

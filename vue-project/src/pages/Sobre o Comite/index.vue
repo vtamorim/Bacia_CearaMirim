@@ -32,7 +32,7 @@
     </section>
 
     <h2>Gestões Anteriores</h2>
-    <section style="display: flex; justify-content: space-around; gap: 40px;">
+    <section style="display: flex; justify-content: space-around; gap: 40px;" class="gestoes_ant">
         <div v-for="(num,index) in 3" style="">
             <figure>
                 <img :src="imagens_pessoas[index]" alt="">
@@ -150,4 +150,33 @@
         width: 30%;
         
     }
+    @media (max-width: 900px) {
+  #apresentar_comite {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    & p{
+        text-align: justify;
+        width: 100%;
+  }
+}
+    .gestoes_ant{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        margin: 0 auto;
+        max-width: 1440px;
+        justify-items: center;
+    }
+
+}
+
+@media (max-width: 600px) {
+  .gestoes_ant {
+    grid-template-columns: 1fr;
+    padding: 20px 12px;
+  }
+  
+
+}
 </style>

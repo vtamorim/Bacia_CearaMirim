@@ -309,5 +309,131 @@ body{
         grid-template-columns: repeat(2, 1fr);
     }
 }
+/* ============================
+   AJUSTES DE RESPONSIVIDADE
+============================ */
+
+/* ====== ORIGEM / INSTRUMENTO ====== */
+@media (max-width: 1300px) {
+    #origem_instrumento {
+        height: auto;
+        flex-wrap: wrap;
+        gap: 60px;
+        padding: 4rem 0;
+        text-align: center;
+    }
+
+    #origem_instrumento div {
+        width: 32em;
+        height: auto;
+    }
+
+    #origem_instrumento figure img {
+        width: 80%;
+        max-width: 320px;
+    }
+}
+
+@media (max-width: 800px) {
+    #origem_instrumento div {
+        width: 90%;
+    }
+
+    #origem_instrumento h2 {
+        font-size: 20px;
+    }
+
+    #origem_instrumento p {
+        font-size: 16px;
+        padding: 0 1rem;
+    }
+
+    #origem_instrumento figure img {
+        width: 65%;
+    }
+}
+
+/* ====== PÚBLICO-ALVO ====== */
+@media (max-width: 1100px) {
+
+    .publico-line {
+        width: 100%;
+        max-width: 700px;
+    }
+
+    .publico-list {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 700px) {
+    .publico-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 0 1rem;
+    }
+
+    .box {
+        height: 105px;
+    }
+
+    .box img {
+        width: 36px;
+    }
+
+    .label {
+        font-size: 0.85rem;
+    }
+
+    /* Remove a linha inteira no mobile */
+    .publico-line {
+        display: none;
+    }
+}
+
+/* ====== OBJETIVO ====== */
+@media (max-width: 1200px) {
+    #section_objetivo {
+        padding-left: 5rem;
+    }
+
+    #section_objetivo p,
+    #section_objetivo hr {
+        width: 55%;
+    }
+}
+
+@media (max-width: 800px) {
+    #section_objetivo {
+        padding-left: 2rem;
+    }
+
+    #section_objetivo p,
+    #section_objetivo hr {
+        width: 75%;
+    }
+}
+
+@media (max-width: 600px) {
+    #section_objetivo {
+        padding-left: 1rem;
+        padding-top: 4rem;
+    }
+
+    #section_objetivo h3 {
+        font-size: 1.4rem;
+    }
+
+    #section_objetivo p {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    #section_objetivo hr {
+        width: 100%;
+    }
+}
+
 
 </style>

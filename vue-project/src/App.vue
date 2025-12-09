@@ -10,6 +10,7 @@
   import Contato from './pages/Contato/index.vue';
   import apresentacao from './pages/Bacia/apresentacao.vue';
   import Cartilha from './pages/Cartilha/index.vue';
+  import mapa from './pages/Bacia/mapa.vue';
   import Jogos from './pages/Jogos/index.vue';
   const currentPage = ref('home');
 
@@ -34,9 +35,9 @@
     <main class="main-content">
       <!-- Home / A Bacia -->
       <section v-show="currentPage === 'home' || currentPage === 'bacia'" id="bacia">
-        <div style="padding:  40px 20px;">
+        <div class="bacia-container">
+        <mapa class="mapa-bg" />
         <apresentacao />
-        
         <Parcerias />
       </div>
       </section>
@@ -78,13 +79,14 @@
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
+    body{
+      background-color: #F1FAFC;
+    }
     * { 
         margin: 0;
         padding: 0;
         box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
-    /* Layout to keep footer at bottom on short pages */
     #app-root{
       min-height: 100vh;
       display: flex;
@@ -99,6 +101,25 @@
       flex-shrink: 0;
     }
 
+    .bacia-container {
+  position: relative; 
+}
+
+  .mapa-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+  
+    width: 100%;
+    height: 100%;
+
+    z-index: -1; 
+    pointer-events: none; 
+  }
+
+    .container{
+      position:relative;
+    }
     
 </style>
 <style scoped>
