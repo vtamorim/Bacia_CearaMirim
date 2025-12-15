@@ -1,6 +1,7 @@
 <template>
   <div class="carousel-container">
     <div class="carousel-wrapper">
+
       <img :src="mano[index].url" :alt="mano[index].name" class="carousel-image"  />
       <!-- Overlay title sobre a imagem -->
       <div class="carousel-overlay">
@@ -145,8 +146,8 @@ onUnmounted(() => {
   inset: 0; /* ocupa toda a área do wrapper */
   display: flex;
   align-items: center;
+  padding-left: clamp(3.5rem, 6vw, 5rem);
   justify-content: flex-start; /* alinhar à esquerda como na referência */
-  padding-left: 18rem;
   pointer-events: none; /* não bloqueia interações */
 }
 

@@ -1,6 +1,8 @@
 <template>
     <header>
+        <a href="#home">
         <img :src="Logotipo" alt="Logo" />
+        </a>
         <nav>
             <ul>
                 <li><a href="#home" :class="{ active: isActive('home') }">A Bacia</a></li>

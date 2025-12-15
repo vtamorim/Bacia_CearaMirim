@@ -66,106 +66,117 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
-:root {
-  --footer-max-width: 1100px;
+<style scoped>:root {
+  --footer-max-width: 1200px;
   --text-color: rgba(255, 255, 255, 0.95);
-  --muted: rgba(255,255,255,0.45);
-  --line: rgba(255,255,255,0.12);
+  --muted: rgba(255,255,255,0.55);
 }
 
 /* container */
 .site-footer {
   position: relative;
   width: 100%;
-  overflow: hidden;
-  color:white;
-  background-color: #0A142F; /* fallback por baixo do background SVG */
-  min-height: clamp(160px, 28vh, 260px);
-  display: flex;
-  height: auto;
-  justify-content: center;
-  align-items: flex-end;
+  background-color: #0A142F;
+  color: white;
 }
 
-/* DIV que recebe o SVG como background-image */
+/* background svg */
 .footer-bg {
   position: absolute;
-  inset: 0 0 auto 0; /* top:0, left:0, right:0, bottom:auto */
-  height: 48%; /* controla visual do "céu + onda" – ajuste se precisar */
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  inset: 0;
   background-repeat: no-repeat;
-  /* evita cortes ao dar zoom lateral extremo */
-  background-size: 140% auto; /* largura maior que 100% evita recortes nas laterais */
-  background-position: top center; /* fixa a parte superior/onda onde queremos */
+  background-size: cover;
+  background-position: center top;
   pointer-events: none;
   z-index: 0;
-  will-change: background-position;
 }
 
-/* conteúdo sobre a imagem */
+/* conteúdo */
 .footer-inner {
   position: relative;
   z-index: 2;
-  width: 100%;
   max-width: var(--footer-max-width);
   margin: 0 auto;
-  padding: clamp(14px, 3.5vw, 40px) clamp(18px, 4vw, 36px);
-  
+  padding: 28px 32px;
+
   display: flex;
-  flex-direction: column;   /* <-- vira coluna */
-  justify-content: center;
-  align-items: center;      /* <-- centraliza tudo */
-  gap: 1.2rem;
-  text-align: center;
-}
-
-/* layout */
-.footer-col {   width: 100%;
-  display: flex;
-  justify-content: center;  /* <-- garante centralização interna */
-  align-items: center;}
-.footer-left { flex:0 0 auto; }
-.footer-logo { height: clamp(36px, 2.6vw, 52px); width:auto; display:block; }
-
-/* nav central */
-.footer-nav { flex:1 1 auto; display:flex; justify-content:center; position:relative; }
-.nav-list { display:flex; gap: clamp(12px, 2.2vw, 28px); list-style:none; margin:0; padding:0; z-index:2; align-items:center; }
-.nav-list a { color:var(--text-color); text-decoration:none; font-size:clamp(12px,1.05vw,14px); padding:6px 2px; white-space:nowrap; }
-
-/* decorative line */
-.footer-nav::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: calc(50% - 18px);
-  width: 65%;
-  height: 1px;
-  background: var(--line);
-  z-index: 0;
-}
-
-/* right */
-.footer-right {   flex-direction: column;
   align-items: center;
-  text-align: center;
-  gap: 8px; }
-copyright, .copyright { color: var(--muted); font-size: clamp(11px, 0.9vw, 13px); }
-.social { display:flex; gap:10px; align-items:center; }
+  justify-content: space-between;
+}
 
-/* responsive tweaks */
-@media (max-width: 820px) {
-  .footer-inner { flex-direction:column; align-items:center; padding-top: clamp(18px, 6vh, 48px); padding-bottom: clamp(14px,4vh,32px); text-align:center; }
-  .footer-nav { order:2; width:100%; }
-  .footer-right { align-items:center; text-align:center; }
-  .nav-list { flex-wrap:wrap; gap:10px; justify-content:center; }
-  .footer-bg { background-size: 180% auto; }
+/* colunas */
+.footer-col {
+  display: flex;
+  align-items: center;
 }
-@media (max-width:420px) {
-  .footer-inner { padding:16px; }
-  .footer-bg { background-size: 220% auto; }
+
+/* esquerda */
+.footer-left img {
+  height: 44px;
 }
+
+/* menu central */
+.footer-nav {
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-list {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-list a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.nav-list a:hover {
+  opacity: 0.8;
+}
+
+/* direita */
+.footer-right {
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.copyright {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.social {
+  display: flex;
+  gap: 10px;
+}
+
+.social img {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+
+/* responsivo */
+@media (max-width: 900px) {
+  .footer-inner {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .footer-right {
+    align-items: center;
+  }
+
+  .footer-nav {
+    order: 2;
+  }
+}
+
 </style>

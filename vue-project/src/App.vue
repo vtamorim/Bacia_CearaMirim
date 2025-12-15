@@ -64,7 +64,7 @@
         <p>Página em desenvolvimento</p>
       </section>
 
-      <section v-show="currentPage === 'cartilha'" id="cartilha" style="padding: 60px 20px; text-align: center;">
+      <section v-show="currentPage === 'cartilha'" id="cartilha" style=" text-align: center;">
         <Cartilha/>
       </section>
 
