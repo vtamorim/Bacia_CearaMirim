@@ -1,6 +1,5 @@
 <template>
   <section class="ods-section">
-  <h2>Objetivos de Desenvolvimento Sustentável</h2>
 
   <ul class="ods-grid">
     <li
@@ -82,6 +81,7 @@ ul.ods-grid {
     list-style-type: none;
     gap: 70px;
     row-gap: 110px;
+    margin-top: 3rem;
 }
 
 /* Tablet */

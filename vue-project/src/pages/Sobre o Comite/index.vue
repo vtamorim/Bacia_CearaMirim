@@ -75,18 +75,23 @@
 
     #apresentar_comite{
         display: flex;
-        gap: 20px;
+        gap: 40px;
+        position: relative;
+        right: 80px;
         justify-content: center;
 }
     #objetivos_comite{
         background-image: url('@/assets/images/Comite/Vector 69.png');
+        background-size: 100% 100%;
+        background-position: center;
         
         display: flex;
         height: 856px;
         justify-content: center;
         align-items: center;
 
-        width: 100%;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
 
     & p{
         width: 50%;
@@ -147,7 +152,7 @@
     }
     #apresentar_comite >p{
         text-align: justify;
-        width: 30%;
+        width: 50%;
         
     }
     @media (max-width: 900px) {

@@ -1,10 +1,11 @@
 <template>
-    <header></header>
-    <main class="quizstart">
-        <h2>Quiz</h2>
-        <p>{{ apresentacao }}</p>
-        <button type="button" @click="trocarTela">Começar</button>
-    </main>
+    <div class="page-inner">
+        <main class="quizstart card">
+            <h2>Quiz</h2>
+            <p>{{ apresentacao }}</p>
+            <button type="button" @click="trocarTela" class="cta">Começar</button>
+        </main>
+    </div>
 </template>
 <script setup>
 import { ref } from 'vue'

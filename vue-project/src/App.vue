@@ -30,9 +30,10 @@
   <div id="app-root">
   <div class="page-container">
     <Header />
-    <Carousel  v-show="currentPage != 'jogos'"/>
+    <Carousel :currentPage="currentPage" v-show="currentPage != 'jogos'"/>
   </div>
-    <main class="main-content">
+    <main class="main-content-wrapper">
+      <div class="main-content">
       <!-- Home / A Bacia -->
       <section v-show="currentPage === 'home' || currentPage === 'bacia'" id="bacia">
         <div class="bacia-container">
@@ -55,7 +56,7 @@
         <Comite/>
       </section>
 
-      <section v-show="currentPage === 'ods'" id="ods" style="padding: 60px 20px; text-align: center;">
+      <section v-show="currentPage === 'ods'" id="ods">
         <ODS/>
       </section>
 
@@ -71,6 +72,7 @@
       <section v-show="currentPage === 'contato'" id="contato" style="padding: 60px 20px; text-align: center;">
         <Contato/>
       </section>
+      </div>
     </main>
 
     <Footer />
@@ -93,8 +95,16 @@
       flex-direction: column;
     }
 
-    .main-content{
+    .main-content-wrapper{
       flex: 1 0 auto;
+      width: 100%;
+    }
+
+    .main-content{
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 20px;
     }
 
     footer{

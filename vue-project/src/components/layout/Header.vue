@@ -1,19 +1,21 @@
 <template>
     <header>
-        <a href="#home">
-        <img :src="Logotipo" alt="Logo" />
-        </a>
-        <nav>
-            <ul>
-                <li><a href="#home" :class="{ active: isActive('home') }">A Bacia</a></li>
-                <li><a href="#comite" :class="{ active: isActive('comite') }">Comitê</a></li>
-                <li><a href="#ods" :class="{ active: isActive('ods') }">ODS</a></li>
-                <li><a href="#midias" :class="{ active: isActive('midias') }">Mídias</a></li>
-                <li><a href="#cartilha" :class="{ active: isActive('cartilha') }">Cartilha</a></li>
-                <li><a href="#jogos" :class="{ active: isActive('jogos') }">Jogos</a></li>
-                <li><a href="#contato" :class="{ active: isActive('contato') }">Contato</a></li>
-            </ul>
-        </nav>
+        <div class="header-inner">
+            <a href="#home">
+            <img :src="Logotipo" alt="Logo" />
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#home" :class="{ active: isActive('home') }">A Bacia</a></li>
+                    <li><a href="#comite" :class="{ active: isActive('comite') }">Comitê</a></li>
+                    <li><a href="#ods" :class="{ active: isActive('ods') }">ODS</a></li>
+                    <li id="midias"><a href="#midias" :class="{ active: isActive('midias') }" >Mídias</a></li>
+                    <li><a href="#cartilha" :class="{ active: isActive('cartilha') }">Cartilha</a></li>
+                    <li><a href="#jogos" :class="{ active: isActive('jogos') }">Jogos</a></li>
+                    <li><a href="#contato" :class="{ active: isActive('contato') }">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 </template>
 
@@ -47,48 +49,58 @@ onMounted(() => {
         header{
             width: 100%;
             background-color: var(--cor-bg);
-            padding: 0 clamp(0.5rem, 3vw, 2.5rem);
             display: flex;
             align-items: center;
             min-height: 4.2rem;
-            justify-content: space-around;
-            }
+            justify-content: center;
+        }
 
-        header img{
-            max-height: 3rem;
+        .header-inner{
+            max-width: 1400px;
+            width: 100%;
+            padding: 0 clamp(0.5rem, 3vw, 2.5rem);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        header a img{
+            height: 3rem;
             display: block;
             width: auto;
-            height: auto;
+        }
+
+        header nav{
+            flex: 1;
         }
 
         header nav > ul{
-            width: 100%;
-            height: 100%;
+            height: 4.2rem;
             align-items: center;
             display: flex;
             list-style-type: none;
-            justify-content: space-between;
+            justify-content: flex-end;
+            gap: 0;
         }
 
         header nav > ul li{
             display: flex;
             align-items: center;
             justify-content: center;
-            flex: 1 1 auto;
             height: 4.2rem;
-            min-width: 7.5rem;
+            flex: 0.1 auto;
             box-sizing: border-box;
         }
 
         header nav > ul li a{
             height: 100%;
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             color: white;
-            padding: 0.45rem 0.6rem;
-            width: 100%;
             font-size: clamp(0.9rem, 1.6vw, 1rem);
             white-space: nowrap;
         }
@@ -107,6 +119,11 @@ onMounted(() => {
             header nav > ul{
                 gap: 0.5rem;
             }
+        }
+
+        #midias > a{
+            color: rgb(146, 146, 146) !important;
+            background:transparent !important;
         }
 
         @media (max-width: 600px) {

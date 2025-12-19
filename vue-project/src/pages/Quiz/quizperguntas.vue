@@ -1,38 +1,40 @@
 <template>
-  <div class="quizperguntas" role="region" aria-label="Quiz sobre a bacia do rio Ceará-Mirim">
-    <h2>{{ Lista[index] }}</h2>
-    <p>Questão {{ index + 1 }}/<span class="total">{{ questoes }}</span></p>
+  <div class="page-inner">
+    <div class="quizperguntas card" role="region" aria-label="Quiz sobre a bacia do rio Ceará-Mirim">
+      <h2>{{ Lista[index] }}</h2>
+      <p>Questão {{ index + 1 }}/<span class="total">{{ questoes }}</span></p>
 
-    <ul>
-      <li v-for="(alt, i) in Alternativas[index]" :key="i">
+      <ul>
+        <li v-for="(alt, i) in Alternativas[index]" :key="i">
+          <button
+            type="button"
+            class="alternativas"
+            :class="buttonClass(i)"
+            :disabled="answered"
+            @click="choose(i)"
+            :aria-pressed="selectedIndex === i"
+          >
+            {{ alt }}
+          </button>
+        </li>
+      </ul>
+
+      <div class="controls">
         <button
+          id="proximo"
           type="button"
-          class="alternativas"
-          :class="buttonClass(i)"
-          :disabled="answered"
-          @click="choose(i)"
-          :aria-pressed="selectedIndex === i"
+          @click="proximo"
+          :disabled="!answered"
+          aria-disabled="!answered"
         >
-          {{ alt }}
+          Próximo
         </button>
-      </li>
-    </ul>
+      </div>
 
-    <div class="controls">
-      <button
-        id="proximo"
-        type="button"
-        @click="proximo"
-        :disabled="!answered"
-        aria-disabled="!answered"
-      >
-        Próximo
-      </button>
-    </div>
-
-    <div v-if="finished" class="resultado" role="status" aria-live="polite">
-      <p>Quiz finalizado! Acertos: <strong>{{ certas }}</strong> de {{ Lista.length }}</p>
-      <button type="button" @click="reiniciar">Reiniciar</button>
+      <div v-if="finished" class="resultado" role="status" aria-live="polite">
+        <p>Quiz finalizado! Acertos: <strong>{{ certas }}</strong> de {{ Lista.length }}</p>
+        <button type="button" @click="reiniciar">Reiniciar</button>
+      </div>
     </div>
   </div>
 </template>

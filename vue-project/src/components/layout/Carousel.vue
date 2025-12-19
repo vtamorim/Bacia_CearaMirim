@@ -1,30 +1,49 @@
 <template>
   <div class="carousel-container">
     <div class="carousel-wrapper">
-
       <img :src="mano[index].url" :alt="mano[index].name" class="carousel-image"  />
       <!-- Overlay title sobre a imagem -->
       <div class="carousel-overlay">
-        <h2 class="carousel-title">Bacia Hidrográfica Rio Ceará-mirim</h2>
+        <h2 class="carousel-title">{{ getPageTitle(currentPage) }}</h2>
       </div>
       <!-- Navegação por setas removida (auto-play + dots permanecem) -->
     </div>
 
     <!-- Indicadores (dots) -->
-    <ol class="carousel-dots">
-      <li
-        v-for="(_, i) in mano"
-        :key="i"
-        :class="{ active: i === index }"
-        @click="goToSlide(i)"
-        class="dot"
-      ></li>
-    </ol>
+    <div class="carousel-dots-wrapper">
+      <ol class="carousel-dots">
+        <li
+          v-for="(_, i) in mano"
+          :key="i"
+          :class="{ active: i === index }"
+          @click="goToSlide(i)"
+          class="dot"
+        ></li>
+      </ol>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+
+const props = defineProps({
+  currentPage: String
+})
+
+// Mapear páginas aos títulos
+const getPageTitle = (page) => {
+  const titles = {
+    'home': 'Bacia Hidrográfica Rio Ceará-mirim',
+    'bacia': 'Bacia Hidrográfica Rio Ceará-mirim',
+    'comite': 'Comitê',
+    'ods': 'Objetivos de Desenvolvimento Sustentável',
+    'midias': 'Mídias',
+    'cartilha': 'Cartilha',
+    'contato': 'Contato'
+  }
+  return titles[page] || 'Bacia Hidrográfica Rio Ceará-mirim'
+}
 
 // Importa as imagens OU usa URL import.meta.url
 import img1 from '@/assets/images/Carrosel/image.-fotor-enhance-20251106124220 1.svg'
@@ -117,12 +136,15 @@ onUnmounted(() => {
   width: 100%;
   margin: 0 auto;
   position: relative;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .carousel-wrapper {
   position: relative;
-  width: 100%;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
   overflow: hidden;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
@@ -132,23 +154,27 @@ onUnmounted(() => {
 .carousel-image {
   width: 100%;
   height: 100%;
-
   display: block;
   animation: fadeIn 0.6s ease-in-out;
   object-fit: cover;
   object-position: center;
-
+  filter: brightness(0.6);
 }
 
 /* Overlay com título sobre a imagem */
 .carousel-overlay {
   position: absolute;
-  inset: 0; /* ocupa toda a área do wrapper */
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100%;
   display: flex;
   align-items: center;
-  padding-left: clamp(3.5rem, 6vw, 5rem);
-  justify-content: flex-start; /* alinhar à esquerda como na referência */
-  pointer-events: none; /* não bloqueia interações */
+  justify-content: flex-start;
+  pointer-events: none;
+  max-width: 1400px;
+  padding-left: clamp(0.5rem, 3vw, 2.5rem);
 }
 
 .carousel-title {
@@ -160,7 +186,6 @@ onUnmounted(() => {
   position: relative;
   line-height: 1.1;
   pointer-events: none;
-  transform: translateY(8px);
   opacity: 0;
   animation: titleIn 0.8s ease-out 0.2s forwards;
   padding-right: 0%;
@@ -171,7 +196,7 @@ onUnmounted(() => {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.45); /* ajuste o último valor (0.45) para controlar a opacidade */
+ 
   z-index: 1;
 }
 
@@ -184,6 +209,13 @@ onUnmounted(() => {
 /* Arrow buttons removed */
 
 /* Indicadores (dots) */
+.carousel-dots-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  max-width: 1400px;
+}
+
 .carousel-dots {
   list-style: none;
   padding: 0;

@@ -78,6 +78,8 @@ onMounted(() => {
   width: 100%;
   background-color: #0A142F;
   color: white;
+  display: flex;
+  justify-content: center;
 }
 
 /* background svg */
@@ -95,8 +97,9 @@ onMounted(() => {
 .footer-inner {
   position: relative;
   z-index: 2;
-  max-width: var(--footer-max-width);
-  margin: 0 auto;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0;
   padding: 28px 32px;
 
   display: flex;

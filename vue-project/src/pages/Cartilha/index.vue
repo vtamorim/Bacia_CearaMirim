@@ -135,14 +135,17 @@ body{
 
 
 #origem_instrumento{
-            height: 865px;
         background-image: url('@/assets/images/Comite/Vector 69.png');
-        background-repeat: repeat-x;
+        background-size: 100% 100%;
+        background-position: center;
+        
         display: flex;
+        height: 856px;
         justify-content: center;
         align-items: center;
-        gap: 100px;
-        width: 100%;
+
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
     & div{
         display: flex;
         flex-direction: column;
@@ -194,7 +197,7 @@ body{
     flex-direction: column;
     gap: 0.5rem;
     padding-top: 10rem;
-    padding-left: 15rem;
+    padding-left: 6.5rem;
 }
 
 

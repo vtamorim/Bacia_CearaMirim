@@ -49,10 +49,10 @@ section {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   gap: clamp(12px, 4vw, 30px);
-  padding: clamp(20px, 5vw, 40px) 20px;
+  padding: clamp(20px, 5vw, 40px) clamp(0.5rem, 3vw, 2.5rem);
   place-items: center;
 }
 

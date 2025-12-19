@@ -1,5 +1,6 @@
 <template>
-  <div class="contact-wrapper">
+  <div class="page-inner">
+    <div class="contact-wrapper">
     <form class="contact-form" @submit.prevent="enviarContato">
       <!-- Nomes em duas colunas -->
       <div class="form-row">
@@ -58,6 +59,7 @@
         </figure>
         <p>neppsadiaren@gmail.com</p>
       </div>
+    </div>
     </div>
   </div>
 </template>
