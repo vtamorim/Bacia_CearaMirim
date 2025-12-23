@@ -1,12 +1,14 @@
 import smtplib
+from dotenv import load_dotenv
+import os
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 
 def enviar_email(pri_nome, ult_nome, email, mensagem):
-    REMETENTE = "vthero89@gmail.com"  
-    SENHA = "wlvm zrki cfgc aquo"         
-    DESTINO = "pg96081@gmail.com" 
+    REMETENTE = os.getenv("REMETENTE")
+    SENHA =  os.getenv("SENHA")    
+    DESTINO = os.getenv("DESTINO") 
     #GUARDAR ISSO EM VARIÁVEIS DE AMBIENTE EM PRODUÇÃO   
 
     msg = MIMEMultipart()
