@@ -18,7 +18,7 @@
 
 
     <h2>Gestão Atual</h2>
-    <section>
+    <section class="gestao-atual">
         <div>
             <figure>
                 <img :src="ceres" alt="">
@@ -32,7 +32,7 @@
     </section>
 
     <h2>Gestões Anteriores</h2>
-    <section style="display: flex; justify-content: space-around; gap: 40px;" class="gestoes_ant">
+    <section class="gestoes_ant">
         <div v-for="(num,index) in 3" style="">
             <figure>
                 <img :src="imagens_pessoas[index]" alt="">
@@ -65,7 +65,7 @@
     ]
     const imagens_pessoas = [wagna,maria,fabio]
     const imagens = [objetivo1,objetivo2,objetivo3]
-    const apresentacao_comite = "O comitê da bacia hidrográfica do rio Ceará-Mirim (CBH-CM) foi criado pelo Decreto de N° 21.779, de 07 de julho de 2010, sancionado pelo Governo do Estado do Rio Grande do Norte, integrando-o formalmente ao Sistema Integrado de Gestão dos Recursos Hídricos (SIGERH) do Estado, consolidando-o como instância colegiada de apoio à implementação da Política Estadual de Recursos Hídricos. O CBH-CM é composto por representações da sociedade civil, poder público e usuários de água, conforme estabelecido pela Política Nacional de Recursos Hídricos. O número de vagas é disposto de forma a trazer à tona as principais necessidades da bacia hidrográfica, o que resulta em um total de 40 vagas, sendo 20 representantes titulares e 20 suplentes."
+    const apresentacao_comite = "O Comitê da Bacia Hidrográfica do Rio Ceará-Mirim (CBH-CM) foi criado em 2010 por decreto estadual, integrando o Sistema de Gestão dos Recursos Hídricos do Rio Grande do Norte. Ele atua como órgão colegiado de apoio à Política Estadual de Recursos Hídricos e é formado por representantes da sociedade civil, do poder público e dos usuários de água. O comitê possui 40 vagas, sendo 20 titulares e 20 suplentes, distribuídas conforme as necessidades da bacia."
 
     const nome_pessoas = ["Maria Wagna","Maria Lucimar","Fábio Góis"]
 
@@ -73,115 +73,431 @@
 </script>
 <style scoped>
 
-    #apresentar_comite{
-        display: flex;
-        gap: 40px;
-        position: relative;
-        right: 80px;
-        justify-content: center;
+h2 {
+  font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+  color: #034E77;
+  margin: clamp(1.5rem, 3vw, 2.5rem) 0 clamp(1rem, 2vw, 1.5rem);
+  font-weight: 700;
+  text-align: left;
+  position: relative;
+  left: 14vw;
+
 }
-    #objetivos_comite{
-        background-image: url('@/assets/images/Comite/Vector 69.png');
-        background-size: 100% 100%;
-        background-position: center;
-        
-        display: flex;
-        height: 856px;
-        justify-content: center;
-        align-items: center;
 
-        width: 100vw;
-        margin-left: calc(-50vw + 50%);
+section {
+  padding: clamp(1rem, 3vw, 2rem);
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
 
-    & p{
-        width: 50%;
-        font-size: 18px;
-        color: #034E77;
-    }
+/* APRESENTAÇÃO DO COMITÊ */
+#apresentar_comite {
+  display: flex;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  position: relative;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
 
-    & h3{
-        font-size: 20px;
-        color: #034E77;
-    }
+#apresentar_comite figure {
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+  margin: 0;
+  padding: 0;
+}
 
-    & div{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;   
-        width: 40em;
-        gap: 32px;
-        height: 30em;
-    }
-    
-    }
-    
-    #ceres_desc{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border-bottom-left-radius: 15px;
-        border-bottom-right-radius: 15px;
-        margin: 0 auto;
-        width: 265px;
-        background-color: transparent;
-        position: relative;
-        background-color: white;
-        box-shadow: 0px 3px 3px 0px rgba(0,129, 199, 0.15);
-        bottom: 50px;
-        z-index: 0;
-        height: 104px;
-    }
-    #pessoas_desc{
-                display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border-bottom-left-radius: 15px;
-        border-bottom-right-radius: 15px;
-        margin: 0 auto;
-        width: 203px;
-        background-color: transparent;
-        position: relative;
-        background-color: white;
-        box-shadow: 0px 3px 3px 0px rgba(0,129, 199, 0.15);
-        bottom: 50px;
-        z-index: 0;
-        height: 66px;
-    }
-    #apresentar_comite >p{
-        text-align: justify;
-        width: 50%;
-        
-    }
-    @media (max-width: 900px) {
+#apresentar_comite img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#apresentar_comite > p {
+  text-align: justify;
+  flex: 1;
+  min-width: 250px;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  color: #034E77;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* OBJETIVOS */
+#objetivos_comite {
+  background-image: url('@/assets/images/Comite/Vector 69.png');
+  background-size: 100vw 100%;
+  background-position: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(2rem, 4vw, 3rem);
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+  min-height: auto;
+}
+#objetivos_comite::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100vw;
+  background-image: url('@/assets/images/Comite/Vector 69.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  opacity: 0.1;
+}
+.objectives {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 280px;
+}
+
+.objectives img {
+  width: clamp(60px, 10vw, 100px);
+  height: auto;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.objectives h3 {
+  font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+  color: #034E77;
+  margin: 0.5rem 0;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.objectives p {
+  font-size: clamp(0.85rem, 1.8vw, 0.95rem);
+  color: #034E77;
+  line-height: 1.5;
+  margin: 0;
+  text-align: center;
+}
+
+/* GESTÃO ATUAL */
+section > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+section figure {
+  width: 100%;
+  max-width: 300px;
+  margin: 0;
+  padding: 0;
+}
+
+section figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+#ceres_desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  width: 100%;
+  max-width: 265px;
+  background-color: white;
+  box-shadow: 0px 3px 3px 0px rgba(0, 129, 199, 0.15);
+  margin-top: -50px;
+  z-index: 1;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  min-height: auto;
+}
+
+#ceres_desc h3 {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #034E77;
+  margin: 0.5rem 0;
+  font-weight: 700;
+}
+
+#ceres_desc p {
+  font-size: clamp(0.85rem, 1.6vw, 0.95rem);
+  color: #0081C7;
+  margin: 0;
+}
+
+/* GESTÕES ANTERIORES */
+.gestoes_ant {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+  gap: clamp(1rem, 3vw, 2rem);
+  justify-items: center;
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 0 clamp(0.5rem, 2vw, 1rem);
+}
+
+.gestoes_ant > div {
+  width: 100%;
+  max-width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.gestoes_ant figure {
+  width: 100%;
+  max-width: 200px;
+  margin: 0;
+  padding: 0;
+}
+
+.gestoes_ant figure img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+#pessoas_desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  width: 100%;
+  max-width: 200px;
+  background-color: white;
+  box-shadow: 0px 3px 3px 0px rgba(0, 129, 199, 0.15);
+  margin-top: -50px;
+  z-index: 1;
+  padding: clamp(0.75rem, 1.5vw, 1rem);
+  min-height: auto;
+}
+
+#pessoas_desc h3 {
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  color: #034E77;
+  margin: 0;
+  font-weight: 700;
+  text-align: center;
+}
+.gestao-atual > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* RESPONSIVIDADE */
+
+/* Tablet (900px and down) */
+@media (max-width: 900px) {
   #apresentar_comite {
     flex-direction: column;
     align-items: center;
-    height: auto;
-    & p{
-        text-align: justify;
-        width: 100%;
+    gap: 1.5rem;
+  }
+
+  #apresentar_comite figure {
+    max-width: 100%;
+  }
+
+  #apresentar_comite > p {
+    width: 100%;
+  }
+
+  #objetivos_comite {
+    gap: 1.5rem;
+    padding: 2rem;
+    height: 50rem;
+  }
+
+  .gestoes_ant {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
   }
 }
-    .gestoes_ant{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
-        margin: 0 auto;
-        max-width: 1440px;
-        justify-items: center;
-    }
 
+/* Mobile (600px and down) */
+@media (max-width: 600px) {
+  h2 {
+    font-size: 1.3rem;
+    margin: 1.25rem 0 1rem;
+  }
+
+  section {
+    padding: clamp(0.75rem, 2vw, 1rem);
+  }
+
+  #apresentar_comite {
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  #apresentar_comite figure {
+    max-width: 100%;
+  }
+
+  #apresentar_comite > p {
+    font-size: 0.9rem;
+  }
+
+  #objetivos_comite {
+    gap: 1rem;
+    padding: 1.5rem 0.75rem;
+    grid-template-columns: 1fr;
+  }
+
+  .objectives {
+    max-width: 100%;
+  }
+
+  .objectives img {
+    width: clamp(50px, 8vw, 80px);
+  }
+
+  .objectives h3 {
+    font-size: 1.1rem;
+  }
+
+  .objectives p {
+    font-size: 0.85rem;
+  }
+
+  #ceres_desc {
+    max-width: 100%;
+    margin-top: -40px;
+    padding: 0.75rem;
+  }
+
+  #ceres_desc h3 {
+    font-size: 1rem;
+  }
+
+  #ceres_desc p {
+    font-size: 0.85rem;
+  }
+
+  .gestoes_ant {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.2rem;
+    padding: 0 0.5rem;
+  }
+
+  .gestoes_ant figure {
+    max-width: 100%;
+  }
+
+  #pessoas_desc {
+    max-width: 100%;
+    margin-top: -40px;
+    padding: 0.6rem;
+  }
+
+  #pessoas_desc h3 {
+    font-size: 0.95rem;
+  }
 }
 
-@media (max-width: 600px) {
+/* Extra Small (480px and down) */
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.35rem;
+    margin: 1rem 0 0.75rem;
+    text-align: center;
+    position: relative;
+    left: 0;
+  }
+
+  section {
+    padding: 0.5rem;
+  }
+
+  #apresentar_comite {
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    position: relative;
+  }
+
+  #apresentar_comite > p {
+    text-align: center;
+    font-size: 0.85rem;
+  }
+
+  #objetivos_comite {
+    gap: 0.75rem;
+    padding: 1rem 0.5rem;
+        background-color: transparent;
+    background-image: none;
+  }
+
+  .objectives img {
+    width: 50px;
+  }
+
+  .objectives h3 {
+    font-size: 1rem;
+  }
+
+  .objectives p {
+    font-size: 0.8rem;
+  }
+  p{
+    font-size: 0.1rem;
+    text-align: center;
+  }
+
   .gestoes_ant {
     grid-template-columns: 1fr;
-    padding: 20px 12px;
+    gap: 1rem;
+    padding: 0;
   }
-  
 
+  #ceres_desc,
+  #pessoas_desc {
+    margin-top: -35px;
+    padding: 0.5rem;
+  }
+
+  #ceres_desc h3,
+  #pessoas_desc h3 {
+    font-size: 0.9rem;
+  }
+
+  #ceres_desc p {
+    font-size: 0.8rem;
+  }
+  .gestoes_ant > div {
+    max-width: 180px;
+    width: 80%;
+  }
+  #ceres_desc {
+    max-width: 225px;
+    width: 100%;
+  }
+
+}
+
+/* Landscape */
+@media (max-height: 600px) {
+  section {
+    padding: clamp(0.5rem, 1.5vw, 1rem);
+  }
+
+  h2 {
+    margin: 0.75rem 0 0.5rem;
+  }
 }
 </style>

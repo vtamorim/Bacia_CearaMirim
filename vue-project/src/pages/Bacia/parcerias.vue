@@ -44,17 +44,28 @@ import NEPPSA from '@/assets/images/Parcerias/NEPPSA.svg'
   }
 }
 
-
 section {
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  max-width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
-  gap: clamp(12px, 4vw, 30px);
-  padding: clamp(20px, 5vw, 40px) clamp(0.5rem, 3vw, 2.5rem);
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    "a a b b c c"
+    ". d d e e .";
+
+  gap: 32px;
+  position: relative;
+  right: 60px;
+  padding: 40px 24px;
   place-items: center;
 }
+section > div:nth-child(1) { grid-area: a; }
+section > div:nth-child(2) { grid-area: b; }
+section > div:nth-child(3) { grid-area: c; }
+section > div:nth-child(4) { grid-area: d; }
+section > div:nth-child(5) { grid-area: e; }
 
 div {
   width: 100%;
@@ -70,6 +81,13 @@ div {
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
 }
+
+div {
+  height: 140px;
+  max-width: 340px;
+  width: 100%;
+}
+
 
 /* Delay escalonado para cada card */
 div:nth-child(1) { animation-delay: 0.1s; }
@@ -94,17 +112,19 @@ figure {
   height: 100%;
   padding: 10px;
 }
-
 img {
-  max-width: 90%;
-  max-height: 90%;
+  height: 70%;
+  width: auto;
+  max-width: 80%;
   object-fit: contain;
-  transition: filter 0.3s ease;
 }
-
+img[alt*="GOVERNO"] { height: 100%; }
+img[alt*="NEPPSA"]  { height: 100%; }
+img[alt*="IGARN"]   { height: 100%; }
 div:hover img {
   filter: brightness(1.1);
 }
+
 
 /* Responsividade */
 @media (max-width: 900px) {
@@ -121,6 +141,39 @@ div:hover img {
   
   div:hover {
     transform: translateY(-8px) scale(1.02);
+  }
+}
+@media (max-width : 480px){
+  section{
+    position: relative;
+    left: 0%;
+  }
+    div{
+      width: 90%;
+        min-height: 6rem;
+    }
+
+}
+
+@media (max-width: 900px) {
+  section {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "a b"
+      "c d"
+      "e e";
+  }
+}
+
+@media (max-width: 600px) {
+  section {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "a"
+      "b"
+      "c"
+      "d"
+      "e";
   }
 }
 </style>

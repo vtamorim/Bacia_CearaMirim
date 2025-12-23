@@ -12,22 +12,18 @@ Contudo, sofre com poluição, desmatamento, erosão, uso inadequado do solo e e
 </div>   
 </section>
 
-
-
 </template>
 
 <script setup></script>
 <style scoped>
 
     section{
-        & p{
-            width: 60%;
-        }
         position: relative;
         gap: 4rem;
         display: flex;
         margin: 0 auto;
-        max-width: 100%;
+        max-width: 1400px;
+        width: 100vw;
         padding: 0 clamp(0.5rem, 3vw, 2.5rem);
         margin-bottom: clamp(2rem, 5vw, 4rem);
         & div{
@@ -37,8 +33,35 @@ Contudo, sofre com poluição, desmatamento, erosão, uso inadequado do solo e e
             gap: 1.5rem;
         }
     }
+
+    iframe {
+        width: 100%;
+        max-width: 560px;
+        height: 300px;
+        aspect-ratio: 16 / 9;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        font-size: clamp(1.5rem, 4vw, 2.2rem);
+        color: #0081C7;
+        margin: 0;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+
+    p {
+        font-size: clamp(0.95rem, 2vw, 1.1rem);
+        color: #333;
+        line-height: 1.6;
+        margin: 0;
+
+        text-align: justify;
+    }
+
     button{
-        background-color: var(--bg-but) ;
+        background-color: var(--bg-but);
         color: var(--txt-but);
         width: 240px;
         height: 44px;
@@ -46,33 +69,159 @@ Contudo, sofre com poluição, desmatamento, erosão, uso inadequado do solo e e
         border: none;
         font-size: 1em;
         font-weight: bold;
-        transition: background-color 0.1s ease-in;
+        transition: all 0.2s ease;
         box-shadow: 0px 3px 3px var(--color-boxs);
-    &:hover{
+        cursor: pointer;
+        align-self: flex-start;
+    }
+
+    button:hover{
         background-color: #0A142F;
+        transform: translateY(-2px);
+        box-shadow: 0px 6px 8px var(--color-boxs);
     }
-    
+
+    /* Tablet (max-width 768px) */
+    @media (max-width: 768px) {
+        section {
+            flex-direction: column;
+            gap: 2rem;
+            padding: 0 clamp(0.5rem, 3vw, 2.5rem);
+        }
+        h1{
+            text-align: center;
+            width: 90vw;
+
+        }
+
+        section & p {
+            width: 100%;
+        }
+
+        section & div {
+            width: 100%;
+        }
+
+        iframe {
+            max-width: 100%;
+        }
+        button{
+            width: 100%;
+            max-width: 300px;
+            position: relative;
+            left: 50%;
+            
+        }
+        h1 {
+            font-size: clamp(1.3rem, 3.5vw, 2rem);
+        }
+
+        p {
+                        font-size: clamp(0.85rem, 1.6vw, 0.95rem);
+            text-align: center;
+            width: 90vw;
+        }
     }
 
+    @media (max-width: 1200px) {
+        section{
+            flex-direction: column;
+            width: 100vw;
+            
+            & p{
+                
+                text-align: center;
 
+            }
+            & h1{
 
-@media (max-width: 900px) {
-  section {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
-}
+                text-align: center;
+            }
 
-@media (max-width: 600px) {
-  section {
-    flex-direction: column;
-    padding: 20px 12px;
-    & div{
-        width: 100%;
-    
+            & button{
+                position: relative;
+              
+            }
+            & iframe{
+                position: relative;
+                max-width: none;
+                height: auto;
+            }
+        }
     }
-    
-}
 
-  
-}
+    
+    @media (max-width: 600px) {
+        section {
+            flex-direction: column;
+            padding: 0 clamp(0.5rem, 3vw, 2.5rem);
+            margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+            gap: 1.5rem;
+        }
+
+        section & p {
+            width: 100%;
+        }
+
+        section & div {
+            width: 100%;
+            gap: 1.2rem;
+        }
+
+        iframe {
+            max-width: 100%;
+            height: auto;
+        }
+
+        h1 {
+            font-size: clamp(1.1rem, 3vw, 1.6rem);
+            line-height: 1.3;
+        }
+
+        p {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            text-align: center;
+            width: 80vw;
+            position: relative;
+            left: 15px;
+        }
+
+        button {
+            width: 100%;
+            max-width: 100%;
+            height: 48px;
+            font-size: 0.95rem;
+        }
+    }
+
+    /* Small mobile (max-width 480px) */
+    @media (max-width: 480px) {
+        section {
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            gap: 1.2rem;
+        }
+
+        h1 {
+            font-size: 1.1rem;
+        }
+
+        p {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            text-align: center;
+            width: 80vw;
+            position: relative;
+            left: 15px;
+
+        }
+
+        button {
+            height: 40px;
+            width: 100%;
+            font-size: 0.6rem;
+        }
+    }
+
 </style>

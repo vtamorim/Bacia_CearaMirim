@@ -6,7 +6,8 @@ from email.mime.text import MIMEText
 def enviar_email(pri_nome, ult_nome, email, mensagem):
     REMETENTE = "vthero89@gmail.com"  
     SENHA = "wlvm zrki cfgc aquo"         
-    DESTINO = "pg96081@gmail.com"    
+    DESTINO = "pg96081@gmail.com" 
+    #GUARDAR ISSO EM VARIÁVEIS DE AMBIENTE EM PRODUÇÃO   
 
     msg = MIMEMultipart()
     msg["From"] = REMETENTE

@@ -122,18 +122,22 @@ async function enviarContato() {
     font-family: 'Poppins', sans-serif;
 }
 
+.page-inner {
+    width: 100%;
+    padding: clamp(1rem, 4vw, 3rem) clamp(0.5rem, 3vw, 2rem);
+}
+
 .contact-wrapper {
     width: 100%;
-    max-width: 619px;
+    max-width: 700px;
     margin: 0 auto;
-    padding: clamp(1.5rem, 5vw, 3rem);
 }
 
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: clamp(0.5rem, 1vw, 0.2rem);
-    margin-bottom: clamp(1rem, 2vw, 1rem);
+    gap: 1.2rem;
+    margin-bottom: 2rem;
 }
 
 /* Form row para 2 colunas */
@@ -160,29 +164,22 @@ label {
     font-size: clamp(0.9rem, 1.8vw, 1rem);  
     color: #1a1a1a;
     text-align: left;
+    font-weight: 500;
 }
-input[type="text"],input[type="email"]{
-    width: 100%;
-    height: 2.5rem;
-
-}
-
-
-
-
 
 input[type="text"],
 input[type="email"],
 textarea {
+    width: 100%;
     padding: clamp(0.6rem, 2vw, 0.9rem);
     font-size: clamp(0.85rem, 1.6vw, 0.95rem);
     border: 2px solid #0081c7;
     border-radius: 8px;
     font-family: 'Poppins', sans-serif;
     background: #f9f9f9;
-    box-sizing: border-box;
     color: #333;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    min-height: 44px;
 }
 
 input[type="text"]:focus,
@@ -192,18 +189,17 @@ textarea:focus {
     border-color: #014d83;
     box-shadow: 0 0 8px rgba(1, 129, 199, 0.2);
     background-color: #F3FBFF;
-
 }
 
 textarea {
-    resize: none;
+    resize: vertical;
     min-height: 120px;
 }
 
 /* Botão Enviar */
 .btn-send {
     align-self: flex-start;
-    font-size: clamp(0.9rem, 1.8vw, 1rem);
+    font-size: clamp(0.95rem, 1.6vw, 1.05rem);
     font-weight: 600;
     color: white;
     background: #21A6EE;
@@ -211,17 +207,61 @@ textarea {
     border-radius: 200px;
     cursor: pointer;
     height: 44px;
-    width: 15rem;
-    transition: background 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    max-width: 250px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 3px 8px rgba(33, 166, 238, 0.3);
 }
 
-.btn-send:hover {
+.btn-send:hover:not(:disabled) {
     background: #0066a1;
     transform: translateY(-2px);
+    box-shadow: 0px 6px 12px rgba(33, 166, 238, 0.4);
 }
 
-.btn-send:active {
+.btn-send:active:not(:disabled) {
     transform: translateY(0);
+}
+
+.btn-send:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Feedback messages */
+.feedback {
+    margin: 1rem 0;
+    min-height: 1.5rem;
+}
+
+.feedback p {
+    margin: 0;
+    font-size: clamp(0.85rem, 1.6vw, 0.95rem);
+    font-weight: 500;
+    animation: slideIn 0.3s ease;
+}
+
+.feedback .enviando { 
+    color: #0077cc; 
+}
+
+.feedback .sucesso { 
+    color: #22c55e; 
+}
+
+.feedback .erro { 
+    color: #ef4444; 
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Seção de emails */
@@ -229,18 +269,19 @@ textarea {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: clamp(1rem, 3vw, 2rem);
+    margin-top: 2rem;
 }
 
 .email-card {
     display: flex;
     align-items: center;
     gap: 1rem;
-    height: 60px;
-    padding: clamp(0.6rem, 2vw, 0.9rem);
+    padding: clamp(1rem, 2vw, 1.5rem);
     border: 2px solid #0081c7;
     border-radius: 8px;
     background: #f9f9f9;
     transition: all 0.3s ease;
+    min-height: 70px;
 }
 
 .email-card:hover {
@@ -253,8 +294,8 @@ textarea {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     flex-shrink: 0;
     color: #0081c7;
     margin: 0;
@@ -269,23 +310,29 @@ textarea {
     font-size: clamp(0.85rem, 1.6vw, 0.95rem);
     color: #0081c7;
     text-decoration: none;
-    word-break: break-all;
+    word-break: break-word;
+    margin: 0;
+    font-weight: 500;
 }
 
-/* Responsividade mobile */
+/* Tablet (768px and down) */
 @media (max-width: 768px) {
+    .page-inner {
+        padding: 1.5rem 1rem;
+    }
+
     .contact-wrapper {
-        padding: 1rem;
+        max-width: 100%;
     }
 
     .form-row {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1.2rem;
     }
 
     .btn-send {
-        align-self: center;
         width: 100%;
+        max-width: none;
     }
 
     .emails-section {
@@ -293,9 +340,10 @@ textarea {
     }
 }
 
-@media (max-width: 480px) {
-    .contact-wrapper {
-        padding: 0.75rem;
+/* Mobile (600px and down) */
+@media (max-width: 600px) {
+    .page-inner {
+        padding: 1rem 0.75rem;
     }
 
     .contact-form {
@@ -310,36 +358,92 @@ textarea {
         font-size: 0.9rem;
     }
 
-    input,
+    input[type="text"],
+    input[type="email"],
     textarea {
-        padding: 0.6rem;
-        font-size: 0.85rem;
+        padding: 0.7rem;
+        font-size: 16px; /* Prevents zoom on iOS */
+        min-height: 44px;
     }
 
     textarea {
         min-height: 100px;
     }
 
+    .btn-send {
+        height: 48px;
+        width: 100%;
+    }
+
     .email-card {
-        gap: 0.75rem;
         padding: 1rem;
+        gap: 0.75rem;
+    }
+
+    .email-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .feedback p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Extra Small devices (480px and down) */
+@media (max-width: 480px) {
+    .page-inner {
+        padding: 0.75rem 0.5rem;
+    }
+
+    .contact-form {
+        gap: 0.8rem;
+    }
+
+    .form-group {
+        gap: 0.3rem;
+    }
+
+    label {
+        font-size: 0.85rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        padding: 0.6rem;
+        font-size: 16px;
+    }
+
+    textarea {
+        min-height: 90px;
+    }
+
+    .btn-send {
+        height: 44px;
+        font-size: 0.9rem;
+    }
+
+    .email-card {
+        flex-direction: column;
+        text-align: center;
+        min-height: auto;
     }
 
     .email-icon {
         width: 28px;
         height: 28px;
     }
+
+    .email-card p {
+        font-size: 0.8rem;
+    }
 }
 
-/* Suporte a zoom */
+/* Landscape orientation */
 @media (max-height: 600px) {
     textarea {
         min-height: 80px;
     }
 }
-
-
-.feedback .enviando { color: #0077cc; }
-.feedback .sucesso { color: green; }
-.feedback .erro { color: red; }
 </style>

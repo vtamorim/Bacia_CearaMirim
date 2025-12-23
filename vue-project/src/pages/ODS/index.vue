@@ -74,32 +74,22 @@ const lista_texto = [
 }
 
 /* ---- GRID RESPONSIVO ---- */
+.ods-section {
+    padding: clamp(1rem, 4vw, 3rem) clamp(0.5rem, 3vw, 2rem);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 ul.ods-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     place-items: center;
     list-style-type: none;
-    gap: 70px;
-    row-gap: 110px;
-    margin-top: 3rem;
-}
-
-/* Tablet */
-@media (max-width: 1024px) {
-    ul.ods-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 55px;
-        row-gap: 90px;
-    }
-}
-
-/* Celular */
-@media (max-width: 600px) {
-    ul.ods-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        row-gap: 65px;
-    }
+    gap: clamp(1.5rem, 3vw, 4.4rem);
+    row-gap: clamp(2rem, 5vw, 6.8rem);
+    max-width: 1400px;
+    width: 100%;
 }
 
 /* ---- CARD ---- */
@@ -107,22 +97,20 @@ ul.ods-grid {
     position: relative;
     width: 100%;
     max-width: 330px;
-    height: 350px;
-
+    height: clamp(280px, 35vw, 350px);
+    aspect-ratio: auto;
     background-size: cover;
     background-position: center;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(17, 13, 13, 0.1);
     z-index: 1;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-/* Ajuste automático em tela pequena */
-@media (max-width: 600px) {
-    .box {
-        max-width: 290px;
-        height: 320px;
-    }
+.box:active {
+    transform: scale(0.98);
 }
 
 /* ---- TEXTO ---- */
@@ -134,15 +122,17 @@ ul.ods-grid {
     text-align: center;
     margin: 0 auto;
     text-transform: uppercase;
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-size: clamp(0.95rem, 2.2vw, 1.25rem);
     z-index: 3;
-    transition: 0.45s cubic-bezier(.2,.9,.2,1);
+    transition: transform 0.45s cubic-bezier(.2,.9,.2,1);
+    font-weight: 700;
+    line-height: 1.2;
 }
 
 .box p {
     color: white;
     z-index: 2;
-    font-size: clamp(0.85rem, 2vw, 1rem);
+    font-size: clamp(0.8rem, 1.8vw, 1rem);
     position: relative;
     top: 50%;
     max-width: 90%;
@@ -151,6 +141,7 @@ ul.ods-grid {
     opacity: 0;
     transform: translateY(0.6rem);
     transition: opacity 0.35s ease, transform 0.45s ease;
+    line-height: 1.4;
 }
 
 /* ---- EFEITOS ---- */
@@ -176,6 +167,10 @@ ul.ods-grid {
 }
 
 /* ANIMAÇÕES NO HOVER */
+.box:hover {
+    transform: translateY(-4px);
+}
+
 .box:hover::before {
     transform: translateY(-4%);
 }
@@ -194,17 +189,126 @@ ul.ods-grid {
     transform: translateY(-7rem);
 }
 
-/* Ajuste do hover no celular (não some da tela) */
-@media (max-width: 600px) {
+/* Tablet (1024px and down) */
+@media (max-width: 1024px) {
+    ul.ods-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: clamp(1.2rem, 3vw, 3.5rem);
+        row-gap: clamp(1.5rem, 4vw, 5.6rem);
+    }
+
+    .box {
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+
+/* Mobile (768px and down) */
+@media (max-width: 768px) {
+    .ods-section {
+        padding: clamp(0.75rem, 3vw, 1.5rem);
+    }
+
+    ul.ods-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: clamp(1rem, 2.5vw, 2.5rem);
+        row-gap: clamp(1.2rem, 3vw, 4rem);
+    }
+
+    .box {
+        max-width: 100%;
+        height: clamp(240px, 45vw, 300px);
+    }
+
+    .box h3 {
+        font-size: clamp(0.85rem, 2vw, 1.1rem);
+        top: 72%;
+    }
+
+    .box p {
+        font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+        top: 45%;
+    }
 
     .box:hover h3 {
         transform: translateY(-11rem);
     }
 
     .box:hover p {
-        transform: translateY(-5rem);
+        transform: translateY(-5.5rem);
     }
-
 }
 
+/* Small mobile (600px and down) */
+@media (max-width: 600px) {
+    .ods-section {
+        padding: 0.75rem 0.5rem;
+    }
+
+    ul.ods-grid {
+        grid-template-columns: 1fr;
+        gap: clamp(0.8rem, 2vw, 2rem);
+        row-gap: clamp(1rem, 3vw, 3rem);
+    }
+
+    .box {
+        max-width: 80%;
+        height: clamp(220px, 60vw, 280px);
+    }
+
+    .box h3 {
+        font-size: clamp(0.8rem, 1.8vw, 1rem);
+        top: 70%;
+    }
+
+    .box p {
+        font-size: clamp(0.7rem, 1.4vw, 0.85rem);
+        top: 42%;
+    }
+
+    .box:hover h3 {
+        transform: translateY(-9rem);
+    }
+
+    .box:hover p {
+        transform: translateY(-4.5rem);
+    }
+}
+
+/* Extra small (480px and down) */
+@media (max-width: 480px) {
+    .ods-section {
+        padding: 0.5rem 0.25rem;
+    }
+
+    ul.ods-grid {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+        row-gap: 1.5rem;
+    }
+
+    .box {
+        height: 300px;
+    }
+
+    .box h3 {
+        font-size: 0.8rem;
+        top: 78%;
+        max-width: 95%;
+    }
+
+    .box p {
+        font-size: 0.7rem;
+        top: 40%;
+        max-width: 95%;
+    }
+
+    .box:hover h3 {
+        transform: translateY(-12rem);
+    }
+
+    .box:hover p {
+        transform: translateY(-4rem);
+    }
+}
 </style>

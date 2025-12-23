@@ -32,8 +32,7 @@
     <Header />
     <Carousel :currentPage="currentPage" v-show="currentPage != 'jogos'"/>
   </div>
-    <main class="main-content-wrapper">
-      <div class="main-content">
+    <main class="main-content">
       <!-- Home / A Bacia -->
       <section v-show="currentPage === 'home' || currentPage === 'bacia'" id="bacia">
         <div class="bacia-container">
@@ -46,7 +45,6 @@
       <!-- Jogos (Quiz) -->
 <section v-show="currentPage === 'jogos'" id="jogos">
   <div style="padding: 40px 20px;">
-    <h2 style="text-align: center; margin-bottom: 30px;">Jogos</h2>
 
     <Jogos /> 
   </div>
@@ -56,7 +54,7 @@
         <Comite/>
       </section>
 
-      <section v-show="currentPage === 'ods'" id="ods">
+      <section v-show="currentPage === 'ods'" id="ods" style="padding: 60px 20px; text-align: center;">
         <ODS/>
       </section>
 
@@ -72,7 +70,6 @@
       <section v-show="currentPage === 'contato'" id="contato" style="padding: 60px 20px; text-align: center;">
         <Contato/>
       </section>
-      </div>
     </main>
 
     <Footer />
@@ -95,16 +92,8 @@
       flex-direction: column;
     }
 
-    .main-content-wrapper{
-      flex: 1 0 auto;
-      width: 100%;
-    }
-
     .main-content{
-      max-width: 1400px;
-      margin: 0 auto;
-      width: 100%;
-      padding: 0 20px;
+      flex: 1 0 auto;
     }
 
     footer{

@@ -121,8 +121,6 @@ onUnmounted(() => {
   }
 }
 
-/* slideIn keyframes removed (no arrow buttons) */
-
 @keyframes pulse {
   0%, 100% {
     transform: scale(1);
@@ -184,29 +182,32 @@ onUnmounted(() => {
   text-shadow: 0 6px 18px rgba(0,0,0,0.55);
   max-width: 70%;
   position: relative;
-  line-height: 1.1;
+  line-height: 1.2;
   pointer-events: none;
   opacity: 0;
   animation: titleIn 0.8s ease-out 0.2s forwards;
   padding-right: 0%;
+  word-wrap: break-word;
 }
 
-/* Camada preta semitransparente sobre a imagem (entre img e texto) */
+/* Camada preta semitransparente sobre a imagem */
 .carousel-overlay::before{
   content: '';
   position: absolute;
   inset: 0;
- 
   z-index: 1;
 }
 
-.carousel-title{ z-index: 2; }
-
-@keyframes titleIn {
-  to { transform: translateY(0); opacity: 1; }
+.carousel-title{ 
+  z-index: 2; 
 }
 
-/* Arrow buttons removed */
+@keyframes titleIn {
+  to { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+}
 
 /* Indicadores (dots) */
 .carousel-dots-wrapper {
@@ -223,6 +224,7 @@ onUnmounted(() => {
   display: flex;
   justify-content: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .dot {
@@ -246,13 +248,29 @@ onUnmounted(() => {
   border-radius: 6px;
 }
 
-
+/* Mobile - Extra Small */
 @media (max-width: 480px) {
-  .carousel-container {
-    padding: 20px 10px;
+
+  .carousel-wrapper {
+    height: clamp(180px, 25vh, 250px);
   }
+
+  .carousel-overlay {
+    padding-left: clamp(1rem, 4vw, 1.5rem);
+    padding-right: clamp(1rem, 4vw, 1.5rem);
+  }
+
+  .carousel-title {
+    font-size: clamp(0.95rem, 3vw, 1.3rem);
+    max-width: 95%;
+    text-align: left;
+    line-height: 1.1;
+  }
+
   .carousel-dots {
     gap: 8px;
+    margin: 15px 0 0;
+    padding: 0 1rem;
   }
 
   .dot {
@@ -261,36 +279,61 @@ onUnmounted(() => {
   }
 
   .dot.active {
-    width: 24px;
+    width: 20px;
   }
 }
 
-@media (max-width: 900px) {
-  .carousel-wrapper{
-    height: clamp(220px, 30vh, 360px);
+/* Tablet - Small devices */
+@media (max-width: 768px) {
+  .carousel-wrapper {
+    height: clamp(200px, 30vh, 360px);
   }
 
-  .carousel-title{
+  .carousel-overlay {
+    padding-left: clamp(1rem, 3vw, 2rem);
+    justify-content: flex-start;
+  }
+
+  .carousel-title {
     font-size: clamp(1rem, 3.2vw, 2rem);
-    max-width: 80%;
-    padding-right: 10%;
+    max-width: 85%;
+  }
+
+  .carousel-dots {
+    gap: 10px;
+    margin: 18px 0 0;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .dot.active {
+    width: 28px;
   }
 }
 
-@media (max-width: 600px) {
-  .carousel-wrapper{
-    height: clamp(180px, 28vh, 300px);
+/* Medium devices */
+@media (max-width: 900px) {
+  .carousel-wrapper {
+    height: clamp(220px, 32vh, 400px);
   }
 
-  .carousel-overlay{
-    padding-left: 4%;
-    justify-content: center;
+  .carousel-title {
+    font-size: clamp(1.1rem, 3.5vw, 2.2rem);
+    max-width: 85%;
+  }
+}
+
+/* Desktop and up */
+@media (min-width: 901px) {
+  .carousel-wrapper {
+    height: clamp(300px, 40vh, 520px);
   }
 
-  .carousel-title{
-    font-size: clamp(0.95rem, 3.5vw, 1.25rem);
-    text-align: center;
-    max-width: 95%;
+  .carousel-title {
+    max-width: 70%;
   }
 }
 </style>

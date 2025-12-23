@@ -78,28 +78,23 @@ onMounted(() => {
   width: 100%;
   background-color: #0A142F;
   color: white;
-  display: flex;
-  justify-content: center;
 }
 
-/* background svg */
 .footer-bg {
   position: absolute;
   inset: 0;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% auto;
   background-position: center top;
   pointer-events: none;
   z-index: 0;
 }
-
 /* conteúdo */
 .footer-inner {
   position: relative;
   z-index: 2;
-  max-width: 1400px;
-  width: 100%;
-  margin: 0;
+  max-width: var(--footer-max-width);
+  margin: 0 auto;
   padding: 28px 32px;
 
   display: flex;
@@ -126,10 +121,12 @@ onMounted(() => {
 
 .nav-list {
   display: flex;
-  gap: 24px;
+  gap: 20px;
   list-style: none;
   padding: 0;
   margin: 0;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .nav-list a {
@@ -170,16 +167,31 @@ onMounted(() => {
 @media (max-width: 900px) {
   .footer-inner {
     flex-direction: column;
-    gap: 16px;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 32px 20px;
+  }
+
+  .footer-left img {
+    height: 40px;
+  }
+
+  .footer-nav {
+    width: 100%;
+  }
+
+  .nav-list {
+    gap: 14px 18px;
+  }
+
+  .nav-list a {
+    font-size: 13px;
   }
 
   .footer-right {
     align-items: center;
-  }
-
-  .footer-nav {
-    order: 2;
+    gap: 10px;
   }
 }
-
 </style>
