@@ -14,6 +14,7 @@
         <img class="footer-logo" :src="Logotipo" alt="Logo" />
       </div>
 
+      <div id="col-outlogo">
       <nav class="footer-col footer-nav" aria-label="Footer navigation">
         <ul class="nav-list">
           <li><a href="#home" :class="{ active: isActive('home') }">A Bacia</a></li>
@@ -28,10 +29,15 @@
 
       <div class="footer-col footer-right">
         <div class="copyright">© 2025 Company, Inc</div>
+        <div style="display:flex; gap:5px;">
         <div class="social">
-          <img :src="Instagram" alt="instagram" style="width:28px;height:28px" />
-          <img :src="Youtube" alt="youtube" style="width:28px;height:28px" />
+          <img :src="Instagram" alt="instagram" />
         </div>
+        <div class="social">
+                    <img :src="Youtube" alt="youtube"  />
+        </div>
+        </div>
+      </div>
       </div>
     </div>
   </footer>
@@ -43,8 +49,8 @@ import Instagram from '@/assets/images/Footer/Instagram.svg'
 import Youtube from '@/assets/images/Footer/YouTube.svg'
 import Logotipo from '@/assets/images/logotipo.svg'
 
-// VITE: força import retornar URL do asset
-// Se o seu arquivo tem espaço no nome, mantenha exatamente o nome ou prefira renomear para Group-63.svg
+
+
 import FooterWaveUrlRaw from '@/assets/images/Footer/Group-63.svg?url'
 const FooterWaveUrl = FooterWaveUrlRaw || ''
 
@@ -72,6 +78,11 @@ onMounted(() => {
   --muted: rgba(255,255,255,0.55);
 }
 
+#col-outlogo{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 /* container */
 .site-footer {
   position: relative;
@@ -89,14 +100,13 @@ onMounted(() => {
   pointer-events: none;
   z-index: 0;
 }
-/* conteúdo */
-.footer-inner {
-  position: relative;
-  z-index: 2;
-  max-width: var(--footer-max-width);
-  margin: 0 auto;
-  padding: 28px 32px;
 
+.footer-inner {
+  max-width: 1400px; /* igual ao header */
+  width: 100%;
+  margin: 0 auto;
+
+  padding: clamp(1.5rem, 3vw, 2.5rem); /* mesmo padrão */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -108,20 +118,20 @@ onMounted(() => {
   align-items: center;
 }
 
-/* esquerda */
+
 .footer-left img {
   height: 44px;
 }
 
-/* menu central */
 .footer-nav {
   flex: 1;
   justify-content: center;
+  border-bottom:  1px solid #6EA7C7;
 }
 
 .nav-list {
   display: flex;
-  gap: 20px;
+  gap: 100px;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -140,7 +150,6 @@ onMounted(() => {
   opacity: 0.8;
 }
 
-/* direita */
 .footer-right {
   flex-direction: column;
   align-items: flex-end;
@@ -153,17 +162,23 @@ onMounted(() => {
 }
 
 .social {
-  display: flex;
-  gap: 10px;
+  border: 1px solid #6EA7C7;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width:1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+
 }
 
 .social img {
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
   cursor: pointer;
 }
 
-/* responsivo */
+
 @media (max-width: 900px) {
   .footer-inner {
     flex-direction: column;

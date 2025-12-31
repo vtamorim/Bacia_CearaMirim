@@ -81,6 +81,11 @@
     body{
       background-color: #F1FAFC;
     }
+
+    html, body {
+  margin: 0;
+  padding: 0;
+}
     * { 
         margin: 0;
         padding: 0;

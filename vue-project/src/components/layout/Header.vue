@@ -109,7 +109,6 @@ onMounted(() => {
         width: auto;
     }
 
-    /* Hamburger Menu */
     .hamburger {
         display: none;
         flex-direction: column;
