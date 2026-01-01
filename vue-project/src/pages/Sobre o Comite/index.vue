@@ -92,10 +92,9 @@ section {
   box-sizing: border-box;
 }
 
-/* APRESENTAÇÃO DO COMITÊ */
 #apresentar_comite {
   display: flex;
-  gap: clamp(1.5rem, 4vw, 3rem);
+  gap: clamp(1.5rem, 2vw, 3rem);
   position: relative;
   justify-content: center;
   align-items: flex-start;
@@ -127,21 +126,32 @@ section {
   color: #034E77;
   line-height: 1.6;
   margin: 0;
+  max-width:550px;
 }
 
-/* OBJETIVOS */
 #objetivos_comite {
-  background-image: url('@/assets/images/Comite/Vector 69.png');
-  background-size: 100vw 100%;
-  background-position: center;
   display: grid;
+  position:relative;
+  z-index:1;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: clamp(1.5rem, 3vw, 2.5rem);
   padding: clamp(2rem, 4vw, 3rem);
   justify-items: center;
   align-items: center;
   width: 100%;
+  height:50rem;
+  max-width: 1400px;
   min-height: auto;
+}
+
+#objetivos_comite> div:nth-child(1){
+  justify-self: flex-start;
+}
+#objetivos_comite> div:nth-child(2){
+  justify-self: center;
+}
+#objetivos_comite> div:nth-child(3){
+  justify-self: flex-end;
 }
 #objetivos_comite::before{
   content: "";
@@ -149,12 +159,12 @@ section {
   top: 0;
   bottom: 0;
   width: 100vw;
+  height: 50rem;
   background-image: url('@/assets/images/Comite/Vector 69.png');
-  background-size: 100% 100%;
+  background-size: 100% 80%;
   background-position: center;
   background-repeat: no-repeat;
   z-index: -1;
-  opacity: 0.1;
 }
 .objectives {
   display: flex;
@@ -172,7 +182,7 @@ section {
 }
 
 .objectives h3 {
-  font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+  font-size: clamp(1.3rem, 3.5vw, 1.5rem);
   color: #034E77;
   margin: 0.5rem 0;
   font-weight: 700;
@@ -180,7 +190,7 @@ section {
 }
 
 .objectives p {
-  font-size: clamp(0.85rem, 1.8vw, 0.95rem);
+  font-size: clamp(0.9rem, 2vw, 1rem);
   color: #034E77;
   line-height: 1.5;
   margin: 0;

@@ -10,12 +10,11 @@ CORS(app)
 def contato():
     data = request.json
     pri_nome = data.get("pri_nome")
-    ult_nome = data.get("ult_nome")
     email = data.get("email")
     mensagem = data.get("mensagem")
 
     # validações
-    if not pri_nome or not ult_nome or not email or not mensagem:
+    if not pri_nome or not email or not mensagem:
         return jsonify({"success": False, "error": "Preencha todos os campos."}), 400
 
     try:
@@ -24,7 +23,7 @@ def contato():
         return jsonify({"success": False, "error": "E-mail inválido."}), 400
 
     try:
-        enviar_email(pri_nome, ult_nome, email, mensagem)
+        enviar_email(pri_nome, email, mensagem)
         return jsonify({"success": True, "message": "Mensagem enviada com sucesso!"})
     except Exception as e:
         print("Erro ao enviar e-mail:", e)

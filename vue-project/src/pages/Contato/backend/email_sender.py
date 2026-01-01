@@ -5,7 +5,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 
-def enviar_email(pri_nome, ult_nome, email, mensagem):
+def enviar_email(pri_nome, email, mensagem):
     REMETENTE = os.getenv("REMETENTE")
     SENHA =  os.getenv("SENHA")    
     DESTINO = os.getenv("DESTINO") 
@@ -14,12 +14,12 @@ def enviar_email(pri_nome, ult_nome, email, mensagem):
     msg = MIMEMultipart()
     msg["From"] = REMETENTE
     msg["To"] = DESTINO
-    msg["Subject"] = f"Contato de {pri_nome} {ult_nome}"
+    msg["Subject"] = f"Contato de {pri_nome}"
     msg.add_header("Reply-To", email)
 
     corpo_html = f"""
     <h2>Novo contato recebido</h2>
-    <p><strong>Nome:</strong> {pri_nome} {ult_nome}</p>
+    <p><strong>Nome:</strong> {pri_nome}</p>
     <p><strong>E-mail:</strong> {email}</p>
     <p><strong>Mensagem:</strong><br>{mensagem}</p>
     """

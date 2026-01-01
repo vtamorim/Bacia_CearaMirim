@@ -8,10 +8,6 @@
           <label for="pri_nome">Primeiro Nome</label>
           <input type="text" id="pri_nome" placeholder="Primeiro nome" v-model="pri_nome" required>
         </div>
-        <div class="form-group">
-          <label for="ult_nome">Último Nome</label>
-          <input type="text" id="ult_nome" placeholder="Último nome" v-model="ult_nome" required>
-        </div>
       </div>
 
       <!-- Email full-width -->
@@ -26,20 +22,19 @@
         <textarea id="mensagem" placeholder="Escreva sua mensagem" rows="6" v-model="mensagem" required></textarea>
       </div>
 
-      <!-- Feedback -->
+
+
+      <button type="submit" class="btn-send" :disabled="status === 'enviando'">
+        {{ status === 'enviando' ? 'Enviando...' : 'Enviar' }}
+      </button>
+
       <div class="feedback">
         <p v-if="status === 'enviando'" class="enviando">Enviando...</p>
         <p v-if="status === 'sucesso'" class="sucesso">{{ mensagemStatus }}</p>
         <p v-if="status === 'erro'" class="erro">{{ mensagemStatus }}</p>
       </div>
 
-      <!-- Botão Enviar -->
-      <button type="submit" class="btn-send" :disabled="status === 'enviando'">
-        {{ status === 'enviando' ? 'Enviando...' : 'Enviar' }}
-      </button>
     </form>
-
-    <!-- Emails abaixo -->
     <div class="emails-section">
       <div class="email-card">
         <figure class="email-icon">
@@ -68,7 +63,6 @@
 import { ref } from 'vue'
 
 const pri_nome = ref('')
-const ult_nome = ref('')
 const email = ref('')
 const mensagem = ref('')
 
@@ -86,7 +80,6 @@ async function enviarContato() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         pri_nome: pri_nome.value,
-        ult_nome: ult_nome.value,
         email: email.value,
         mensagem: mensagem.value
       })
@@ -99,7 +92,6 @@ async function enviarContato() {
       mensagemStatus.value = data.message
       // Limpar formulário
       pri_nome.value = ''
-      ult_nome.value = ''
       email.value = ''
       mensagem.value = ''
     } else {
@@ -136,15 +128,12 @@ async function enviarContato() {
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 1.1rem;
     margin-bottom: 2rem;
 }
 
-/* Form row para 2 colunas */
+
 .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(1rem, 3vw, 2rem);
     width: 100%;
 }
 
@@ -153,6 +142,7 @@ async function enviarContato() {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    width:100%;
 }
 
 .form-group.form-full {
@@ -198,7 +188,7 @@ textarea {
 
 /* Botão Enviar */
 .btn-send {
-    align-self: flex-start;
+    align-self: flex-end;
     font-size: clamp(0.95rem, 1.6vw, 1.05rem);
     font-weight: 600;
     color: white;
@@ -208,7 +198,7 @@ textarea {
     cursor: pointer;
     height: 44px;
     width: 100%;
-    max-width: 250px;
+    max-width: 300px;
     transition: all 0.3s ease;
     box-shadow: 0px 3px 8px rgba(33, 166, 238, 0.3);
 }
@@ -227,10 +217,8 @@ textarea {
     opacity: 0.7;
     cursor: not-allowed;
 }
-
-/* Feedback messages */
 .feedback {
-    margin: 1rem 0;
+
     min-height: 1.5rem;
 }
 
@@ -307,7 +295,7 @@ textarea {
 }
 
 .email-card p {
-    font-size: clamp(0.85rem, 1.6vw, 0.95rem);
+    font-size: clamp(0.85rem, 1.6vw, 0.9rem);
     color: #0081c7;
     text-decoration: none;
     word-break: break-word;

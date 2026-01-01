@@ -1,5 +1,5 @@
 <template>
-<div :id="mapaAtual !== 'original' ? 'quatro_opcoes' : 'opcoes'">
+<div :id="mapaAtual !== 'original' ? 'quatro_opcoes' : 'opcoes'" v-if="mostrarmapa">
     <button v-if="mapaAtual !== 'municipios'" id="municipios" @click="mudarMapa('municipios')">Municípios</button>
     <button v-if="mapaAtual !== 'cursodagua'" id="cursodagua" @click="mudarMapa('cursodagua')">Curso D'água</button>
     <button v-if="mapaAtual !== 'barragem'" id="barragem" @click="mudarMapa('barragem')">Barragem</button>
@@ -825,7 +825,8 @@
 <div id="inf_cidade" v-else>
     <h2> {{ cidadeSelecionada}}</h2>
     <p> {{ descricaocidade}}</p>
-    <button @onclick="mostrarmapa">Voltar</button>
+    <button @click="mostrarmapa = true">Voltar</button>
+
 </div>
 
 </template>
