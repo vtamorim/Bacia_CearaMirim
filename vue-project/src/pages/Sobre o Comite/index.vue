@@ -3,8 +3,9 @@
         <figure><img v-bind:src="img1" alt="Foto do Comitê"></figure>
         <p> {{ apresentacao_comite }}</p>
     </section>
-    
-    <h2>Objetivos</h2>
+       <div class="subsection-title-wrapper">
+        <h2>Objetivos</h2>
+    </div>
     <section id="objetivos_comite">
         
         <div v-for="(num, index) in 3"
@@ -16,8 +17,9 @@
         </div>
     </section>
 
-
-    <h2>Gestão Atual</h2>
+    <div class="subsection-title-wrapper">
+        <h2>Gestão Atual</h2>
+    </div>
     <section class="gestao-atual">
         <div>
             <figure>
@@ -31,7 +33,9 @@
 
     </section>
 
-    <h2>Gestões Anteriores</h2>
+    <div class="subsection-title-wrapper">
+        <h2>Gestões Anteriores</h2>
+    </div>
     <section class="gestoes_ant">
         <div v-for="(num,index) in 3" style="">
             <figure>
@@ -48,7 +52,7 @@
     
 </template>
 <script setup>
-    import img1 from '@/assets/images/Comite/fotocomite.png'
+    import img1 from '@/assets/images/Comite/Screenshot 2026-01-19 at 15-29-41 BLOG CBH DO RIO CEARÁ-MIRIM.png'
     import objetivo1 from '@/assets/images/Comite/Group 60.svg'
     import objetivo2 from '@/assets/images/Comite/Group 61.svg'
     import objetivo3 from '@/assets/images/Comite/Group 62.svg'
@@ -73,15 +77,42 @@
 </script>
 <style scoped>
 
-h2 {
-  font-size: clamp(1.2rem, 3.5vw, 1.8rem);
-  color: #034E77;
-  margin: clamp(1.5rem, 3vw, 2.5rem) 0 clamp(1rem, 2vw, 1.5rem);
-  font-weight: 700;
-  text-align: left;
-  position: relative;
-  left: 14vw;
+.subsection-title-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
 
+.subsection-title-wrapper h2 {
+  width: 100%;
+  max-width: 1400px;
+  box-sizing: border-box;
+}
+
+h2 {
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      color: #0081C7;
+      text-align: left;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+      max-width: 1400px;
+      width: 100%;
+      padding: 0 clamp(0.5rem, 3vw, 2.5rem);
+      box-sizing: border-box;
+      position: relative;
+      
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -0.8rem;
+    left: clamp(0.5rem, 3vw, 2.5rem);
+    width: 120px;
+    height: 20px;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 120 20" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><defs><linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:%230081C7;stop-opacity:1" /><stop offset="100%" style="stop-color:%232196F3;stop-opacity:1" /></linearGradient></defs><path d="M0,10 Q30,0 60,10 T120,10" stroke="url(%23waveGrad)" stroke-width="3" fill="none" stroke-linecap="round"/></svg>') no-repeat center;
+    background-size: contain;
+  }
 }
 
 section {
@@ -112,7 +143,7 @@ section {
 
 #apresentar_comite img {
   width: 100%;
-  height: auto;
+  height: 15rem;
   display: block;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -159,12 +190,14 @@ section {
   top: 0;
   bottom: 0;
   width: 100vw;
-  height: 50rem;
   background-image: url('@/assets/images/Comite/Vector 69.png');
-  background-size: 100% 80%;
+  background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
   z-index: -1;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
 }
 .objectives {
   display: flex;

@@ -23,9 +23,10 @@ Contudo, sofre com poluição, desmatamento, erosão, uso inadequado do solo e e
         display: flex;
         margin: 0 auto;
         max-width: 1400px;
-        width: 100vw;
+        width: 100%;
         padding: 0 clamp(0.5rem, 3vw, 2.5rem);
-        margin-bottom: clamp(2rem, 5vw, 4rem);
+
+        box-sizing: border-box;
         & div{
             width: 50%;
             display: flex;
