@@ -198,6 +198,8 @@ ul.ods-grid {
     }
 
     .box {
+        width: 25rem;
+        height: 25rem;
         max-width: 100%;
         max-height: 100%;
     }
@@ -282,9 +284,8 @@ ul.ods-grid {
     }
 
     ul.ods-grid {
-        grid-template-columns: 1fr;
-        gap: 0.6rem;
-        row-gap: 1.5rem;
+        display: flex;
+        flex-direction: column;
     }
 
     .box {

@@ -377,7 +377,12 @@ textarea {
         font-size: 0.9rem;
     }
 }
-
+@media (max-width: 270px) {
+    
+    .email-card p {
+        font-size: 0.3rem;
+    }
+}
 /* Extra Small devices (480px and down) */
 @media (max-width: 480px) {
     .page-inner {
@@ -416,6 +421,7 @@ textarea {
         flex-direction: column;
         text-align: center;
         min-height: auto;
+
     }
 
     .email-icon {
@@ -424,9 +430,10 @@ textarea {
     }
 
     .email-card p {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
 }
+
 
 /* Landscape orientation */
 @media (max-height: 600px) {

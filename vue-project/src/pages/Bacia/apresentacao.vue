@@ -123,25 +123,29 @@ Contudo, sofre com poluição, desmatamento, erosão, uso inadequado do solo e e
             width: 90vw;
         }
     }
-
+    @media (max-width:1400px) {
+        
+    }
     @media (max-width: 1200px) {
         section{
-            flex-direction: column;
-            width: 100vw;
-            
+            flex-direction: column-reverse;
+            width: 100%;
+            justify-content: center;
             & p{
                 
                 text-align: center;
+                width: 95vw;
 
             }
             & h1{
-
+                width: 100vw;
                 text-align: center;
             }
 
             & button{
                 position: relative;
-              
+                align-self: center;
+                left: 50%;
             }
             & iframe{
                 position: relative;
@@ -154,7 +158,9 @@ Contudo, sofre com poluição, desmatamento, erosão, uso inadequado do solo e e
     
     @media (max-width: 600px) {
         section {
-            flex-direction: column;
+            flex-direction: column-reverse;
+            justify-content: center;
+
             padding: 0 clamp(0.5rem, 3vw, 2.5rem);
             margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
             gap: 1.5rem;
@@ -183,9 +189,8 @@ Contudo, sofre com poluição, desmatamento, erosão, uso inadequado do solo e e
             font-size: 0.85rem;
             line-height: 1.5;
             text-align: center;
-            width: 80vw;
+            width: 100%;
             position: relative;
-            left: 15px;
         }
 
         button {
@@ -214,7 +219,6 @@ Contudo, sofre com poluição, desmatamento, erosão, uso inadequado do solo e e
             text-align: center;
             width: 80vw;
             position: relative;
-            left: 15px;
 
         }
 

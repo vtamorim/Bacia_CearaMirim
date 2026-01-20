@@ -1,13 +1,6 @@
 <template>
   <footer class="site-footer" role="contentinfo">
     <!-- background usando URL importada -->
-    <div
-      class="footer-bg"
-      :style="{
-        backgroundImage: FooterWaveUrl ? `url(${FooterWaveUrl})` : 'none'
-      }"
-      aria-hidden="true"
-    ></div>
 
     <div class="footer-inner">
       <div class="footer-col footer-left">
@@ -91,15 +84,6 @@ onMounted(() => {
   color: white;
 }
 
-.footer-bg {
-  position: absolute;
-  inset: 0;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  background-position: center top;
-  pointer-events: none;
-  z-index: 0;
-}
 
 .footer-inner {
   max-width: 1400px; /* igual ao header */
@@ -178,7 +162,12 @@ onMounted(() => {
   cursor: pointer;
 }
 
+@media (max-width:1052px) {
 
+ .nav-list{
+  gap: 50px;
+ }
+}
 @media (max-width: 900px) {
   .footer-inner {
     flex-direction: column;

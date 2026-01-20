@@ -92,10 +92,10 @@ import { ref } from "vue";
 const games = [
   {
     id: 1,
-    name: "Jogo 1",
-    description: "texto",
-    fullDescription: "mais texto",
-    emoji: "icone",
+    name: "Aventura na Bacia Hidrográfica",
+    description: "Passar por obstáculos, saber mais sobre a Bacia Hidrográfica",
+    fullDescription: "Uma jornada em que o jogador precisa pecorrer e superar obstáculos e plataformas para que possa ter uma grande vitória no final.;",
+    emoji: "",
     color: "#99ccff",
     difficulty: "Médio",
     duration: "10-15 min",
@@ -190,6 +190,11 @@ function playGame() {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
 
 /* CARROSSEL */
@@ -247,9 +252,7 @@ function playGame() {
   transition: background 0.3s ease;
 }
 
-.carousel-item:hover .slide-placeholder::before {
-  background: rgba(0, 0, 0, 0.1);
-}
+
 .carousel-item:focus {
   outline: 3px solid #1e3c72;
   outline-offset: -3px;

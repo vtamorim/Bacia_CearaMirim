@@ -124,7 +124,11 @@ img[alt*="IGARN"]   { height: 100%; }
 div:hover img {
   filter: brightness(1.1);
 }
-
+@media (max-width:1400px) {
+  section{
+    right: 0;
+  }
+}
 
 /* Responsividade */
 @media (max-width: 900px) {

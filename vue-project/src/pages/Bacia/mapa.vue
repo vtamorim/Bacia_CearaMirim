@@ -1130,6 +1130,12 @@ svg:not(.rn_map) {
         max-width: 100vw;
         position: relative;
         top: -1rem;
+
+
+        & > div{
+            font-size: 10px;
+            padding: 5px;
+        }
     }
 
     .mapa-container{

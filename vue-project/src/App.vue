@@ -37,9 +37,6 @@
       <section v-show="currentPage === 'home' || currentPage === 'bacia'" id="bacia">
         <div class="bacia-container">
           <!-- Título do Mapa -->
-          <div class="section-title-wrapper">
-            <h2 class="section-title">Mapa Interativo</h2>
-          </div>
           <mapa class="mapa-bg" />
           
           <!-- Título da Apresentação -->

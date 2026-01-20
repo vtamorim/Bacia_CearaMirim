@@ -344,17 +344,38 @@ section figure img {
   align-items: center;
 }
 /* RESPONSIVIDADE */
+@media (max-width: 937px) {
+    .objectives {
+  max-width: none;
+}
 
+
+#objetivos_comite::before{
+
+  background-image: none;
+  background-color: rgba(0, 129, 199,0.15);
+  background-position: center;
+  background-repeat: no-repeat;}
+}
 /* Tablet (900px and down) */
 @media (max-width: 900px) {
+
+
+
   #apresentar_comite {
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
+    height: auto;
   }
 
   #apresentar_comite figure {
-    max-width: 100%;
+    max-width: 70%;
+    width: 70%;
+    height: 20rem;
+  }
+  #apresentar_comite img{
+        height: 18rem;
   }
 
   #apresentar_comite > p {
@@ -372,11 +393,22 @@ section figure img {
     gap: 1.5rem;
   }
 }
-
+@media (max-width:700px) {
+  #apresentar_comite img{
+    height:15rem;
+    width: 100%;
+  }
+  #apresentar_comite figure{
+    width: 100%;
+  }
+  h2{
+    font-size: 1.1rem;
+  }
+}
 /* Mobile (600px and down) */
 @media (max-width: 600px) {
   h2 {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     margin: 1.25rem 0 1rem;
   }
 
@@ -386,11 +418,14 @@ section figure img {
 
   #apresentar_comite {
     gap: 1rem;
-    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
   }
 
   #apresentar_comite figure {
     max-width: 100%;
+  }
+  #apresentar_comite img{
+    height: 100%;
   }
 
   #apresentar_comite > p {
@@ -420,7 +455,7 @@ section figure img {
   }
 
   #ceres_desc {
-    max-width: 100%;
+    max-width: 50%;
     margin-top: -40px;
     padding: 0.75rem;
   }
@@ -457,9 +492,8 @@ section figure img {
 /* Extra Small (480px and down) */
 @media (max-width: 480px) {
   h2 {
-    font-size: 1.35rem;
+    font-size: 1.1rem;
     margin: 1rem 0 0.75rem;
-    text-align: center;
     position: relative;
     left: 0;
   }

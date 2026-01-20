@@ -344,11 +344,17 @@ section {
 
 /* Tablet (1100px and down) */
 @media (max-width: 1100px) {
+
+
   #origem_instrumento {
     gap: 2rem;
     padding: 2rem;
+    background-image: none;
+    background-color: transparent;
   }
-
+  #origem_instrumento::before{
+    background-image: none;
+  }
   #origem_instrumento div {
     max-width: 35em;
   }
