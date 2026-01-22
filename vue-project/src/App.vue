@@ -2,16 +2,16 @@
   import { ref, onMounted } from 'vue';
   import Header from './components/layout/Header.vue';
   import Carousel from './components/layout/Carousel.vue';
-  import Parcerias from './pages/Bacia/parcerias.vue';
-  import Quiz from './pages/Quiz/index.vue';
-  import ODS from './pages/ODS/index.vue';
-  import Comite from './pages/Sobre o Comite/index.vue';
+  import Parcerias from './views/Bacia/parcerias.vue';
+  import Quiz from './views/Quiz/index.vue';
+  import ODS from './views/ODS/index.vue';
+  import Comite from './views/Sobre o Comite/index.vue';
   import Footer from './components/layout/Footer.vue';
-  import Contato from './pages/Contato/index.vue';
-  import apresentacao from './pages/Bacia/apresentacao.vue';
-  import Cartilha from './pages/Cartilha/index.vue';
-  import mapa from './pages/Bacia/mapa.vue';
-  import Jogos from './pages/Jogos/index.vue';
+  import Contato from './views/Contato/index.vue';
+  import apresentacao from './views/Bacia/apresentacao.vue';
+  import Cartilha from './views/Cartilha/index.vue';
+  import mapa from './views/Bacia/mapa.vue';
+  import Jogos from './views/Jogos/index.vue';
   const currentPage = ref('home');
 
 
