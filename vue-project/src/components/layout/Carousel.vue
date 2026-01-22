@@ -2,14 +2,13 @@
   <div class="carousel-container">
     <div class="carousel-wrapper">
       <img :src="mano[index].url" :alt="mano[index].name" class="carousel-image"  />
-      <!-- Overlay title sobre a imagem -->
-      <div class="carousel-overlay">
-        <h2 class="carousel-title">{{ getPageTitle(currentPage) }}</h2>
       </div>
-      <!-- Navegação por setas removida (auto-play + dots permanecem) -->
-    </div>
+      <div class="carousel-overlay">
+        <h2 class="carousel-title">{{ currentTitle }}</h2>
+      </div>
+      
 
-    <!-- Indicadores (dots) -->
+
     <div class="carousel-dots-wrapper">
       <ol class="carousel-dots">
         <li
@@ -25,27 +24,35 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
+import { useRoute } from 'vue-router'
 
 const props = defineProps({
-  currentPage: String
+  currentPage: { type: String, default: null }
 })
 
-// Mapear páginas aos títulos
-const getPageTitle = (page) => {
-  const titles = {
-    'home': 'Bacia Hidrográfica Rio Ceará-mirim',
-    'bacia': 'Bacia Hidrográfica Rio Ceará-mirim',
-    'comite': 'Comitê',
-    'ods': 'Objetivos de Desenvolvimento Sustentável',
-    'midias': 'Mídias',
-    'cartilha': 'Cartilha',
-    'contato': 'Contato'
-  }
-  return titles[page] || 'Bacia Hidrográfica Rio Ceará-mirim'
+const route = useRoute()
+
+const pageKey = computed(() => {
+  const name = route.name ?? props.currentPage ?? 'home'
+  return typeof name === 'string' ? name : String(name)
+})
+
+const titles = {
+  home: 'Bacia Hidrográfica Rio Ceará-mirim',
+  bacia: 'Bacia Hidrográfica Rio Ceará-mirim',
+  comite: 'Comitê',
+  ods: 'Objetivos de Desenvolvimento Sustentável',
+  midias: 'Mídias',
+  cartilha: 'Cartilha',
+  contato: 'Contato',
+  jogos: 'Jogos',
+  quiz: 'Quiz'
 }
 
-// Importa as imagens OU usa URL import.meta.url
+const currentTitle = computed(() => titles[pageKey.value] || titles.home)
+
+/* imagens e lógica do carousel (sem alterações) */
 import img1 from '@/assets/images/Carrosel/image.-fotor-enhance-20251106124220 1.svg'
 import img2 from '@/assets/images/Carrosel/Screenshot 2025-11-06 at 12-37-29 (386) Comitê da Bacia Hidrográfica Rio Ceará Mirim Documentário 2024 - YouTube.-fotor-enhance-20251106124013 1.svg'
 import img3 from '@/assets/images/Carrosel/Screenshot 2025-11-06 at 12-43-43 (386) Comitê da Bacia Hidrográfica Rio Ceará Mirim Documentário 2024 - YouTube 1.svg'
@@ -54,7 +61,7 @@ import img5 from '@/assets/images/Carrosel/Screenshot 2025-11-06 at 13-01-08 (38
 import img6 from '@/assets/images/Carrosel/Screenshot 2025-11-06 at 13-02-50 (386) Comitê da Bacia Hidrográfica Rio Ceará Mirim Documentário 2024 - YouTube 1.svg'
 import img7 from '@/assets/images/Carrosel/Screenshot 2025-11-06 at 13-04-05 (386) Comitê da Bacia Hidrográfica Rio Ceará Mirim Documentário 2024 - YouTube.-fotor-enhance-2025110613432 1.svg'
 import img8 from '@/assets/images/Carrosel/Screenshot 2025-11-06 at 13-07-50 (386) Comitê da Bacia Hidrográfica Rio Ceará Mirim Documentário 2024 - YouTube 1.svg'
-// Array das imagens
+
 const mano = [
   { name: "img1", url: img1 },
   { name: "img2", url: img2 },
@@ -102,6 +109,10 @@ onMounted(() => {
 onUnmounted(() => {
   clearInterval(interval)
 })
+
+/* Opcional: debug quando a rota mudar
+watch(() => route.name, n => console.log('route.name mudou ->', n))
+*/
 </script>
 
 <style scoped>

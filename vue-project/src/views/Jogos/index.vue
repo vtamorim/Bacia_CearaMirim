@@ -1,12 +1,12 @@
 <template>
   <section class="games-page">
-    <!-- TÍTULO -->
+
     <div class="section-header">
       <h1>Jogos Educativos</h1>
       <p>Aprenda sobre a Bacia Cearamirím de forma divertida!</p>
     </div>
 
-    <!-- CARROSSEL -->
+
     <div class="carousel-container">
       <div class="carousel">
         <div 
@@ -38,7 +38,6 @@
         <button class="nav next" @click="next" aria-label="Próximo">›</button>
       </div>
 
-      <!-- Indicadores de slides -->
       <div class="carousel-indicators">
         <button 
           v-for="(_, index) in games"
@@ -50,7 +49,6 @@
       </div>
     </div>
 
-    <!-- MODAL -->
     <div v-if="showModal" class="modal-overlay" @click="closeModal">
       <div class="modal-content" @click.stop>
         <button class="modal-close" @click="closeModal" aria-label="Fechar">✕</button>
@@ -147,13 +145,13 @@ function closeModal() {
 }
 
 function playGame() {
-  // Navegar para a página do jogo usando hash
+
   window.location.hash = `#jogos/${selectedGame.value.route}`;
  
 }
 </script>
 <style scoped>
-/* LAYOUT GERAL */
+
 .games-page {
   width: 100%;
   min-height: calc(100vh - 200px);

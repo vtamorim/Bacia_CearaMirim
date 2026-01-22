@@ -4,24 +4,24 @@
             <a href="#home" class="logo-link">
             <img :src="Logotipo" alt="Logo" />
             </a>
-            
-            <!-- Hamburger Menu Button (Mobile) -->
+   
             <button class="hamburger" :class="{ active: menuAberto }" @click="menuAberto = !menuAberto" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             
-            <!-- Navigation -->
+         
             <nav :class="{ 'menu-ativo': menuAberto }">
                 <ul>
-                    <li><a href="#home" :class="{ active: isActive('home') }" @click="fecharMenu">A Bacia</a></li>
-                    <li><a href="#comite" :class="{ active: isActive('comite') }" @click="fecharMenu">Comitê</a></li>
-                    <li><a href="#ods" :class="{ active: isActive('ods') }" @click="fecharMenu">ODS</a></li>
-                    <li id="midias"><a href="#midias" :class="{ active: isActive('midias') }" @click="fecharMenu">Mídias</a></li>
-                    <li><a href="#cartilha" :class="{ active: isActive('cartilha') }" @click="fecharMenu">Cartilha</a></li>
-                    <li><a href="#jogos" :class="{ active: isActive('jogos') }" @click="fecharMenu">Jogos</a></li>
-                    <li><a href="#contato" :class="{ active: isActive('contato') }" @click="fecharMenu">Contato</a></li>
+                    
+                    <li><router-link to="/"> A Bacia</router-link></li>
+                    <li><router-link to="/comite">Comitê</router-link></li>
+                    <li><router-link to="/ods">ODS</router-link></li>
+                    <li>Midias</li>
+                    <li><router-link to="/cartilha">Cartilha</router-link></li>
+                    <li><router-link to="/jogos">Jogos</router-link></li>
+                    <li><router-link to="/contato">Contato</router-link></li>
                 </ul>
             </nav>
         </div>
@@ -29,33 +29,15 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue';
+import { ref} from 'vue';
 import Logotipo from '@/assets/images/logotipo.svg'
 
 const hashPage = ref('home');
 const menuAberto = ref(false);
 
-const isActive = (page) => {
-  return hashPage.value === page || (page === 'home' && (hashPage.value === 'home' || hashPage.value === 'bacia'));
-};
 
-const updateHash = () => {
-  hashPage.value = window.location.hash.slice(1) || 'home';
-};
 
-const fecharMenu = () => {
-  menuAberto.value = false;
-};
 
-// Fechar menu quando navegar
-watch(hashPage, () => {
-  fecharMenu();
-});
-
-onMounted(() => {
-  updateHash();
-  window.addEventListener('hashchange', updateHash);
-});
 </script>
 <style scoped>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');

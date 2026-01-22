@@ -2,16 +2,12 @@
   import { ref, onMounted } from 'vue';
   import Header from './components/layout/Header.vue';
   import Carousel from './components/layout/Carousel.vue';
-  import Parcerias from './views/Bacia/parcerias.vue';
-  import Quiz from './views/Quiz/index.vue';
-  import ODS from './views/ODS/index.vue';
-  import Comite from './views/Sobre o Comite/index.vue';
+
+
+
   import Footer from './components/layout/Footer.vue';
-  import Contato from './views/Contato/index.vue';
-  import apresentacao from './views/Bacia/apresentacao.vue';
-  import Cartilha from './views/Cartilha/index.vue';
-  import mapa from './views/Bacia/mapa.vue';
-  import Jogos from './views/Jogos/index.vue';
+
+
   const currentPage = ref('home');
 
 
@@ -28,63 +24,11 @@
 
 <template>
   <div id="app-root">
-  <div class="page-container">
     <Header />
     <Carousel :currentPage="currentPage" v-show="currentPage != 'jogos'"/>
-  </div>
     <main class="main-content">
-      <!-- Home / A Bacia -->
-      <section v-show="currentPage === 'home' || currentPage === 'bacia'" id="bacia">
-        <div class="bacia-container">
-          <!-- Título do Mapa -->
-          <mapa class="mapa-bg" />
-          
-          <!-- Título da Apresentação -->
-          <div class="section-title-wrapper">
-            <h2 class="section-title">Apresentação</h2>
-          </div>
-          <apresentacao />
-          
-          <!-- Título das Parcerias -->
-          <div class="section-title-wrapper">
-            <h2 class="section-title">Parcerias</h2>
-          </div>
-          <Parcerias />
-        </div>
-      </section>
-
-      <!-- Jogos (Quiz) -->
-<section v-show="currentPage === 'jogos'" id="jogos">
-  <div style="padding: 40px 20px;">
-
-    <Jogos /> 
-  </div>
-</section>
-      <!-- Placeholder para outras páginas -->
-      <section v-show="currentPage === 'comite'" id="comite">
-        <div class="comite-container">
-          <Comite/>
-        </div>
-      </section>
-
-      <section v-show="currentPage === 'ods'" id="ods" style="padding: 60px 20px; text-align: center;">
-        <ODS/>
-      </section>
-
-      <section v-show="currentPage === 'midias'" id="midias" style="padding: 60px 20px; text-align: center;">
-        <h2>Mídias</h2>
-        <p>Página em desenvolvimento</p>
-      </section>
-
-      <section v-show="currentPage === 'cartilha'" id="cartilha" style=" text-align: center;">
-        <Cartilha/>
-      </section>
-
-      <section v-show="currentPage === 'contato'" id="contato" style="padding: 60px 20px; text-align: center;">
-        <Contato/>
-      </section>
+      <router-view />
     </main>
-
     <Footer />
   </div>
 </template>
