@@ -1,7 +1,6 @@
 <template>
     <div class="page-inner">
         <main class="quizstart card">
-            <h2>Quiz</h2>
             <p>{{ apresentacao }}</p>
             <button type="button" @click="trocarTela" class="cta">Começar</button>
         </main>
@@ -41,6 +40,10 @@ main{
     top: 10vh;
     width: 50vw;
     left: 5vw;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
 }
 h2{
     font-size: 2em;

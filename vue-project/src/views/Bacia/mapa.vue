@@ -1041,7 +1041,7 @@ const informacoes = [{nome:"Lajes",descricao:"A região de Lajes contém as nasc
         background-color:#0081C7;
         border-radius: 10px;
         padding: 20px;
-        top: 10rem;
+        top: 15rem;
         & button{
             width: 120px;
             height: 40px;
@@ -1058,11 +1058,11 @@ const informacoes = [{nome:"Lajes",descricao:"A região de Lajes contém as nasc
         }
     }
 .mapa-container {
-  position: fixed;       /* NÃO USA absolute */
-  top: 20px;             /* canto desejado */
-  right: 20px;
+  position: fixed;       
+  top: 20px;            
+  right: 50px;
   display: flex;
-  justify-content: center; /* mantém no lugar */
+  justify-content: center; 
   align-items: center;
   width: 2593px;  
   aspect-ratio: 4 / 3;
@@ -1071,6 +1071,11 @@ const informacoes = [{nome:"Lajes",descricao:"A região de Lajes contém as nasc
 .cidades > path {
   stroke: #ffffff;
   stroke-width: 1;
+  cursor: pointer;
+  transition: fill 0.3s;
+}
+.cidade_evento{
+  fill: #2196F3 !important;
   cursor: pointer;
   transition: fill 0.3s;
 }
@@ -1086,7 +1091,7 @@ svg:not(.rn_map) {
   height: 100%;
   
   position: relative;
- right: 60%;
+ right: 80%;
 
 
  
@@ -1124,7 +1129,33 @@ svg:not(.rn_map) {
             background-color: #153e5f;
         }
 }
+@media(max-width: 1024px){
+svg:not(.rn_map) {
+ right: 60%;
+    width: 1200px !important;
+}}
+
+@media (max-width: 320px){
+svg:not(.rn_map) {
+ right: 45%;
+
+
+ 
+}
+
+}
+
 @media (max-width: 480px) {
+ svg:not(.rn_map) {
+  width: 2593px;
+  height: 100%;
+  
+  position: relative;
+ right: 45%;
+
+
+ 
+}
     #opcoes,#quatro_opcoes{
         height: auto;
         max-width: 100vw;
@@ -1148,8 +1179,6 @@ width: 600px;
       max-height: 600px;
       display: block;
     }
-    
-
 
 }
 

@@ -14,12 +14,23 @@
       </section>
 
       <section class="game-area">
-        <h2>Jogo em Desenvolvimento</h2>
-        <div class="placeholder">
-          <span class="emoji">🏗️</span>
-          <p>Esta página do jogo está em desenvolvimento.</p>
-          <p>Em breve você poderá jogar aqui!</p>
-        </div>
+          <div class="container">
+    <h1>Jogo da Memória</h1>
+
+    <div class="board">
+      <div
+        v-for="(card, index) in cards"
+        :key="index"
+        class="card"
+        :class="{ flipped: card.flipped || card.matched }"
+        @click="flipCard(card)"
+      >
+        <span v-if="card.flipped || card.matched">
+          {{ card.icon }}
+        </span>
+      </div>
+    </div>
+  </div>
       </section>
 
       <section class="game-info">
@@ -44,6 +55,66 @@
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
+
+
+
+export default {
+  data() {
+    return {
+      icons: ['🐶','🐱','🦊','🐼','🐸','🐵','🐷','🐰'],
+      cards: [],
+      flippedCards: [],
+      lock: false
+    }
+  },
+
+  mounted() {
+    this.startGame()
+  },
+
+  methods: {
+    startGame() {
+      const duplicated = [...this.icons, ...this.icons]
+
+      this.cards = duplicated
+        .sort(() => Math.random() - 0.5)
+        .map(icon => ({
+          icon,
+          flipped: false,
+          matched: false
+        }))
+    },
+
+    flipCard(card) {
+      if (this.lock || card.flipped || card.matched) return
+
+      card.flipped = true
+      this.flippedCards.push(card)
+
+      if (this.flippedCards.length === 2) {
+        this.checkMatch()
+      }
+    },
+
+    checkMatch() {
+      this.lock = true
+      const [c1, c2] = this.flippedCards
+
+      setTimeout(() => {
+        if (c1.icon === c2.icon) {
+          c1.matched = true
+          c2.matched = true
+        } else {
+          c1.flipped = false
+          c2.flipped = false
+        }
+
+        this.flippedCards = []
+        this.lock = false
+      }, 800)
+    }
+  }
+}
 </script>
 
 <style scoped>

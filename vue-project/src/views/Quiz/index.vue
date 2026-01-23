@@ -8,6 +8,7 @@ const teladisplay = ref('apresentar')
 </script>
 
 <template>
+  <section>
   <QuizStart 
     v-if="teladisplay === 'apresentar'" 
     @trocarTela="teladisplay = 'perguntas'"
@@ -16,6 +17,12 @@ const teladisplay = ref('apresentar')
   <QuizPerguntas 
     v-if="teladisplay === 'perguntas'"
   />
+  </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+  section{
+    height: 30rem;
+  }
+
+</style>

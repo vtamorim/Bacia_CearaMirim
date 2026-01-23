@@ -110,9 +110,7 @@ onUnmounted(() => {
   clearInterval(interval)
 })
 
-/* Opcional: debug quando a rota mudar
-watch(() => route.name, n => console.log('route.name mudou ->', n))
-*/
+
 </script>
 
 <style scoped>
@@ -148,6 +146,7 @@ watch(() => route.name, n => console.log('route.name mudou ->', n))
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 1;
 }
 
 .carousel-wrapper {

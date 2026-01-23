@@ -1,10 +1,6 @@
 <template>
   <section class="games-page">
 
-    <div class="section-header">
-      <h1>Jogos Educativos</h1>
-      <p>Aprenda sobre a Bacia Cearamirím de forma divertida!</p>
-    </div>
 
 
     <div class="carousel-container">
@@ -24,7 +20,8 @@
           >
             <div 
               class="slide-placeholder"
-              :style="{ backgroundColor: game.color }"
+              :style="{ backgroundImage: `url(${game.color})` }"
+              style="background-size: cover; background-position: center;"
             >
               <div class="game-info">
                 <h3>{{ game.name }}</h3>
@@ -58,7 +55,7 @@
             class="modal-game-icon"
             :style="{ backgroundColor: selectedGame.color }"
           >
-            <span class="game-emoji">{{ selectedGame.emoji }}</span>
+            <img :src="selectedGame.emoji" alt="imagem do jogo" v-if="selectedGame.emoji" class="imagem_jogo"/>
           </div>
           
           <h2>{{ selectedGame.name }}</h2>
@@ -76,7 +73,7 @@
           </div>
 
           <button class="play-button" @click="playGame">
-            🎮 Jogar Agora
+            Jogar Agora
           </button>
         </div>
       </div>
@@ -86,14 +83,17 @@
 
 <script setup>
 import { ref } from "vue";
-
+import { useRouter } from 'vue-router';
+import foto_quiz from '@/assets/images/Jogos/quiz.png'
+import capa_quiz from '@/assets/images/Jogos/imagem_quiz.png'
+import foto_obstaculo from '@/assets/images/Jogos/foto_obstaculo.png'
 const games = [
   {
     id: 1,
     name: "Aventura na Bacia Hidrográfica",
     description: "Passar por obstáculos, saber mais sobre a Bacia Hidrográfica",
-    fullDescription: "Uma jornada em que o jogador precisa pecorrer e superar obstáculos e plataformas para que possa ter uma grande vitória no final.;",
-    emoji: "",
+    fullDescription: "Uma jornada em que o jogador precisa pecorrer e superar obstáculos e plataformas para que possa ter uma grande vitória no final.",
+    emoji: foto_obstaculo,
     color: "#99ccff",
     difficulty: "Médio",
     duration: "10-15 min",
@@ -108,24 +108,25 @@ const games = [
     color: "#99ff99",
     difficulty: "Fácil",
     duration: "8-12 min",
-    route: "protetor-ecossistema"
+    route: "jogo-memoria"
   },
   {
     id: 3,
-    name: "quiz bla bla bla",
+    name: "Quiz",
     description: "Teste seus conhecimentos",
-    fullDescription: "sla",
-    emoji: "icone",
-    color: "#ffcc99",
+    fullDescription: "Perguntas para testar o seu conhecimento sobre a Bacia Ceara-mirím e a importância da preservação dos recursos hídricos.",
+    emoji: foto_quiz,
+    color: capa_quiz,
     difficulty: "Difícil",
-    duration: "15-20 min",
-    route: "qualidade-agua"
+    duration: "5-10 min",
+    route: "quiz"
   }
 ];
 
 const currentIndex = ref(0);
 const showModal = ref(false);
 const selectedGame = ref(null);
+const router = useRouter();
 
 function next() {
   currentIndex.value = (currentIndex.value + 1) % games.length;
@@ -145,9 +146,8 @@ function closeModal() {
 }
 
 function playGame() {
-
-  window.location.hash = `#jogos/${selectedGame.value.route}`;
- 
+  if (!selectedGame.value) return;
+  router.push({ name: selectedGame.value.route });
 }
 </script>
 <style scoped>
@@ -162,28 +162,15 @@ function playGame() {
   padding: clamp(1.5rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2rem);
 }
 
-/* HEADER */
-.section-header {
-  text-align: center;
-  max-width: 800px;
-  margin-bottom: clamp(0.5rem, 2vw, 1rem);
+
+.imagem_jogo{
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
 }
 
-.section-header h1 {
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
-  color: #1e3c72;
-  margin-bottom: 0.5rem;
-  font-weight: 800;
-  line-height: 1.2;
-}
 
-.section-header p {
-  font-size: clamp(0.95rem, 2vw, 1.1rem);
-  color: #555;
-  line-height: 1.6;
-}
 
-/* CARROSSEL CONTAINER */
 .carousel-container {
   width: 100%;
   max-width: 900px;
@@ -195,7 +182,7 @@ function playGame() {
   gap: 2rem;
 }
 
-/* CARROSSEL */
+
 .carousel {
   position: relative;
   width: 100%;

@@ -79,7 +79,6 @@ div {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 129, 199, 0.15);
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  cursor: pointer;
 }
 
 div {
