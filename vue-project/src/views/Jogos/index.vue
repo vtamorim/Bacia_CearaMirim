@@ -91,6 +91,8 @@ import foto_quebracabeca from '@/assets/images/Jogos/foto_quebracabeca.png'
 import foto_qc from '@/assets/images/Jogos/imagem_qc.png'
 import foto_memoria from '@/assets/images/Jogos/foto_memoria.png'
 import pipeconect from '@/assets/images/Jogos/pipeconect.png'
+import capa_memoria from '@/assets/images/Jogos/capa_memoria.png'
+
 
 const games = [
   {
@@ -110,7 +112,7 @@ const games = [
     description: "Jogo de memória para testar sua habilidade",
     fullDescription: "Teste sua memória combinando pares de cartas relacionadas à Bacia Ceara-mirím e à preservação dos recursos hídricos.",
     emoji: foto_memoria,
-    color: "#99ff99",
+    color: capa_memoria,
     difficulty: "Médio",
     duration: "10 min",
     route: "jogo-memoria"
@@ -187,6 +189,7 @@ function playGame() {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: clamp(1.5rem, 4vw, 3rem);
   padding: clamp(1.5rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2rem);
 }

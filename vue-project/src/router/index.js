@@ -13,7 +13,7 @@ const routes = [
   { path: '/jogos/qualidade-agua', name: 'qualidade-agua', component: () => import('@/views/Jogos/qualidade-agua.vue') },
   { path: '/quiz', name: 'quiz', component: () => import('@/views/Quiz/index.vue') },
   { path: '/:pathMatch(.*)*', redirect: '/' },
-  { path: '/jogos/jogo-memoria', name: 'jogo-memoria', component: () => import('@/views/Jogos/jogo-memoria.vue') },
+  { path: '/jogos/jogo-memoria', name: 'jogomemoria', component: () => import('@/views/Jogos/jogo-memoria.vue') }
 ]
 
 const router = createRouter({

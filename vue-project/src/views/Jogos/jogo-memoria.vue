@@ -1,6 +1,5 @@
 <template>
   <section class="container">
-    <h1>Jogo da Memória</h1>
 
     <div class="board">
       <div
@@ -33,6 +32,8 @@ import imagem_5 from '@/assets/images/Jogos/Memória/imagem_5.jpeg';
 import imagem_6 from '@/assets/images/Jogos/Memória/imagem_6.jpeg';
 import imagem_7 from '@/assets/images/Jogos/Memória/imagem_7.jpeg';
 import imagem_8 from '@/assets/images/Jogos/Memória/imagem_8.jpeg';
+
+
 
 const images = [
   imagem_1,
@@ -105,15 +106,15 @@ onMounted(startGame)
 
 .board {
   display: grid;
-  grid-template-columns: repeat(4, 90px);
-  gap: 12px;
+  grid-template-columns: repeat(4, 150px);
+  gap: 20px;
   justify-content: center;
   margin-top: 20px;
 }
 
 .card {
-  width: 90px;
-  height: 90px;
+  width: 150px;
+  height: 150px;
   background: #333;
   border-radius: 8px;
   cursor: pointer;

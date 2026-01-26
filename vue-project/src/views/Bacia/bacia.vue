@@ -1,8 +1,7 @@
 <template>
     <div class="bacia-container">
           
-          <mapa class="mapa-bg" />
-          
+          <que />
 
           <div class="section-title-wrapper">
             <h2 class="section-title">Apresentação</h2>
@@ -20,5 +19,5 @@
     import apresentacao from './apresentacao.vue';
     import Parcerias from './parcerias.vue';
     import mapa from './mapa.vue';
-
+    import que from './que.vue';
 </script>
