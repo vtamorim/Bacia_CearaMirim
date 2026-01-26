@@ -87,6 +87,11 @@ import { useRouter } from 'vue-router';
 import foto_quiz from '@/assets/images/Jogos/quiz.png'
 import capa_quiz from '@/assets/images/Jogos/imagem_quiz.png'
 import foto_obstaculo from '@/assets/images/Jogos/foto_obstaculo.png'
+import foto_quebracabeca from '@/assets/images/Jogos/foto_quebracabeca.png'
+import foto_qc from '@/assets/images/Jogos/imagem_qc.png'
+import foto_memoria from '@/assets/images/Jogos/foto_memoria.png'
+import pipeconect from '@/assets/images/Jogos/pipeconect.png'
+
 const games = [
   {
     id: 1,
@@ -101,13 +106,13 @@ const games = [
   },
   {
     id: 2,
-    name: "jogo 2",
-    description: "Salve o sla",
-    fullDescription: "mais texto",
-    emoji: "icone",
+    name: "Jogo da Memória",
+    description: "Jogo de memória para testar sua habilidade",
+    fullDescription: "Teste sua memória combinando pares de cartas relacionadas à Bacia Ceara-mirím e à preservação dos recursos hídricos.",
+    emoji: foto_memoria,
     color: "#99ff99",
-    difficulty: "Fácil",
-    duration: "8-12 min",
+    difficulty: "Médio",
+    duration: "10 min",
     route: "jogo-memoria"
   },
   {
@@ -124,23 +129,23 @@ const games = [
     id: 4,
     name : "Quebra-cabeça",
     description: "Resolva o que pode quebrar a sua cabeça",
-    fullDescription: "sla",
-    emoji: "nada", 
-    color: "nada,
-    difficulty:"Médio,
+    fullDescription: "Monte o quebra-cabeça relacionado à Bacia Ceara-mirím, aprendendo sobre seus elementos enquanto se diverte.",
+    emoji: foto_qc, 
+    color: foto_quebracabeca,
+    difficulty:"Médio",
     duration: "5 min",
     route: null
 
 },
 {
     id : 5,
-    name : "Fluxo-agua",
-    description: "Encaixar n sei oq la",
-    fullDescription: "sla",
-    emoji: "nada",
+    name : "Conexão de tubo",
+    description: "Conecte os canos para levar a água ao seu destino",
+    fullDescription: "Conecte os canos corretamente para garantir que a água flua do ponto de origem até o destino final, evitando vazamentos e desperdícios.",
+    emoji: pipeconect,
     color : "nada",
     difficulty: "Fácil",
-    duration: "2 min",
+    duration: "3-5 min",
     route: null
 
 
