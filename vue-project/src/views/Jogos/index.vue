@@ -120,7 +120,31 @@ const games = [
     difficulty: "Difícil",
     duration: "5-10 min",
     route: "quiz"
-  }
+  },{
+    id: 4,
+    name : "Quebra-cabeça",
+    description: "Resolva o que pode quebrar a sua cabeça",
+    fullDescription: "sla",
+    emoji: "nada", 
+    color: "nada,
+    difficulty:"Médio,
+    duration: "5 min",
+    route: null
+
+},
+{
+    id : 5,
+    name : "Fluxo-agua",
+    description: "Encaixar n sei oq la",
+    fullDescription: "sla",
+    emoji: "nada",
+    color : "nada",
+    difficulty: "Fácil",
+    duration: "2 min",
+    route: null
+
+
+}
 ];
 
 const currentIndex = ref(0);
@@ -263,7 +287,6 @@ function playGame() {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* BOTÕES NAVEGAÇÃO */
 .nav {
   position: absolute;
   top: 50%;
@@ -297,7 +320,7 @@ function playGame() {
   right: clamp(0.5rem, 2vw, 1rem);
 }
 
-/* INDICADORES */
+
 .carousel-indicators {
   display: flex;
   justify-content: center;
@@ -321,7 +344,6 @@ function playGame() {
   transform: scale(1.2);
 }
 
-/* MODAL */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -477,7 +499,6 @@ function playGame() {
   transform: translateY(0);
 }
 
-/* Tablet (768px and down) */
 @media (max-width: 768px) {
   .games-page {
     padding: clamp(1rem, 3vw, 1.5rem);
@@ -493,7 +514,6 @@ function playGame() {
   }
 }
 
-/* Mobile (600px and down) */
 @media (max-width: 600px) {
   .games-page {
     padding: clamp(0.75rem, 2vw, 1.25rem);
@@ -569,7 +589,6 @@ function playGame() {
     background: rgba(0, 0, 0, 0.1);
   }
 }
-/* Extra Small (480px and down) */
 @media (max-width: 480px) {
   .games-page {
     padding: 0.75rem 0.5rem;
