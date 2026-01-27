@@ -58,63 +58,7 @@ const router = useRouter()
 
 
 
-export default {
-  data() {
-    return {
-      icons: ['🐶','🐱','🦊','🐼','🐸','🐵','🐷','🐰'],
-      cards: [],
-      flippedCards: [],
-      lock: false
-    }
-  },
 
-  mounted() {
-    this.startGame()
-  },
-
-  methods: {
-    startGame() {
-      const duplicated = [...this.icons, ...this.icons]
-
-      this.cards = duplicated
-        .sort(() => Math.random() - 0.5)
-        .map(icon => ({
-          icon,
-          flipped: false,
-          matched: false
-        }))
-    },
-
-    flipCard(card) {
-      if (this.lock || card.flipped || card.matched) return
-
-      card.flipped = true
-      this.flippedCards.push(card)
-
-      if (this.flippedCards.length === 2) {
-        this.checkMatch()
-      }
-    },
-
-    checkMatch() {
-      this.lock = true
-      const [c1, c2] = this.flippedCards
-
-      setTimeout(() => {
-        if (c1.icon === c2.icon) {
-          c1.matched = true
-          c2.matched = true
-        } else {
-          c1.flipped = false
-          c2.flipped = false
-        }
-
-        this.flippedCards = []
-        this.lock = false
-      }, 800)
-    }
-  }
-}
 </script>
 
 <style scoped>

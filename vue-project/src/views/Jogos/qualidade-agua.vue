@@ -16,9 +16,12 @@
       <section class="game-area">
         <h2>Jogo em Desenvolvimento</h2>
         <div class="placeholder">
-          <span class="emoji">🏗️</span>
-          <p>Esta página do jogo está em desenvolvimento.</p>
-          <p>Em breve você poderá jogar aqui!</p>
+          <iframe 
+      src="src/PRIMEIRO JOGO/index.html" 
+      frameborder="0" 
+      style="width: 800px; height: 600px;"
+      allowfullscreen>
+    </iframe>
         </div>
       </section>
 
