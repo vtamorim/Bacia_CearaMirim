@@ -1,110 +1,146 @@
 <template>
   <div class="page-inner">
     <div class="contact-wrapper">
-    <form class="contact-form" @submit.prevent="enviarContato">
-      <!-- Nomes em duas colunas -->
-      <div class="form-row">
-        <div class="form-group">
-          <label for="pri_nome">Primeiro Nome</label>
-          <input type="text" id="pri_nome" placeholder="Primeiro nome" v-model="pri_nome" required>
+      <form class="contact-form" @submit.prevent="enviarContato">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="pri_nome">Primeiro Nome</label>
+            <input type="text" id="pri_nome" placeholder="Primeiro nome" v-model="pri_nome" required>
+          </div>
+        </div>
+
+        <div class="form-group form-full">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" placeholder="E-mail" v-model="email" required>
+        </div>
+
+        <div class="form-group form-full">
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" placeholder="Escreva sua mensagem" rows="6" v-model="mensagem" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-send" :disabled="status === 'enviando'">
+          {{ status === 'enviando' ? 'Enviando...' : 'Enviar' }}
+        </button>
+
+        <div class="feedback">
+          <p v-if="status === 'enviando'" class="enviando">Enviando mensagem...</p>
+          <p v-if="status === 'sucesso'" class="sucesso">{{ mensagemStatus }}</p>
+          <p v-if="status === 'erro'" class="erro">{{ mensagemStatus }}</p>
+        </div>
+
+      </form>
+
+      <div class="emails-section">
+        <div class="email-card">
+          <figure class="email-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path d="M20 6L12 12L4 6" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+          </figure>
+          <p>cbhdocearamirim@gmail.com</p>
+        </div>
+        <div class="email-card">
+          <figure class="email-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path d="M20 6L12 12L4 6" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+          </figure>
+          <p>neppsadiaren@gmail.com</p>
         </div>
       </div>
-
-      <!-- Email full-width -->
-      <div class="form-group form-full">
-        <label for="email">E-mail</label>
-        <input type="email" id="email" placeholder="E-mail" v-model="email" required>
-      </div>
-
-      <!-- Mensagem full-width -->
-      <div class="form-group form-full">
-        <label for="mensagem">Mensagem</label>
-        <textarea id="mensagem" placeholder="Escreva sua mensagem" rows="6" v-model="mensagem" required></textarea>
-      </div>
-
-
-
-      <button type="submit" class="btn-send" :disabled="status === 'enviando'">
-        {{ status === 'enviando' ? 'Enviando...' : 'Enviar' }}
-      </button>
-
-      <div class="feedback">
-        <p v-if="status === 'enviando'" class="enviando">Enviando...</p>
-        <p v-if="status === 'sucesso'" class="sucesso">{{ mensagemStatus }}</p>
-        <p v-if="status === 'erro'" class="erro">{{ mensagemStatus }}</p>
-      </div>
-
-    </form>
-    <div class="emails-section">
-      <div class="email-card">
-        <figure class="email-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" fill="none"/>
-            <path d="M20 6L12 12L4 6" stroke="currentColor" stroke-width="2" fill="none"/>
-          </svg>
-        </figure>
-        <p>cbhdocearamirim@gmail.com</p>
-      </div>
-      <div class="email-card">
-        <figure class="email-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" fill="none"/>
-            <path d="M20 6L12 12L4 6" stroke="currentColor" stroke-width="2" fill="none"/>
-          </svg>
-        </figure>
-        <p>neppsadiaren@gmail.com</p>
-      </div>
-    </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import emailjs from '@emailjs/browser'
+
 
 const pri_nome = ref('')
 const email = ref('')
 const mensagem = ref('')
 
 
-const status = ref('') 
+const status = ref('') // '' | 'enviando' | 'sucesso' | 'erro'
 const mensagemStatus = ref('')
 
-async function enviarContato() {
+
+const getEnvVar = (key) => {
+  const value = import.meta.env[key]
+  if (!value) {
+    console.warn(`Aviso: Variável de ambiente ${key} não definida.`)
+    return ''
+  }
+  return value
+}
+
+
+const EMAILJS_SERVICE_ID = getEnvVar('VITE_EMAILJS_SERVICE_ID')
+const EMAILJS_TEMPLATE_ID = getEnvVar('VITE_EMAILJS_TEMPLATE_ID')
+const EMAILJS_PUBLIC_KEY = getEnvVar('VITE_EMAILJS_PUBLIC_KEY')
+
+
+const enviarContato = async () => {
+
+  if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+    status.value = 'erro'
+    mensagemStatus.value = 'Erro de configuração do servidor. Contate o admin.'
+    return
+  }
+
+
   status.value = 'enviando'
   mensagemStatus.value = ''
 
   try {
-    const response = await fetch('http://127.0.0.1:5000/api/contato', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        pri_nome: pri_nome.value,
-        email: email.value,
-        mensagem: mensagem.value
-      })
-    })
 
-    const data = await response.json()
-
-    if (data.success) {
-      status.value = 'sucesso'
-      mensagemStatus.value = data.message
-      // Limpar formulário
-      pri_nome.value = ''
-      email.value = ''
-      mensagem.value = ''
-    } else {
-      status.value = 'erro'
-      mensagemStatus.value = data.error
+    const templateParams = {
+      name: pri_nome.value,
+      email: email.value,
+      message: mensagem.value,
+      title: 'Nova Mensagem de Contato',
+      time: new Date().toLocaleString('pt-BR')
     }
-  } catch (err) {
+
+
+    await emailjs.send(
+      EMAILJS_SERVICE_ID,
+      EMAILJS_TEMPLATE_ID,
+      templateParams,
+      EMAILJS_PUBLIC_KEY
+    )
+
+
+    status.value = 'sucesso'
+    mensagemStatus.value = 'Mensagem enviada com sucesso!'
+    
+
+    pri_nome.value = ''
+    email.value = ''
+    mensagem.value = ''
+
+
+    setTimeout(() => {
+      status.value = ''
+      mensagemStatus.value = ''
+    }, 5000)
+
+  } catch (error) {
+
+    console.error('Erro ao enviar email:', error)
     status.value = 'erro'
-    mensagemStatus.value = 'Erro ao conectar com o servidor.'
+    mensagemStatus.value = 'Erro ao enviar. Tente novamente mais tarde.'
   }
 }
 </script>
+
 <style scoped>
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 * {
@@ -137,7 +173,7 @@ async function enviarContato() {
     width: 100%;
 }
 
-/* Form group */
+
 .form-group {
     display: flex;
     flex-direction: column;
