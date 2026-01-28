@@ -2,15 +2,15 @@
   <div class="game-page">
     <div class="game-header">
       <router-link to="/jogos" class="back-button">← Voltar</router-link>
-      <h1>💧 Fluxo da Água</h1>
-      <p>Entenda como a água flui pela Bacia Cearamirím</p>
+      <h1>Aventura por Obstáculos</h1>
+      <p> Passe por obstáculos e saiba mais sobre a Bacia </p> 
     </div>
 
     <div class="game-content">
       <section class="game-description">
         <h2>Como Jogar</h2>
-        <p>Neste jogo, você vai seguir o caminho da água desde a nascente até a foz. Clique nos elementos corretos para progredir!</p>
-        <p>Aprenda sobre rios, afluentes, captação de água e a importância da preservação hídrica.</p>
+        <p>Neste jogo, você terá que passar por obstáculos e descobrir informações sobre a Bacia Cearamirim.</p>
+        <p>Aprenda sobre a bacia por meio de curiosidades incríveis.</p>
       </section>
 
       <section class="game-area">
@@ -27,15 +27,15 @@
       <section class="game-info">
         <div class="info-card">
           <h3>📚 Aprendizado</h3>
-          <p>Você aprenderá sobre o ciclo da água e a importância dos recursos hídricos.</p>
+          <p>Conheça curiosidades sobre a Bacia Cearamirim.</p>
         </div>
         <div class="info-card">
           <h3>⏱️ Tempo</h3>
-          <p>Tempo estimado: 10-15 minutos</p>
+          <p>Tempo Estimado: 5-10 min</p>
         </div>
         <div class="info-card">
           <h3>🎯 Dificuldade</h3>
-          <p>Nível Médio - Para usuários com conhecimento básico</p>
+          <p>Nível Médio - Para Usuários que gostam de jogo de plataforma</p>
         </div>
       </section>
     </div>

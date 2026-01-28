@@ -15,21 +15,12 @@
 
       <section class="game-area">
           <div class="container">
-    <h1>Jogo da Memória</h1>
-
-    <div class="board">
-      <div
-        v-for="(card, index) in cards"
-        :key="index"
-        class="card"
-        :class="{ flipped: card.flipped || card.matched }"
-        @click="flipCard(card)"
-      >
-        <span v-if="card.flipped || card.matched">
-          {{ card.icon }}
-        </span>
-      </div>
-    </div>
+                        <iframe 
+      src="public/SEGUNDO JOGO/index.html" 
+      frameborder="0" 
+      style="width: 800px; height: 600px;"
+      allowfullscreen>
+    </iframe>
   </div>
       </section>
 

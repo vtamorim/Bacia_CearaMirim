@@ -21,16 +21,22 @@
       </nav>
 
       <div class="footer-col footer-right">
-        <div class="copyright">© 2025 Company, Inc</div>
+        <div class="copyright">© 2025 CBH do Rio Ceará-Mirim</div>
         <div style="display:flex; gap:5px;">
         <div class="social">
-          <img :src="Instagram" alt="instagram" />
+           <a href="https://www.instagram.com/cbhcearamirim/" target="_blank" rel="noopener noreferrer"><img :src="Instagram" alt="instagram" /></a>
         </div>
         <div class="social">
-                    <img :src="Youtube" alt="youtube"  />
+                    <a href="https://www.youtube.com/@cbhcearamirim" target="_blank" rel="noopener noreferrer"><img :src="Youtube" alt="youtube"  /></a>
         </div>
+        <div class="social">
+                    <a href="https://www.facebook.com/112636410219477?ref=_xav_ig_profile_page_web" target="_blank" rel="noopener noreferrer"><img :src="Facebook" alt="facebook"  /></a>
         </div>
+        <div class="social">
+                    <a href="https://cbhdoriocearamirim.blogspot.com/" target="_blank" rel="noopener noreferrer"><img :src="BlogSpot" alt="blogspot"  /></a>
       </div>
+          </div>
+          </div>
       </div>
     </div>
   </footer>
@@ -41,11 +47,10 @@ import { ref, onMounted } from 'vue'
 import Instagram from '@/assets/images/Footer/Instagram.svg'
 import Youtube from '@/assets/images/Footer/YouTube.svg'
 import Logotipo from '@/assets/images/logotipo.svg'
+import Facebook from '@/assets/images/Footer/Facebook.svg'
+import BlogSpot from '@/assets/images/Footer/Blogger.svg'
 
 
-
-import FooterWaveUrlRaw from '@/assets/images/Footer/Group-63.svg?url'
-const FooterWaveUrl = FooterWaveUrlRaw || ''
 
 const hashPage = ref('home')
 const isActive = (page) => {
@@ -70,6 +75,9 @@ onMounted(() => {
   --text-color: rgba(255, 255, 255, 0.95);
   --muted: rgba(255,255,255,0.55);
 }
+
+a{  display:flex; align-items:center; justify-content:center;}
+
 
 #col-outlogo{
   display: flex;
@@ -150,18 +158,21 @@ onMounted(() => {
   display:flex;
   justify-content: center;
   align-items: center;
-  width:1.6rem;
-  height: 1.6rem;
+  width:30px;
+  height: 30px;
   border-radius: 50%;
 
 }
 
 .social img {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 }
-
+.social:last-child img {
+  width: 18px;
+  height: 18px;
+}
 @media (max-width:1052px) {
 
  .nav-list{

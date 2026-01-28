@@ -39,11 +39,12 @@ main{
     position: relative;
     top: 10vh;
     width: 50vw;
-    left: 5vw;
     display: flex;
     flex-direction: column;
     gap: 2rem;
     padding: 1rem;
+    padding-left: clamp(0.5rem, 3vw, 2.5rem);
+    
 }
 h2{
     font-size: 2em;

@@ -103,16 +103,6 @@ h2 {
       position: relative;
       
 
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -0.8rem;
-    left: clamp(0.5rem, 3vw, 2.5rem);
-    width: 120px;
-    height: 20px;
-    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 120 20" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><defs><linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:%230081C7;stop-opacity:1" /><stop offset="100%" style="stop-color:%232196F3;stop-opacity:1" /></linearGradient></defs><path d="M0,10 Q30,0 60,10 T120,10" stroke="url(%23waveGrad)" stroke-width="3" fill="none" stroke-linecap="round"/></svg>') no-repeat center;
-    background-size: contain;
-  }
 }
 
 section {
@@ -291,6 +281,8 @@ section figure img {
   margin: 0 auto;
   max-width: 1440px;
   padding: 0 clamp(0.5rem, 2vw, 1rem);
+  position: relative;
+  bottom: 0.5rem;
 }
 
 .gestoes_ant > div {

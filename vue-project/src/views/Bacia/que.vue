@@ -864,15 +864,27 @@ function fecharCidade() {
 }
 
 onMounted(() => {
-  map = L.map('map', {
-    crs: L.CRS.Simple,
-    minZoom: -2,
-    maxZoom: 4,
-    zoomControl: true
-  })
 
+  // 1. Definições da Imagem
   const width = 2593
   const height = 1589
+  
+  // Define os limites da imagem [[y1, x1], [y2, x2]]
+  // Adicionei uma pequena margem (pad) manual se quiser, mas o exato funciona bem
+  const imageBounds = [[0, 0], [height, width]];
+  map = L.map('map', {
+    crs: L.CRS.Simple,
+    minZoom: 0,
+    center: [1294, 1296],
+    zoom: 0,
+    maxZoom: 0.8,
+    zoomSnap: 0.5,
+    zoomControl: true,
+    maxBounds: imageBounds,
+   scrollWheelZoom: false,
+    maxBoundsViscosity: 1.0
+  })
+  
   const bounds = [[0, 0], [height, width]]
 
   map.fitBounds(bounds)
@@ -885,6 +897,10 @@ onMounted(() => {
   }).addTo(map)
 
   window.addEventListener('resize', handleResize)
+  const coordenadasIniciais = [994, 2296]; // O centro do seu mapa (Y, X)
+const zoomInicial = 1;
+
+map.setView(coordenadasIniciais, zoomInicial);
 })
 
 function handleResize() {
@@ -948,7 +964,7 @@ onBeforeUnmount(() => {
   position: absolute; /* Flutua sobre o mapa */
   
   /* Centralização perfeita */
-  top: 30%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); 
   
@@ -1038,11 +1054,12 @@ onBeforeUnmount(() => {
     width: 100%; /* No telemóvel volta a ocupar a largura toda para facilitar o toque */
   }
 }
-#container-geral{
+.container-geral{
   position: relative;
+  top: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 1rem;
 }
 
 #quatro_opcoes{

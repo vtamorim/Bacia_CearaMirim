@@ -17,7 +17,7 @@
         <h2>Jogo em Desenvolvimento</h2>
         <div class="placeholder">
           <iframe 
-      src="src/PRIMEIRO JOGO/index.html" 
+      src="public/TERCEIRO JOGO/index.html" 
       frameborder="0" 
       style="width: 800px; height: 600px;"
       allowfullscreen>

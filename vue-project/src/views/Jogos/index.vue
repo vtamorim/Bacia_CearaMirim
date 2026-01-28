@@ -92,8 +92,9 @@ import foto_qc from '@/assets/images/Jogos/imagem_qc.png'
 import foto_memoria from '@/assets/images/Jogos/foto_memoria.png'
 import pipeconect from '@/assets/images/Jogos/pipeconect.png'
 import capa_memoria from '@/assets/images/Jogos/capa_memoria.png'
-
-
+import QualidadeAgua from "./qualidade-agua.vue";
+import capa_bacia from '@/assets/images/Jogos/capa_bacia.png'
+import capa_cano from '@/assets/images/Jogos/capa_cano.png'
 const games = [
   {
     id: 1,
@@ -101,7 +102,7 @@ const games = [
     description: "Passar por obstáculos, saber mais sobre a Bacia Hidrográfica",
     fullDescription: "Uma jornada em que o jogador precisa pecorrer e superar obstáculos e plataformas para que possa ter uma grande vitória no final.",
     emoji: foto_obstaculo,
-    color: "#99ccff",
+    color: capa_bacia,
     difficulty: "Médio",
     duration: "10-15 min",
     route: "fluxo-agua"
@@ -115,7 +116,7 @@ const games = [
     color: capa_memoria,
     difficulty: "Médio",
     duration: "10 min",
-    route: "jogo-memoria"
+    route: "jogomemoria"
   },
   {
     id: 3,
@@ -136,7 +137,7 @@ const games = [
     color: foto_quebracabeca,
     difficulty:"Médio",
     duration: "5 min",
-    route: null
+    route: "protetor-ecossistema"
 
 },
 {
@@ -145,10 +146,10 @@ const games = [
     description: "Conecte os canos para levar a água ao seu destino",
     fullDescription: "Conecte os canos corretamente para garantir que a água flua do ponto de origem até o destino final, evitando vazamentos e desperdícios.",
     emoji: pipeconect,
-    color : "nada",
+    color : capa_cano,
     difficulty: "Fácil",
     duration: "3-5 min",
-    route: null
+    route: "qualidadeagua"
 
 
 }

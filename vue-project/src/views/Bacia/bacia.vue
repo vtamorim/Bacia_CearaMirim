@@ -16,3 +16,9 @@
     import mapa from './mapa.vue';
     import que from './que.vue';
 </script>
+<style scoped>
+    .bacia-container{
+        display: flex;
+        gap: 5em;
+    }
+</style>
