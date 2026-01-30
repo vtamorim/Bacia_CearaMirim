@@ -98,7 +98,7 @@ import capa_cano from '@/assets/images/Jogos/capa_cano.png'
 const games = [
   {
     id: 1,
-    name: "Aventura na Bacia Hidrográfica",
+    name: "Aventura por Obstáculos",
     description: "Passar por obstáculos, saber mais sobre a Bacia Hidrográfica",
     fullDescription: "Uma jornada em que o jogador precisa pecorrer e superar obstáculos e plataformas para que possa ter uma grande vitória no final.",
     emoji: foto_obstaculo,

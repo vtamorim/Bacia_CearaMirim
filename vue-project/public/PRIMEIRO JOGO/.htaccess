@@ -1,6 +1,0 @@
-<IfModule mod_headers.c>
-  <FilesMatch "\.(js|data|wasm)\.gz$">
-    Header set Content-Encoding gzip
-    Header set Content-Type application/javascript
-  </FilesMatch>
-</IfModule>
