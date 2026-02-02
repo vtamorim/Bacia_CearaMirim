@@ -35,7 +35,7 @@
             <span class="marker"></span>
             <div class="box" style="--bg: #BAEFFF;">
                 <img v-bind:src="Teacher" alt="">
-                <span class="label">Professores</span>
+                <span class="label" style="color: #034E77 !important; ">Professores</span>
             </div>
         </li>
 

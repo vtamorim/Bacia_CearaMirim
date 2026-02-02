@@ -3,9 +3,6 @@
         <figure><img v-bind:src="img1" alt="Foto do Comitê"></figure>
         <p> {{ apresentacao_comite }}</p>
     </section>
-       <div class="subsection-title-wrapper">
-        <h2>Objetivos</h2>
-    </div>
     <section id="objetivos_comite">
         
         <div v-for="(num, index) in 3"
