@@ -18,7 +18,7 @@
                     <li><router-link to="/"> A Bacia</router-link></li>
                     <li><router-link to="/comite">Comitê</router-link></li>
                     <li><router-link to="/ods">ODS</router-link></li>
-                    <li>Midias</li>
+                    <li id="em_dev">Midias</li>
                     <li><router-link to="/cartilha">Cartilha</router-link></li>
                     <li><router-link to="/jogos">Jogos</router-link></li>
                     <li><router-link to="/contato">Contato</router-link></li>
@@ -41,6 +41,11 @@ const menuAberto = ref(false);
 </script>
 <style scoped>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+    #em_dev{
+        color:rgb(136, 136, 136);
+        cursor: not-allowed;
+    }
 
         * { 
                 margin: 0;
