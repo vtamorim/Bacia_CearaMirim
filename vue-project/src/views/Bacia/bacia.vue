@@ -1,7 +1,7 @@
 <template>
     <div class="bacia-container">
           
-          <que />
+          <mapa />
 
 
           <apresentacao />
@@ -14,7 +14,6 @@
     import apresentacao from './apresentacao.vue';
     import Parcerias from './parcerias.vue';
     import mapa from './mapa.vue';
-    import que from './que.vue';
 </script>
 <style scoped>
     .bacia-container{

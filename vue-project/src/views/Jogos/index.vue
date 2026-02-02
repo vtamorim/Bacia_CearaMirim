@@ -92,7 +92,7 @@ import foto_qc from '@/assets/images/Jogos/imagem_qc.png'
 import foto_memoria from '@/assets/images/Jogos/foto_memoria.png'
 import pipeconect from '@/assets/images/Jogos/pipeconect.png'
 import capa_memoria from '@/assets/images/Jogos/capa_memoria.png'
-import QualidadeAgua from "./qualidade-agua.vue";
+import QualidadeAgua from "./pipeconect.vue";
 import capa_bacia from '@/assets/images/Jogos/capa_bacia.png'
 import capa_cano from '@/assets/images/Jogos/capa_cano.png'
 const games = [
@@ -105,7 +105,7 @@ const games = [
     color: capa_bacia,
     difficulty: "Médio",
     duration: "10-15 min",
-    route: "fluxo-agua"
+    route: "aventura"
   },
   {
     id: 2,
@@ -137,7 +137,7 @@ const games = [
     color: foto_quebracabeca,
     difficulty:"Médio",
     duration: "5 min",
-    route: "protetor-ecossistema"
+    route: "quebracabeca"
 
 },
 {
@@ -149,7 +149,7 @@ const games = [
     color : capa_cano,
     difficulty: "Fácil",
     duration: "3-5 min",
-    route: "qualidadeagua"
+    route: "pipe"
 
 
 }

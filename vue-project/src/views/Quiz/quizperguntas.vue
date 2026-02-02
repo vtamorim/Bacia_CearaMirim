@@ -1,42 +1,39 @@
 <template>
-  <div class="page-inner">
-    <div class="quizperguntas card" role="region" aria-label="Quiz sobre a bacia do rio Ceará-Mirim">
-      <h2>{{ Lista[index] }}</h2>
-      <p>Questão {{ index + 1 }}/<span class="total">{{ questoes }}</span></p>
+<div class="page-inner">
 
-      <ul>
-        <li v-for="(alt, i) in Alternativas[index]" :key="i">
-          <button
-            type="button"
-            class="alternativas"
-            :class="buttonClass(i)"
-            :disabled="answered"
-            @click="choose(i)"
-            :aria-pressed="selectedIndex === i"
-          >
-            {{ alt }}
-          </button>
-        </li>
-      </ul>
+  <!-- QUIZ -->
+  <div v-if="!finished" class="quizperguntas card">
+    <h2>{{ Lista[index] }}</h2>
+    <p>Questão {{ index + 1 }}/<span class="total">{{ Lista.length }}</span></p>
 
-      <div class="controls">
+    <ul>
+      <li v-for="(alt, i) in Alternativas[index]" :key="i">
         <button
-          id="proximo"
-          type="button"
-          @click="proximo"
-          :disabled="!answered"
-          aria-disabled="!answered"
+          class="alternativas"
+          :class="buttonClass(i)"
+          :disabled="answered"
+          @click="choose(i)"
         >
-          Próximo
+          {{ alt }}
         </button>
-      </div>
+      </li>
+    </ul>
 
-      <div v-if="finished" class="resultado" role="status" aria-live="polite">
-        <p>Quiz finalizado! Acertos: <strong>{{ certas }}</strong> de {{ Lista.length }}</p>
-        <button type="button" @click="reiniciar">Reiniciar</button>
-      </div>
+    <div class="controls">
+      <button id="proximo" @click="proximo" :disabled="!answered">
+        Próximo
+      </button>
     </div>
   </div>
+
+  <!-- RESULTADO -->
+  <div v-else class="quizperguntas card resultado-final" >
+    <h2>Quiz finalizado 🎉</h2>
+    <p>Você acertou <strong>{{ certas }}</strong> de {{ Lista.length }}</p>
+    <button id="reiniciar" @click="reiniciar">Refazer quiz</button>
+  </div>
+
+</div>
 </template>
 
 <script setup>
@@ -123,50 +120,84 @@ function reiniciar() {
 }
 </script>
 
-<style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+<style scoped>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-* { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
 
-.quizperguntas{
-  margin: 0 auto;
-  width: 40em;
+.page-inner {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+#reiniciar{
+  background-color: var(--bg-but);
+  color: var(--txt-but);
+  width: 100%;
+  max-width: 260px;
+  height: 44px;
+  border-radius: 200px;
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
+  transition: background-color 0.15s ease-in;
+  box-shadow: 0px 3px 3px var(--color-boxs);
+}
+/* CARD PRINCIPAL */
+.quizperguntas {
+  width: 100%;
+  max-width: 640px;
   min-height: 26em;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
 }
 
-h2 { text-align: left; margin: 0; font-size: 1.25rem; }
+/* TÍTULOS */
+h2 {
+  text-align: left;
+  margin: 0;
+  font-size: 1.25rem;
+}
 
-.total { color: gray; }
+.total {
+  color: gray;
+}
 
-ul{
+/* LISTA */
+ul {
   display: flex;
   flex-direction: column;
-  list-style-type: none;
+  list-style: none;
   gap: 14px;
   padding: 0;
   margin: 0;
 }
 
+/* BOTÕES DE ALTERNATIVA */
 .alternativas {
-    width: 544px;
-    min-height: 40px;     /* garante altura mínima */
-    padding: 10px 15px;   /* padding para crescer naturalmente */
-    text-align: left;
-    background-color: #E9F9FC;
-    border: 1px solid #014D83;
-    border-radius: 8px;
-    line-height: 1.3;     /* melhora leitura em 2 linhas */
-    white-space: normal;  /* garante quebra de linha */
+  width: 100%;
+  min-height: 44px;
+  padding: 12px 16px;
+  text-align: left;
+  background-color: #E9F9FC;
+  border: 1px solid #014D83;
+  border-radius: 8px;
+  line-height: 1.4;
+  white-space: normal;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.alternativas:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.06); }
+.alternativas:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
 
-
+/* ESTADOS */
 .alternativas.certa {
   background: rgba(86,192,43,0.22);
   border-color: #56C02B;
@@ -175,29 +206,34 @@ ul{
 .alternativas.errada {
   background: rgba(255,0,0,0.14);
   border-color: #FF0000;
-  opacity: 1;
 }
 
 .alternativas.desativada {
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
+/* CONTROLES */
+.controls {
+  display: flex;
+  justify-content: center;
+}
 
-#proximo{
-        background-color: var(--bg-but) ;
-        color: var(--txt-but);
-        width: 240px;
-        height: 44px;
-        border-radius: 200px;
-        border: none;
-        font-size: 1em;
-        font-weight: bold;
-        transition: background-color 0.1s ease-in;
-        box-shadow: 0px 3px 3px var(--color-boxs);
-    &:hover{
-        background-color: #0A142F;
-    }
-    
+#proximo {
+  background-color: var(--bg-but);
+  color: var(--txt-but);
+  width: 100%;
+  max-width: 260px;
+  height: 44px;
+  border-radius: 200px;
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
+  transition: background-color 0.15s ease;
+  box-shadow: 0px 3px 3px var(--color-boxs);
+}
+
+#proximo:hover {
+  background-color: #0A142F;
 }
 
 #proximo[disabled] {
@@ -205,12 +241,27 @@ ul{
   cursor: not-allowed;
 }
 
-/* resultado final */
+/* RESULTADO FINAL */
 .resultado {
   margin-top: 1rem;
   padding: 12px;
   border-radius: 8px;
   background: #f3f7fb;
   border: 1px solid #d6e5f3;
+  text-align: center;
 }
+
+
+/* 📱 MOBILE */
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  .alternativas {
+    font-size: 0.95rem;
+  }
+}
+
+
 </style>

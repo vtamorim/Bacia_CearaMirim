@@ -1,11 +1,11 @@
 <script setup>
   import { ref, onMounted } from 'vue';
-  import Header from './components/layout/Header.vue';
-  import Carousel from './components/layout/Carousel.vue';
+  import Header from './components/Header.vue';
+  import Carousel from './components/Carousel.vue';
 
 
 
-  import Footer from './components/layout/Footer.vue';
+  import Footer from './components/Footer.vue';
 
 
   const currentPage = ref('home');

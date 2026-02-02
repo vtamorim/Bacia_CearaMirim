@@ -29,43 +29,65 @@ function trocarTela() {
 
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
 
-*{
-    font-family: 'Poppins',sans-serif;
+.page-inner {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem;
 }
-main{
-    position: relative;
-    top: 10vh;
-    width: 50vw;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    padding: 1rem;
-    padding-left: clamp(0.5rem, 3vw, 2.5rem);
-    
+
+main {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 10vh;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
 }
-h2{
-    font-size: 2em;
+
+p {
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.6;
 }
-button{
-        background-color: var(--bg-but) ;
-        color: var(--txt-but);
-        width: 240px;
-        height: 44px;
-        border-radius: 200px;
-        border: none;
-        font-size: 1em;
-        font-weight: bold;
-        transition: background-color 0.1s ease-in;
-        box-shadow: 0px 3px 3px var(--color-boxs);
-    &:hover{
-        background-color: #0A142F;
-    }
-    
-    }
-p{
-    width: 50vw;
+
+button {
+  background-color: var(--bg-but);
+  color: var(--txt-but);
+  width: 100%;
+  max-width: 260px;
+  height: 44px;
+  border-radius: 200px;
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
+  transition: background-color 0.15s ease-in;
+  box-shadow: 0px 3px 3px var(--color-boxs);
 }
+
+button:hover {
+  background-color: #0A142F;
+}
+@media (max-width: 768px) {
+  main {
+    margin-top: 5vh;
+    padding: 1.5rem 1rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+}
+
+
 </style>

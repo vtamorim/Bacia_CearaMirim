@@ -18,7 +18,6 @@
                     <li><router-link to="/"> A Bacia</router-link></li>
                     <li><router-link to="/comite">Comitê</router-link></li>
                     <li><router-link to="/ods">ODS</router-link></li>
-                    <li id="em_dev">Midias</li>
                     <li><router-link to="/cartilha">Cartilha</router-link></li>
                     <li><router-link to="/jogos">Jogos</router-link></li>
                     <li><router-link to="/contato">Contato</router-link></li>
@@ -45,6 +44,8 @@ const menuAberto = ref(false);
     #em_dev{
         color:rgb(136, 136, 136);
         cursor: not-allowed;
+        text-align: left;  
+        position: relative;
     }
 
         * { 
