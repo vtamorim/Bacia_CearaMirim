@@ -172,7 +172,7 @@ onUnmounted(() => {
   filter: brightness(0.6);
 }
 
-/* Overlay com título sobre a imagem */
+
 .carousel-overlay {
   position: absolute;
   top: 0;

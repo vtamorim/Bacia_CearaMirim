@@ -13,7 +13,7 @@
             
          
             <nav :class="{ 'menu-ativo': menuAberto }">
-                <ul>
+                <ul @click="menuAberto = false">
                     
                     <li><router-link to="/"> A Bacia</router-link></li>
                     <li><router-link to="/comite">Comitê</router-link></li>
@@ -40,6 +40,7 @@ const menuAberto = ref(false);
 </script>
 <style scoped>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+    
 
     #em_dev{
         color:rgb(136, 136, 136);
@@ -129,7 +130,6 @@ const menuAberto = ref(false);
         transform: rotate(-45deg) translate(7px, -6px);
     }
 
-    /* Navigation */
     header nav {
         flex: 1;
     }
@@ -178,7 +178,6 @@ const menuAberto = ref(false);
         background: transparent !important;
     }
 
-    /* Desktop - 900px and up */
     @media (min-width: 901px) {
         header nav {
             display: block;
@@ -189,7 +188,6 @@ const menuAberto = ref(false);
         }
     }
 
-    /* Tablet - 768px to 900px */
     @media (max-width: 900px) {
         header {
             padding: 0 clamp(0.5rem, 4vw, 1.5rem);
@@ -200,7 +198,6 @@ const menuAberto = ref(false);
         }
     }
 
-    /* Mobile Menu - 768px and down */
     @media (max-width: 768px) {
         .hamburger {
             display: flex;
@@ -268,7 +265,7 @@ const menuAberto = ref(false);
         }
     }
 
-    /* Small Mobile - 600px and down */
+
     @media (max-width: 600px) {
         header {
             min-height: 3.5rem;
@@ -293,7 +290,7 @@ const menuAberto = ref(false);
         }
     }
 
-    /* Extra Small - 480px and down */
+
     @media (max-width: 480px) {
         header {
             min-height: 3.25rem;

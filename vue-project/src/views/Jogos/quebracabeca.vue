@@ -33,11 +33,6 @@
               scrolling="no"
             ></iframe>
           </div>
-          <div class="game-actions">
-            <button @click="toggleFullscreen" class="fullscreen-btn">
-              <span>⛶</span> Jogar em Tela Cheia
-            </button>
-          </div>
         </div>
       </section>
 
@@ -102,17 +97,13 @@ const toggleFullscreen = () => {
 </script>
 
 <style scoped>
-/* =======================
-   VARIÁVEIS
-======================= */
+
 :root {
   --primary: #1e3c72;
   --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
-/* =======================
-   LAYOUT GERAL
-======================= */
+
 .game-page {
   min-height: 100vh;
   background: var(--bg-gradient);

@@ -141,7 +141,6 @@ Contudo, sofre com poluição, desmatamento, erosão, uso inadequado do solo e e
 
             }
             & h1{
-                width: 100vw;
                 text-align: center;
             }
 

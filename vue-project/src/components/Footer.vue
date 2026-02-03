@@ -4,7 +4,9 @@
 
     <div class="footer-inner">
       <div class="footer-col footer-left">
-        <img class="footer-logo" :src="Logotipo" alt="Logo" />
+        <a href="#home">
+            <img :src="Logotipo" alt="Logo" />
+            </a>
       </div>
 
       <div id="col-outlogo">

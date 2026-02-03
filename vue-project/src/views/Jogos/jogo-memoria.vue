@@ -64,7 +64,7 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
-// Importação das imagens
+
 import imagem_1 from '@/assets/images/Jogos/Memória/imagem_1.jpeg';
 import imagem_2 from '@/assets/images/Jogos/Memória/imagem_2.jpeg';
 import imagem_3 from '@/assets/images/Jogos/Memória/imagem_3.jpeg';
@@ -283,7 +283,6 @@ section p {
   height: 100%;
   object-fit: cover;   
   border-radius: 8px;
-  /* Corrige espelhamento se necessário ao virar */
   transform: rotateY(180deg); 
 }
 
