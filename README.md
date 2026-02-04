@@ -85,7 +85,3 @@ vue-project/
 ## Contribuição
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests.
-
-## Licença
-
-Este projeto é de código aberto. Verifique o arquivo de licença para mais detalhes.
