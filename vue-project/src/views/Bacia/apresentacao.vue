@@ -8,13 +8,18 @@
 Ela sustenta atividades essenciais como abastecimento urbano, indústria, irrigação, agropecuária, pesca e turismo. 
 Contudo, sofre com poluição, desmatamento, erosão, uso inadequado do solo e exploração excessiva da água, o que ameaça sua qualidade ambiental e a disponibilidade de recursos naturais.</p>
 
-    <button onclick="">Saiba mais sobre a Bacia</button>
+    <button @click="abrirSite">Saiba mais sobre a Bacia</button>
 </div>   
 </section>
 
 </template>
 
-<script setup></script>
+<script setup>
+        function abrirSite() {
+            const url = "https://files.abrhidro.org.br/Eventos/Trabalhos/248/XXVI-SBRH1104-2-0-20250805-212923.pdf";
+            window.open(url, "_blank"); // "_blank" abre em nova aba
+        }
+</script>
 <style scoped>
 
     section{
