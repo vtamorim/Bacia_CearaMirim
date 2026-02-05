@@ -1,21 +1,4 @@
 {
   "schemaVersion": 2,
-  "displayName": "Bacia Ceará-Mirim",
-  "description": "Aplicação web educacional sobre a Bacia Hidrográfica Ceará-Mirim. Desenvolvida com Vue.js 3 e Vite.",
-  "dockerfilePath": "./Dockerfile",
-  "imageName": "vue-bacia-ceara-mirim",
-  "containerHttpPort": "80",
-  "hasWebUI": true,
-  "ports": [
-    {
-      "number": 80,
-      "proto": "http"
-    }
-  ],
-  "caproverExtra": {
-    "containerHttpPort": "80",
-    "notExposeAsWebApp": false,
-    "preDeployScript": "",
-    "postDeployScript": ""
-  }
+  "dockerfilePath": "./Dockerfile"
 }
