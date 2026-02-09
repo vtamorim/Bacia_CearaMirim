@@ -3,7 +3,7 @@
 <section>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_kVRRV0b2is?si=tP04TXsGYcxTht39" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <div>
-    <h1>Conheça a Bacia do Rio Ceará-Mirim</h1>
+    <h2>Conheça a Bacia do Rio Ceará-Mirim</h2>
     <p>A bacia do rio Ceará-Mirim percorre diversos municípios entre Lajes, onde nasce na Serra do Feiticeiro, e Extremoz, onde deságua após 129 km de extensão. 
 Ela sustenta atividades essenciais como abastecimento urbano, indústria, irrigação, agropecuária, pesca e turismo. 
 Contudo, sofre com poluição, desmatamento, erosão, uso inadequado do solo e exploração excessiva da água, o que ameaça sua qualidade ambiental e a disponibilidade de recursos naturais.</p>
@@ -16,7 +16,7 @@ Contudo, sofre com poluição, desmatamento, erosão, uso inadequado do solo e e
 
 <script setup>
         function abrirSite() {
-            const url = "https://files.abrhidro.org.br/Eventos/Trabalhos/248/XXVI-SBRH1104-2-0-20250805-212923.pdf";
+            const url = "https://files.abrhidro.org.br/Eventos/Trabalhos/248/XXVI-SBRh2104-2-0-20250805-212923.pdf";
             window.open(url, "_blank"); // "_blank" abre em nova aba
         }
 </script>
@@ -49,8 +49,8 @@ Contudo, sofre com poluição, desmatamento, erosão, uso inadequado do solo e e
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
-    h1 {
-        font-size: clamp(1.5rem, 4vw, 2.2rem);
+    h2 {
+        font-size: clamp(1rem, 2vw, 1.5rem);
         color: #0081C7;
         margin: 0;
         font-weight: 700;
@@ -94,7 +94,7 @@ Contudo, sofre com poluição, desmatamento, erosão, uso inadequado do solo e e
             gap: 2rem;
             padding: 0 clamp(0.5rem, 3vw, 2.5rem);
         }
-        h1{
+        h2{
             text-align: center;
             width: 90vw;
 
@@ -118,7 +118,7 @@ Contudo, sofre com poluição, desmatamento, erosão, uso inadequado do solo e e
             left: 50%;
             
         }
-        h1 {
+        h2 {
             font-size: clamp(1.3rem, 3.5vw, 2rem);
         }
 
@@ -145,8 +145,9 @@ Contudo, sofre com poluição, desmatamento, erosão, uso inadequado do solo e e
                 right: 1%;
 
             }
-            & h1{
+            & h2{
                 text-align: center;
+                width:95vw;
             }
 
             & button{
@@ -187,7 +188,7 @@ Contudo, sofre com poluição, desmatamento, erosão, uso inadequado do solo e e
             height: auto;
         }
 
-        h1 {
+        h2 {
             font-size: clamp(1.1rem, 3vw, 1.6rem);
             line-height: 1.3;
         }
@@ -218,7 +219,7 @@ Contudo, sofre com poluição, desmatamento, erosão, uso inadequado do solo e e
             gap: 1.2rem;
         }
 
-        h1 {
+        h2 {
             font-size: 1.1rem;
         }
 

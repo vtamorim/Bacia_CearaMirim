@@ -30,7 +30,7 @@
 
     </section>
 
-    <div class="subsection-title-wrapper">
+    <div class="subsection-title-wrapper" id="ultimo_filho">
         <h2>Gestões Anteriores</h2>
     </div>
     <section class="gestoes_ant">
@@ -85,8 +85,11 @@
   width: 100%;
   max-width: 1400px;
   box-sizing: border-box;
+  text-align:center;
 }
-
+#ultimo_filho{
+   margin-bottom:3rem;
+}
 h2 {
       font-size: clamp(1rem, 2vw, 1.5rem);
       color: #0081C7;
@@ -202,7 +205,7 @@ section {
 }
 
 .objectives h3 {
-  font-size: clamp(1.3rem, 3.5vw, 1.5rem);
+  font-size: clamp(1rem, 3vw, 1.3rem);
   color: #034E77;
   margin: 0.5rem 0;
   font-weight: 700;

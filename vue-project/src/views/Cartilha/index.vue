@@ -115,7 +115,9 @@
 
 <style scoped>
 /* SEÇÃO PÚBLICO-ALVO — IGUAL AO MODELO DA IMAGEM */
-
+h2{
+      color: #034E77;
+}
 section {
   padding: clamp(1rem, 3vw, 2rem);
   width: 100%;
@@ -180,7 +182,6 @@ section {
 
   & h2 {
     font-size: clamp(1.3rem, 3.5vw, 1.5rem);
-    color: #034E77;
     width: 100%;
     text-align: center;
     line-height: 1.2;
@@ -223,7 +224,7 @@ section {
   padding: clamp(2rem, vw, 4rem) clamp(1rem, 3vw, 2rem);
 
   & h3 {
-    text-align: left;
+    text-align: center;
     font-size: clamp(1.2rem, 3vw, 1.5rem);
     color: #034E77;
   }
@@ -235,7 +236,8 @@ section {
   }
 
   & p {
-    text-align: left;
+    text-align: center;
+    width:95%;
     font-size: clamp(0.9rem, 1.8vw, 1rem);
     color: #034E77;
     line-height: 1.6;

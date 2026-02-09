@@ -57,7 +57,7 @@ section {
 
   gap: 32px;
   position: relative;
-  right: 60px;
+  left:-30px;
   padding: 40px 24px;
   place-items: center;
 }

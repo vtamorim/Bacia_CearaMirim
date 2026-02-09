@@ -865,18 +865,18 @@ onMounted(() => {
   const height = 1589
 
   const imageBounds = [[0, 0], [height, width]];
-  map = L.map('map', {
-    crs: L.CRS.Simple,
-    minZoom: 0,
-    center: [1294, 1296],
-    zoom: 0,
-    maxZoom: 0.8,
-    zoomSnap: 0.5,
-    zoomControl: true,
-    maxBounds: imageBounds,
-   scrollWheelZoom: false,
-    maxBoundsViscosity: 1.0
-  })
+map = L.map('map', {
+  crs: L.CRS.Simple,
+  minZoom: -2,
+  maxZoom: 0,
+  zoom: -2,
+  center: [1200, 1296],
+  zoomControl: true,
+  maxBounds: imageBounds,
+  scrollWheelZoom: false,
+  maxBoundsViscosity: 1.0
+})
+
   
   const bounds = [[0, 0], [height, width]]
 
