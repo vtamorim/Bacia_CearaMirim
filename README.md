@@ -31,7 +31,7 @@ Este projeto é uma aplicação web desenvolvida em Vue.js para apresentar infor
 
 1. Navegue até a pasta do projeto:
    ```bash
-   cd vue-project
+   cd bh_ceara-mirim
    ```
 
 2. Instale as dependências:
@@ -70,7 +70,7 @@ Os arquivos serão gerados na pasta `dist/`.
 ## Estrutura do Projeto
 
 ```
-vue-project/
+bh_ceara-mirim/
 ├── src/
 │   ├── components/     # Componentes reutilizáveis (Header, Footer, Carousel)
 │   ├── views/          # Páginas da aplicação
