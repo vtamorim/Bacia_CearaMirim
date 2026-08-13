@@ -29,7 +29,6 @@
         exploração excessiva da água, o que ameaça sua qualidade ambiental e a
         disponibilidade de recursos naturais.
       </p>
-
       <button @click="abrirSite">Saiba mais sobre a Bacia</button>
     </div>
   </section>
